@@ -28,6 +28,9 @@
 		E215E46214AA979400C3A4F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E215E46114AA979400C3A4F2 /* main.m */; };
 		E215E46614AA979500C3A4F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E215E46514AA979500C3A4F2 /* AppDelegate.m */; };
 		E215E46914AA979500C3A4F2 /* MaisMobilis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */; };
+		E2E6142B14AB998A007AF944 /* WebBus.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142A14AB998A007AF944 /* WebBus.m */; };
+		E2E6142E14AB99AE007AF944 /* WebBusstops.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142D14AB99AE007AF944 /* WebBusstops.m */; };
+		E2E6143114AB99C3007AF944 /* WebLines.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6143014AB99C3007AF944 /* WebLines.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +72,12 @@
 		E215E46414AA979500C3A4F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E215E46514AA979500C3A4F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E215E46814AA979500C3A4F2 /* MaisMobilis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MaisMobilis.xcdatamodel; sourceTree = "<group>"; };
+		E2E6142914AB998A007AF944 /* WebBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBus.h; path = MaisMobilis/Webservice/WebBus.h; sourceTree = "<group>"; };
+		E2E6142A14AB998A007AF944 /* WebBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebBus.m; path = MaisMobilis/Webservice/WebBus.m; sourceTree = "<group>"; };
+		E2E6142C14AB99AE007AF944 /* WebBusstops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBusstops.h; path = MaisMobilis/Webservice/WebBusstops.h; sourceTree = "<group>"; };
+		E2E6142D14AB99AE007AF944 /* WebBusstops.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebBusstops.m; path = MaisMobilis/Webservice/WebBusstops.m; sourceTree = "<group>"; };
+		E2E6142F14AB99C3007AF944 /* WebLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebLines.h; path = MaisMobilis/Webservice/WebLines.h; sourceTree = "<group>"; };
+		E2E6143014AB99C3007AF944 /* WebLines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebLines.m; path = MaisMobilis/Webservice/WebLines.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +132,7 @@
 		E215E44414AA979400C3A4F2 = {
 			isa = PBXGroup;
 			children = (
+				E2E6142814AB9970007AF944 /* Webservice */,
 				D746591A14AA9BE700F99E9C /* libz.dylib */,
 				D746591814AA9BC900F99E9C /* MobileCoreServices.framework */,
 				D746591614AA9BBB00F99E9C /* SystemConfiguration.framework */,
@@ -173,6 +183,19 @@
 				E215E46314AA979500C3A4F2 /* MaisMobilis-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E2E6142814AB9970007AF944 /* Webservice */ = {
+			isa = PBXGroup;
+			children = (
+				E2E6142914AB998A007AF944 /* WebBus.h */,
+				E2E6142A14AB998A007AF944 /* WebBus.m */,
+				E2E6142C14AB99AE007AF944 /* WebBusstops.h */,
+				E2E6142D14AB99AE007AF944 /* WebBusstops.m */,
+				E2E6142F14AB99C3007AF944 /* WebLines.h */,
+				E2E6143014AB99C3007AF944 /* WebLines.m */,
+			);
+			name = Webservice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +271,9 @@
 				D746591014AA9B1D00F99E9C /* ASIInputStream.m in Sources */,
 				D746591114AA9B1D00F99E9C /* ASINetworkQueue.m in Sources */,
 				D746591214AA9B1D00F99E9C /* Reachability.m in Sources */,
+				E2E6142B14AB998A007AF944 /* WebBus.m in Sources */,
+				E2E6142E14AB99AE007AF944 /* WebBusstops.m in Sources */,
+				E2E6143114AB99C3007AF944 /* WebLines.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
