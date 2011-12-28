@@ -1,0 +1,284 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E215E45414AA979400C3A4F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45314AA979400C3A4F2 /* UIKit.framework */; };
+		E215E45614AA979400C3A4F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45514AA979400C3A4F2 /* Foundation.framework */; };
+		E215E45814AA979400C3A4F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45714AA979400C3A4F2 /* CoreGraphics.framework */; };
+		E215E45A14AA979400C3A4F2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45914AA979400C3A4F2 /* CoreData.framework */; };
+		E215E46014AA979400C3A4F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E215E45E14AA979400C3A4F2 /* InfoPlist.strings */; };
+		E215E46214AA979400C3A4F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E215E46114AA979400C3A4F2 /* main.m */; };
+		E215E46614AA979500C3A4F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E215E46514AA979500C3A4F2 /* AppDelegate.m */; };
+		E215E46914AA979500C3A4F2 /* MaisMobilis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E215E44F14AA979400C3A4F2 /* MaisMobilis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaisMobilis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E215E45314AA979400C3A4F2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E215E45514AA979400C3A4F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E215E45714AA979400C3A4F2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E215E45914AA979400C3A4F2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E215E45D14AA979400C3A4F2 /* MaisMobilis-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MaisMobilis-Info.plist"; sourceTree = "<group>"; };
+		E215E45F14AA979400C3A4F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E215E46114AA979400C3A4F2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E215E46314AA979500C3A4F2 /* MaisMobilis-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MaisMobilis-Prefix.pch"; sourceTree = "<group>"; };
+		E215E46414AA979500C3A4F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E215E46514AA979500C3A4F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E215E46814AA979500C3A4F2 /* MaisMobilis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MaisMobilis.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E215E44C14AA979400C3A4F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E215E45414AA979400C3A4F2 /* UIKit.framework in Frameworks */,
+				E215E45614AA979400C3A4F2 /* Foundation.framework in Frameworks */,
+				E215E45814AA979400C3A4F2 /* CoreGraphics.framework in Frameworks */,
+				E215E45A14AA979400C3A4F2 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E215E44414AA979400C3A4F2 = {
+			isa = PBXGroup;
+			children = (
+				E215E45B14AA979400C3A4F2 /* MaisMobilis */,
+				E215E45214AA979400C3A4F2 /* Frameworks */,
+				E215E45014AA979400C3A4F2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E215E45014AA979400C3A4F2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E215E44F14AA979400C3A4F2 /* MaisMobilis.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E215E45214AA979400C3A4F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E215E45314AA979400C3A4F2 /* UIKit.framework */,
+				E215E45514AA979400C3A4F2 /* Foundation.framework */,
+				E215E45714AA979400C3A4F2 /* CoreGraphics.framework */,
+				E215E45914AA979400C3A4F2 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E215E45B14AA979400C3A4F2 /* MaisMobilis */ = {
+			isa = PBXGroup;
+			children = (
+				E215E46414AA979500C3A4F2 /* AppDelegate.h */,
+				E215E46514AA979500C3A4F2 /* AppDelegate.m */,
+				E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */,
+				E215E45C14AA979400C3A4F2 /* Supporting Files */,
+			);
+			path = MaisMobilis;
+			sourceTree = "<group>";
+		};
+		E215E45C14AA979400C3A4F2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E215E45D14AA979400C3A4F2 /* MaisMobilis-Info.plist */,
+				E215E45E14AA979400C3A4F2 /* InfoPlist.strings */,
+				E215E46114AA979400C3A4F2 /* main.m */,
+				E215E46314AA979500C3A4F2 /* MaisMobilis-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E215E44E14AA979400C3A4F2 /* MaisMobilis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E215E46C14AA979500C3A4F2 /* Build configuration list for PBXNativeTarget "MaisMobilis" */;
+			buildPhases = (
+				E215E44B14AA979400C3A4F2 /* Sources */,
+				E215E44C14AA979400C3A4F2 /* Frameworks */,
+				E215E44D14AA979400C3A4F2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MaisMobilis;
+			productName = MaisMobilis;
+			productReference = E215E44F14AA979400C3A4F2 /* MaisMobilis.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E215E44614AA979400C3A4F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = E215E44914AA979400C3A4F2 /* Build configuration list for PBXProject "MaisMobilis" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E215E44414AA979400C3A4F2;
+			productRefGroup = E215E45014AA979400C3A4F2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E215E44E14AA979400C3A4F2 /* MaisMobilis */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E215E44D14AA979400C3A4F2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E215E46014AA979400C3A4F2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E215E44B14AA979400C3A4F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E215E46214AA979400C3A4F2 /* main.m in Sources */,
+				E215E46614AA979500C3A4F2 /* AppDelegate.m in Sources */,
+				E215E46914AA979500C3A4F2 /* MaisMobilis.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E215E45E14AA979400C3A4F2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E215E45F14AA979400C3A4F2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E215E46A14AA979500C3A4F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E215E46B14AA979500C3A4F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E215E46D14AA979500C3A4F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MaisMobilis/MaisMobilis-Prefix.pch";
+				INFOPLIST_FILE = "MaisMobilis/MaisMobilis-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E215E46E14AA979500C3A4F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MaisMobilis/MaisMobilis-Prefix.pch";
+				INFOPLIST_FILE = "MaisMobilis/MaisMobilis-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E215E44914AA979400C3A4F2 /* Build configuration list for PBXProject "MaisMobilis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E215E46A14AA979500C3A4F2 /* Debug */,
+				E215E46B14AA979500C3A4F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E215E46C14AA979500C3A4F2 /* Build configuration list for PBXNativeTarget "MaisMobilis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E215E46D14AA979500C3A4F2 /* Debug */,
+				E215E46E14AA979500C3A4F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E215E46814AA979500C3A4F2 /* MaisMobilis.xcdatamodel */,
+			);
+			currentVersion = E215E46814AA979500C3A4F2 /* MaisMobilis.xcdatamodel */;
+			path = MaisMobilis.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E215E44614AA979400C3A4F2 /* Project object */;
+}
