@@ -7,7 +7,6 @@
 //
 
 #import "MaisMobilisWebService.h"
-#import "ASIHTTPRequest.h"
 
 @implementation MaisMobilisWebService
 
@@ -15,7 +14,7 @@ NSString *APIURL = @"http://maismobilis.telmomarques.nome.pt/";
 NSString *USERNAME = @"apikey";
 NSString *APIKEY = @"gA5etlof24DX6JnoaaZAALJC73KzemHAClTIItB0yBOkmGYvdICqlbnWK2CvgMRgjL4BZC0AvZvnnn19r7rBQZ";
 
-+(NSString *) doGET:(NSString *)resource withQueryString:(NSString *)queryString
++(NSArray *) doGET:(NSString *)resource withQueryString:(NSString *)queryString
 {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/%@", APIURL, resource, queryString]];
     ASIHTTPRequest *request =  [ASIHTTPRequest requestWithURL:url];
@@ -25,16 +24,25 @@ NSString *APIKEY = @"gA5etlof24DX6JnoaaZAALJC73KzemHAClTIItB0yBOkmGYvdICqlbnWK2C
     [request setPassword:APIKEY];
     
     [request startSynchronous];
-    NSError *error = [request error];
+    NSError *asiError = [request error];
     
-    if(!error)
+    if(asiError)
     {
-        [NSException raise:@"doGET Failed" format:@""];
+        [NSException raise:@"doGET Failed" format:@"Request to the webservice failed."];
     }
     
     NSString *response = [request responseString];
     
-    return response;
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSError *jsonError;
+    NSArray *jsonObjects = [parser objectWithString:response error:&jsonError];
+    
+    if(jsonError)
+    {
+        [NSException raise:@"doGET Failed" format:@"Invalid jSON. Could not parse."];
+    }
+    
+    return jsonObjects;
 }
 
 
