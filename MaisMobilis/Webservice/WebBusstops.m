@@ -13,7 +13,8 @@
 
 + (void)getAllBusstops
 {
-    NSString *response = [MaisMobilisWebService doGET:@"paragens" withQueryString:@""];
-    NSLog(@"RESPONSE: %@", response);
+    NSArray *jsonObjects = [MaisMobilisWebService doGET:@"paragens" withQueryString:@""];
+    NSLog(@"RESPONSE: %@", [jsonObjects description]);
+    
 }
 @end
