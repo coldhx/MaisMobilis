@@ -9,5 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface WebLines : NSObject
-
++ (void) getAllLines;
++ (void)getLinesWithCarrierID: (NSString *)carrierID;
++ (void)getLinesWithBusstopID: (NSString *)busstopID;
++ (void)getLineWithID: (NSString *)lineID;
 @end

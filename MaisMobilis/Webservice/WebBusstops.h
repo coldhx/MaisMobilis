@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface WebBusstops : NSObject
-+(void)getAllBusstops;
++ (void)getAllBusstops;
++ (void)getBusstopsWithLineID: (NSString *)lineID;
++ (void)getBusstopWithID: (NSString *) busstopID;
 @end

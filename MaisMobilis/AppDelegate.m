@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "WebBusstops.h"
+#import "WebLines.h"
 
 @implementation AppDelegate
 
@@ -24,7 +24,7 @@
     [self.window makeKeyAndVisible];
     
     //Testing 1 2 3
-    [WebBusstops getAllBusstops];
+    [WebLines getLineWithID:@"2"];
     
     return YES;
 }

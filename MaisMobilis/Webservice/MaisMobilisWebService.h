@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequest.h"
-#import "SBJSON.h"
+#import "SBJson.h"
 
 @interface MaisMobilisWebService : NSObject
 +(NSArray *) doGET:(NSString *)resource withQueryString:(NSString *)queryString;
