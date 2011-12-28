@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface WebBus : NSObject
-
++ (void)geAlltBuses;
++ (void)getBusesByLine:(NSString *) lineNumber;
++ (void)getBusById: (NSString *) busID;
 @end
