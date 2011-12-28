@@ -7,7 +7,13 @@
 //
 
 #import "WebBusstops.h"
+#import "MaisMobilisWebService.h"
 
 @implementation WebBusstops
 
++ (void)getAllBusstops
+{
+    NSString *response = [MaisMobilisWebService doGET:@"paragens" withQueryString:@""];
+    NSLog(@"RESPONSE: %@", response);
+}
 @end
