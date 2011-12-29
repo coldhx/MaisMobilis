@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Bus" syncable="YES"/>
+    <entity name="Bus" syncable="YES">
+        <attribute name="busID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastStopID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="meanVelocity" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="precision" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="BusStop" syncable="YES">
+        <attribute name="busStopID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="refPointID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Line" syncable="YES">
+        <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trasporterID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Bus" positionX="160" positionY="192" width="128" height="45"/>
+        <element name="Bus" positionX="36" positionY="171" width="128" height="45"/>
+        <element name="BusStop" positionX="-297" positionY="171" width="117" height="105"/>
+        <element name="Line" positionX="-137" positionY="171" width="128" height="90"/>
     </elements>
 </model>

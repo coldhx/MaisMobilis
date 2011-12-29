@@ -18,25 +18,22 @@
 #import "MaisMobilisWebService.h"
 
 @implementation WebBus
-+ (void)geAlltBuses
++ (void)geAllBuses
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"autocarros" withQueryString:@""];
     NSLog(@"RESPONSE: %@", [jsonObjects description]);
 }
 
-+(void)getBusesByLine:(NSString *) lineNumber
++(void)getBusesByLine:(NSString *)lineNumber
 {
-    NSArray *jsonObjects = [MaisMobilisWebService doGET:@"autocarros" withQueryString:[NSString stringWithFormat:@"%@", lineNumber]];
+    NSArray *jsonObjects = [MaisMobilisWebService doGET:@"autocarros" withQueryString:[NSString stringWithFormat:@"?idLinha=%@", lineNumber]];
     NSLog(@"RESPONSE: %@", [jsonObjects description]);
 }
 
-+ (void) getBusById: (NSString *) busID
++ (void) getBusById:(NSString *)busID
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:[NSString stringWithFormat:@"autocaros/%@/", busID] withQueryString:@""];
     NSLog(@"RESPONSE: %@", [jsonObjects description]);
 }
-
-
-
 
 @end
