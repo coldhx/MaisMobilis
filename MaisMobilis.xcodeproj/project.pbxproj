@@ -23,6 +23,9 @@
 		D746591714AA9BBB00F99E9C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D746591614AA9BBB00F99E9C /* SystemConfiguration.framework */; };
 		D746591914AA9BC900F99E9C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D746591814AA9BC900F99E9C /* MobileCoreServices.framework */; };
 		D746591B14AA9BE700F99E9C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D746591A14AA9BE700F99E9C /* libz.dylib */; };
+		D7888D3914AD32F700554E8D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7888D3714AD32F600554E8D /* MapViewController.m */; };
+		D7888D3A14AD32F700554E8D /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7888D3814AD32F700554E8D /* MapViewController.xib */; };
+		D7888D3C14AD332B00554E8D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7888D3B14AD332B00554E8D /* Storyboard.storyboard */; };
 		E215E45414AA979400C3A4F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45314AA979400C3A4F2 /* UIKit.framework */; };
 		E215E45614AA979400C3A4F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45514AA979400C3A4F2 /* Foundation.framework */; };
 		E215E45814AA979400C3A4F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45714AA979400C3A4F2 /* CoreGraphics.framework */; };
@@ -83,6 +86,10 @@
 		D746591614AA9BBB00F99E9C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D746591814AA9BC900F99E9C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		D746591A14AA9BE700F99E9C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D7888D3614AD32F600554E8D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		D7888D3714AD32F600554E8D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		D7888D3814AD32F700554E8D /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		D7888D3B14AD332B00554E8D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		E215E44F14AA979400C3A4F2 /* MaisMobilis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaisMobilis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E215E45314AA979400C3A4F2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E215E45514AA979400C3A4F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -228,6 +235,10 @@
 				D72CF01114AD15AF003CCEF8 /* Bus.h */,
 				D72CF01214AD15AF003CCEF8 /* Bus.m */,
 				E215E45C14AA979400C3A4F2 /* Supporting Files */,
+				D7888D3614AD32F600554E8D /* MapViewController.h */,
+				D7888D3714AD32F600554E8D /* MapViewController.m */,
+				D7888D3814AD32F700554E8D /* MapViewController.xib */,
+				D7888D3B14AD332B00554E8D /* Storyboard.storyboard */,
 			);
 			path = MaisMobilis;
 			sourceTree = "<group>";
@@ -342,6 +353,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E215E46014AA979400C3A4F2 /* InfoPlist.strings in Resources */,
+				D7888D3A14AD32F700554E8D /* MapViewController.xib in Resources */,
+				D7888D3C14AD332B00554E8D /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +397,7 @@
 				D72CF01314AD15AF003CCEF8 /* Bus.m in Sources */,
 				D72CF01714AD15C3003CCEF8 /* Line.m in Sources */,
 				D72CF01A14AD15C3003CCEF8 /* BusStop.m in Sources */,
+				D7888D3914AD32F700554E8D /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
