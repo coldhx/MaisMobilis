@@ -34,6 +34,7 @@
 		E215E46214AA979400C3A4F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E215E46114AA979400C3A4F2 /* main.m */; };
 		E215E46614AA979500C3A4F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E215E46514AA979500C3A4F2 /* AppDelegate.m */; };
 		E215E46914AA979500C3A4F2 /* MaisMobilis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */; };
+		E25056CF14B0DCC200E23C40 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25056CE14B0DCC200E23C40 /* MapKit.framework */; };
 		E2E6142B14AB998A007AF944 /* WebBus.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142A14AB998A007AF944 /* WebBus.m */; };
 		E2E6142E14AB99AE007AF944 /* WebBusstops.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142D14AB99AE007AF944 /* WebBusstops.m */; };
 		E2E6143114AB99C3007AF944 /* WebLines.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6143014AB99C3007AF944 /* WebLines.m */; };
@@ -102,6 +103,7 @@
 		E215E46414AA979500C3A4F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E215E46514AA979500C3A4F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E215E46814AA979500C3A4F2 /* MaisMobilis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MaisMobilis.xcdatamodel; sourceTree = "<group>"; };
+		E25056CE14B0DCC200E23C40 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E2E6142914AB998A007AF944 /* WebBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBus.h; path = MaisMobilis/Webservice/WebBus.h; sourceTree = "<group>"; };
 		E2E6142A14AB998A007AF944 /* WebBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebBus.m; path = MaisMobilis/Webservice/WebBus.m; sourceTree = "<group>"; };
 		E2E6142C14AB99AE007AF944 /* WebBusstops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBusstops.h; path = MaisMobilis/Webservice/WebBusstops.h; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E25056CF14B0DCC200E23C40 /* MapKit.framework in Frameworks */,
 				D746591B14AA9BE700F99E9C /* libz.dylib in Frameworks */,
 				E215E45814AA979400C3A4F2 /* CoreGraphics.framework in Frameworks */,
 				D746591914AA9BC900F99E9C /* MobileCoreServices.framework in Frameworks */,
@@ -190,6 +193,7 @@
 		E215E44414AA979400C3A4F2 = {
 			isa = PBXGroup;
 			children = (
+				E25056CE14B0DCC200E23C40 /* MapKit.framework */,
 				D746591A14AA9BE700F99E9C /* libz.dylib */,
 				D746591414AA9B9300F99E9C /* CFNetwork.framework */,
 				D746591814AA9BC900F99E9C /* MobileCoreServices.framework */,

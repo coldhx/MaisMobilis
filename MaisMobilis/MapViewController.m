@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 
 @implementation MapViewController
+@synthesize mapView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,11 +33,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    //Set to satellite view
+    mapView.mapType = MKMapTypeHybrid;
+    
+    //Set visible map location
+    CLLocationCoordinate2D zoomlocation;
+    zoomlocation.latitude = 39.74434;
+    zoomlocation.longitude = -8.80725;
+    
+    MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomlocation, 4500, 4500);
+    
+    MKCoordinateRegion adjustedRegion = [mapView regionThatFits:viewRegion];
+    
+    [mapView setRegion:adjustedRegion animated:YES];
+     
 }
 
 - (void)viewDidUnload
 {
+    [self setMapView:nil];
+    [self setMapView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -46,6 +63,12 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+//Delegate method that forces a maximum out zoom
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    if()
 }
 
 @end
