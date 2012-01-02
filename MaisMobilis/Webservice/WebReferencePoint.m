@@ -8,19 +8,36 @@
 
 #import "WebReferencePoint.h"
 #import "MaisMobilisWebService.h"
+#import "AppDelegate.h"
+#import "ReferencePoint.h"
+#import "SBJson.h"
 
 @implementation WebReferencePoint
++ (void) persistReferencePoints:(NSArray *)jsonObjects{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    
+    ReferencePoint *newRefPoint;
+    for (int i=0; i<jsonObjects.count; i++) {
+        newRefPoint = [NSEntityDescription insertNewObjectForEntityForName:@"ReferencePoint" inManagedObjectContext:context];
+        newRefPoint.referencePointID = [[jsonObjects objectAtIndex:i] objectForKey:@"idPontoReferencia"];
+        newRefPoint.latitude = [[jsonObjects objectAtIndex:i] objectForKey:@"latitue"];
+        newRefPoint.longitude = [[jsonObjects objectAtIndex:i] objectForKey:@"longitude"];
+              
+    }
+
+}
 
 + (void) getAllReferencePoints;
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"pontosreferencia" withQueryString:@""];
-    NSLog(@"RESPONSE: %@", [jsonObjects description]);
+    [self persistReferencePoints:jsonObjects];
 }
 
 + (void) getLinesWithLineID:(NSString *)lineID
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"pontosreferencia" withQueryString:[NSString stringWithFormat:@"?idLinha=%@", lineID]];
-    NSLog(@"RESPONSE: %@", [jsonObjects description]);
+    [self persistReferencePoints:jsonObjects];
 }
 
 @end
