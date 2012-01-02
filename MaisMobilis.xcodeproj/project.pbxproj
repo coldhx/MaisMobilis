@@ -35,6 +35,8 @@
 		E215E46614AA979500C3A4F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E215E46514AA979500C3A4F2 /* AppDelegate.m */; };
 		E215E46914AA979500C3A4F2 /* MaisMobilis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */; };
 		E25056CF14B0DCC200E23C40 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25056CE14B0DCC200E23C40 /* MapKit.framework */; };
+		E270F10B14B12CDD00AA4531 /* BusstopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E270F10A14B12CDD00AA4531 /* BusstopAnnotation.m */; };
+		E270F10F14B1398400AA4531 /* WebReferencePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = E270F10E14B1398400AA4531 /* WebReferencePoint.m */; };
 		E2E6142B14AB998A007AF944 /* WebBus.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142A14AB998A007AF944 /* WebBus.m */; };
 		E2E6142E14AB99AE007AF944 /* WebBusstops.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142D14AB99AE007AF944 /* WebBusstops.m */; };
 		E2E6143114AB99C3007AF944 /* WebLines.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6143014AB99C3007AF944 /* WebLines.m */; };
@@ -104,6 +106,10 @@
 		E215E46514AA979500C3A4F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E215E46814AA979500C3A4F2 /* MaisMobilis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MaisMobilis.xcdatamodel; sourceTree = "<group>"; };
 		E25056CE14B0DCC200E23C40 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E270F10914B12CDC00AA4531 /* BusstopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusstopAnnotation.h; sourceTree = "<group>"; };
+		E270F10A14B12CDD00AA4531 /* BusstopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusstopAnnotation.m; sourceTree = "<group>"; };
+		E270F10D14B1398400AA4531 /* WebReferencePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebReferencePoint.h; path = MaisMobilis/Webservice/WebReferencePoint.h; sourceTree = "<group>"; };
+		E270F10E14B1398400AA4531 /* WebReferencePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebReferencePoint.m; path = MaisMobilis/Webservice/WebReferencePoint.m; sourceTree = "<group>"; };
 		E2E6142914AB998A007AF944 /* WebBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBus.h; path = MaisMobilis/Webservice/WebBus.h; sourceTree = "<group>"; };
 		E2E6142A14AB998A007AF944 /* WebBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebBus.m; path = MaisMobilis/Webservice/WebBus.m; sourceTree = "<group>"; };
 		E2E6142C14AB99AE007AF944 /* WebBusstops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBusstops.h; path = MaisMobilis/Webservice/WebBusstops.h; sourceTree = "<group>"; };
@@ -243,6 +249,8 @@
 				D7888D3714AD32F600554E8D /* MapViewController.m */,
 				D7888D3814AD32F700554E8D /* MapViewController.xib */,
 				D7888D3B14AD332B00554E8D /* Storyboard.storyboard */,
+				E270F10914B12CDC00AA4531 /* BusstopAnnotation.h */,
+				E270F10A14B12CDD00AA4531 /* BusstopAnnotation.m */,
 			);
 			path = MaisMobilis;
 			sourceTree = "<group>";
@@ -269,6 +277,8 @@
 				E2E6143014AB99C3007AF944 /* WebLines.m */,
 				E2E6143214ABA6BD007AF944 /* MaisMobilisWebService.h */,
 				E2E6143314ABA6BD007AF944 /* MaisMobilisWebService.m */,
+				E270F10D14B1398400AA4531 /* WebReferencePoint.h */,
+				E270F10E14B1398400AA4531 /* WebReferencePoint.m */,
 			);
 			name = Webservice;
 			sourceTree = "<group>";
@@ -402,6 +412,8 @@
 				D72CF01714AD15C3003CCEF8 /* Line.m in Sources */,
 				D72CF01A14AD15C3003CCEF8 /* BusStop.m in Sources */,
 				D7888D3914AD32F700554E8D /* MapViewController.m in Sources */,
+				E270F10B14B12CDD00AA4531 /* BusstopAnnotation.m in Sources */,
+				E270F10F14B1398400AA4531 /* WebReferencePoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
