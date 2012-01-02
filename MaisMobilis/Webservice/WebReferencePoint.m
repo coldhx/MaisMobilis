@@ -13,6 +13,7 @@
 #import "SBJson.h"
 
 @implementation WebReferencePoint
+//this is a god DAMNED COMMENT
 + (void) persistReferencePoints:(NSArray *)jsonObjects{
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
