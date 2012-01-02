@@ -35,6 +35,11 @@
 		E215E46614AA979500C3A4F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E215E46514AA979500C3A4F2 /* AppDelegate.m */; };
 		E215E46914AA979500C3A4F2 /* MaisMobilis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */; };
 		E25056CF14B0DCC200E23C40 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25056CE14B0DCC200E23C40 /* MapKit.framework */; };
+		E270F10B14B12CDD00AA4531 /* BusstopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E270F10A14B12CDD00AA4531 /* BusstopAnnotation.m */; };
+		E270F10F14B1398400AA4531 /* WebReferencePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = E270F10E14B1398400AA4531 /* WebReferencePoint.m */; };
+		E270F11E14B13ECF00AA4531 /* ReferencePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = E270F11D14B13ECF00AA4531 /* ReferencePoint.m */; };
+		E270F12214B1410800AA4531 /* greensquare.png in Resources */ = {isa = PBXBuildFile; fileRef = E270F12014B1410800AA4531 /* greensquare.png */; };
+		E270F12314B1410800AA4531 /* redsquare.png in Resources */ = {isa = PBXBuildFile; fileRef = E270F12114B1410800AA4531 /* redsquare.png */; };
 		E2E6142B14AB998A007AF944 /* WebBus.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142A14AB998A007AF944 /* WebBus.m */; };
 		E2E6142E14AB99AE007AF944 /* WebBusstops.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142D14AB99AE007AF944 /* WebBusstops.m */; };
 		E2E6143114AB99C3007AF944 /* WebLines.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6143014AB99C3007AF944 /* WebLines.m */; };
@@ -104,6 +109,14 @@
 		E215E46514AA979500C3A4F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E215E46814AA979500C3A4F2 /* MaisMobilis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MaisMobilis.xcdatamodel; sourceTree = "<group>"; };
 		E25056CE14B0DCC200E23C40 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E270F10914B12CDC00AA4531 /* BusstopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusstopAnnotation.h; sourceTree = "<group>"; };
+		E270F10A14B12CDD00AA4531 /* BusstopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusstopAnnotation.m; sourceTree = "<group>"; };
+		E270F10D14B1398400AA4531 /* WebReferencePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebReferencePoint.h; path = MaisMobilis/Webservice/WebReferencePoint.h; sourceTree = "<group>"; };
+		E270F10E14B1398400AA4531 /* WebReferencePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebReferencePoint.m; path = MaisMobilis/Webservice/WebReferencePoint.m; sourceTree = "<group>"; };
+		E270F11C14B13ECE00AA4531 /* ReferencePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferencePoint.h; sourceTree = "<group>"; };
+		E270F11D14B13ECF00AA4531 /* ReferencePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferencePoint.m; sourceTree = "<group>"; };
+		E270F12014B1410800AA4531 /* greensquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greensquare.png; path = MaisMobilis/Images/greensquare.png; sourceTree = "<group>"; };
+		E270F12114B1410800AA4531 /* redsquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redsquare.png; path = MaisMobilis/Images/redsquare.png; sourceTree = "<group>"; };
 		E2E6142914AB998A007AF944 /* WebBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBus.h; path = MaisMobilis/Webservice/WebBus.h; sourceTree = "<group>"; };
 		E2E6142A14AB998A007AF944 /* WebBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebBus.m; path = MaisMobilis/Webservice/WebBus.m; sourceTree = "<group>"; };
 		E2E6142C14AB99AE007AF944 /* WebBusstops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBusstops.h; path = MaisMobilis/Webservice/WebBusstops.h; sourceTree = "<group>"; };
@@ -193,6 +206,7 @@
 		E215E44414AA979400C3A4F2 = {
 			isa = PBXGroup;
 			children = (
+				E270F11F14B1407200AA4531 /* Images */,
 				E25056CE14B0DCC200E23C40 /* MapKit.framework */,
 				D746591A14AA9BE700F99E9C /* libz.dylib */,
 				D746591414AA9B9300F99E9C /* CFNetwork.framework */,
@@ -235,6 +249,8 @@
 				D72CF01814AD15C3003CCEF8 /* BusStop.h */,
 				E215E46414AA979500C3A4F2 /* AppDelegate.h */,
 				E215E46514AA979500C3A4F2 /* AppDelegate.m */,
+				E270F11C14B13ECE00AA4531 /* ReferencePoint.h */,
+				E270F11D14B13ECF00AA4531 /* ReferencePoint.m */,
 				E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */,
 				D72CF01114AD15AF003CCEF8 /* Bus.h */,
 				D72CF01214AD15AF003CCEF8 /* Bus.m */,
@@ -243,6 +259,8 @@
 				D7888D3714AD32F600554E8D /* MapViewController.m */,
 				D7888D3814AD32F700554E8D /* MapViewController.xib */,
 				D7888D3B14AD332B00554E8D /* Storyboard.storyboard */,
+				E270F10914B12CDC00AA4531 /* BusstopAnnotation.h */,
+				E270F10A14B12CDD00AA4531 /* BusstopAnnotation.m */,
 			);
 			path = MaisMobilis;
 			sourceTree = "<group>";
@@ -258,6 +276,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E270F11F14B1407200AA4531 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E270F12014B1410800AA4531 /* greensquare.png */,
+				E270F12114B1410800AA4531 /* redsquare.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		E2E6142814AB9970007AF944 /* Webservice */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +296,8 @@
 				E2E6143014AB99C3007AF944 /* WebLines.m */,
 				E2E6143214ABA6BD007AF944 /* MaisMobilisWebService.h */,
 				E2E6143314ABA6BD007AF944 /* MaisMobilisWebService.m */,
+				E270F10D14B1398400AA4531 /* WebReferencePoint.h */,
+				E270F10E14B1398400AA4531 /* WebReferencePoint.m */,
 			);
 			name = Webservice;
 			sourceTree = "<group>";
@@ -359,6 +388,8 @@
 				E215E46014AA979400C3A4F2 /* InfoPlist.strings in Resources */,
 				D7888D3A14AD32F700554E8D /* MapViewController.xib in Resources */,
 				D7888D3C14AD332B00554E8D /* Storyboard.storyboard in Resources */,
+				E270F12214B1410800AA4531 /* greensquare.png in Resources */,
+				E270F12314B1410800AA4531 /* redsquare.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +433,9 @@
 				D72CF01714AD15C3003CCEF8 /* Line.m in Sources */,
 				D72CF01A14AD15C3003CCEF8 /* BusStop.m in Sources */,
 				D7888D3914AD32F700554E8D /* MapViewController.m in Sources */,
+				E270F10B14B12CDD00AA4531 /* BusstopAnnotation.m in Sources */,
+				E270F10F14B1398400AA4531 /* WebReferencePoint.m in Sources */,
+				E270F11E14B13ECF00AA4531 /* ReferencePoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
