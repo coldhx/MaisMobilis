@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface WebLines : NSObject
-+ (void) persistLines: (NSArray *)jsonObject;
 + (void) getAllLines;
 + (void)getLinesWithCarrierID: (NSString *)carrierID;
 + (void)getLinesWithBusstopID: (NSString *)busstopID;

@@ -12,5 +12,4 @@
 + (void)geAllBuses;
 + (void)getBusesByLine:(NSString *)lineNumber;
 + (void)getBusById: (NSString *)busID;
-+ (void)persistBus: (NSArray *) jsonObjects;
 @end

@@ -14,6 +14,5 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 - (void) resetMapZoomWithLatitude:(CLLocationDegrees)latitude andLongitude:(CLLocationDegrees)longitude;
-- (void) loadBusStops;
 
 @end

@@ -8,44 +8,24 @@
 
 #import "WebBusstops.h"
 #import "MaisMobilisWebService.h"
-#import "AppDelegate.h"
-#import "BusStop.h"
-#import "SBJson.h"
-
-
 
 @implementation WebBusstops
 
-+(void) persistBusStops:(NSArray *)jsonObjects {
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    BusStop *newBusStop;
-    for (int i=0; i<jsonObjects.count; i++) {
-        newBusStop = [NSEntityDescription insertNewObjectForEntityForName:@"BusStop" inManagedObjectContext:context];
-        newBusStop.lineID = [[jsonObjects objectAtIndex:i] objectForKey:@"idLinha"];
-        newBusStop.busStopID = [[jsonObjects objectAtIndex:i] objectForKey:@"idParagem"];
-        newBusStop.name = [[jsonObjects objectAtIndex:i] objectForKey:@"nome"];
-        newBusStop.refPointID = [[jsonObjects objectAtIndex:i] objectForKey:@"idPontoReferencia"];
-    }
-}
-
-+ (void)fetchAllBusstops
++ (void)getAllBusstops
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"paragens" withQueryString:@""];
-    [self persistBusStops: jsonObjects];
+    NSLog(@"RESPONSE: %@", [jsonObjects description]);
 }
 
-+ (void)fetchBusstopWithID: (NSString *) busstopID
++ (void)getBusstopWithID: (NSString *) busstopID
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:[NSString stringWithFormat:@"paragens/%@/", busstopID] withQueryString:@""];
-    [self persistBusStops:jsonObjects];
+    NSLog(@"RESPONSE: %@", [jsonObjects description]);
 }
 
-+ (void)fetchBusstopsWithLineID: (NSString *)lineID
++ (void)getBusstopsWithLineID: (NSString *)lineID
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"paragens" withQueryString:[NSString stringWithFormat:@"?idLinha=%@", lineID]];
-    [self persistBusStops:jsonObjects];
+    NSLog(@"RESPONSE: %@", [jsonObjects description]);
 }
-
-
 @end

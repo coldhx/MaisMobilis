@@ -8,13 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-
-@interface WebBusstops : NSObject 
-
-+ (void)fetchAllBusstops;
-+ (void)fetchBusstopsWithLineID: (NSString *)lineID;
-+ (void)fetchBusstopWithID: (NSString *) busstopID;
-+ (void) persistBusStops: (NSArray *) jsonObjects;
-
-
+@interface WebBusstops : NSObject
++ (void)getAllBusstops;
++ (void)getBusstopsWithLineID: (NSString *)lineID;
++ (void)getBusstopWithID: (NSString *) busstopID;
 @end

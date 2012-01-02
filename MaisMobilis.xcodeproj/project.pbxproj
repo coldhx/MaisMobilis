@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D72CF01314AD15AF003CCEF8 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = D72CF01214AD15AF003CCEF8 /* Bus.m */; };
+		D72CF01714AD15C3003CCEF8 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D72CF01614AD15C3003CCEF8 /* Line.m */; };
+		D72CF01A14AD15C3003CCEF8 /* BusStop.m in Sources */ = {isa = PBXBuildFile; fileRef = D72CF01914AD15C3003CCEF8 /* BusStop.m */; };
 		D746590A14AA9B1D00F99E9C /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658F514AA9B1D00F99E9C /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		D746590B14AA9B1D00F99E9C /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658F814AA9B1D00F99E9C /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		D746590C14AA9B1D00F99E9C /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658FA14AA9B1D00F99E9C /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -23,9 +26,6 @@
 		D7888D3914AD32F700554E8D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7888D3714AD32F600554E8D /* MapViewController.m */; };
 		D7888D3A14AD32F700554E8D /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7888D3814AD32F700554E8D /* MapViewController.xib */; };
 		D7888D3C14AD332B00554E8D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7888D3B14AD332B00554E8D /* Storyboard.storyboard */; };
-		D79A7FF014B157D8003B19C1 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = D79A7FEF14B157D8003B19C1 /* Bus.m */; };
-		D79A7FF414B15823003B19C1 /* BusStop.m in Sources */ = {isa = PBXBuildFile; fileRef = D79A7FF314B15823003B19C1 /* BusStop.m */; };
-		D79A7FF714B15823003B19C1 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D79A7FF614B15823003B19C1 /* Line.m */; };
 		E215E45414AA979400C3A4F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45314AA979400C3A4F2 /* UIKit.framework */; };
 		E215E45614AA979400C3A4F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45514AA979400C3A4F2 /* Foundation.framework */; };
 		E215E45814AA979400C3A4F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45714AA979400C3A4F2 /* CoreGraphics.framework */; };
@@ -55,6 +55,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D72CF01114AD15AF003CCEF8 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bus.h; sourceTree = "<group>"; };
+		D72CF01214AD15AF003CCEF8 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
+		D72CF01514AD15C3003CCEF8 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		D72CF01614AD15C3003CCEF8 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
+		D72CF01814AD15C3003CCEF8 /* BusStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusStop.h; sourceTree = "<group>"; };
+		D72CF01914AD15C3003CCEF8 /* BusStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusStop.m; sourceTree = "<group>"; };
 		D74658F414AA9B1D00F99E9C /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		D74658F514AA9B1D00F99E9C /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		D74658F614AA9B1D00F99E9C /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -85,12 +91,6 @@
 		D7888D3714AD32F600554E8D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		D7888D3814AD32F700554E8D /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		D7888D3B14AD332B00554E8D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
-		D79A7FEE14B157D8003B19C1 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bus.h; sourceTree = "<group>"; };
-		D79A7FEF14B157D8003B19C1 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
-		D79A7FF214B15823003B19C1 /* BusStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusStop.h; sourceTree = "<group>"; };
-		D79A7FF314B15823003B19C1 /* BusStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusStop.m; sourceTree = "<group>"; };
-		D79A7FF514B15823003B19C1 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
-		D79A7FF614B15823003B19C1 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		E215E44F14AA979400C3A4F2 /* MaisMobilis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaisMobilis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E215E45314AA979400C3A4F2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E215E45514AA979400C3A4F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -160,21 +160,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D7327A5714B162FB00D74B24 /* Webservice */ = {
-			isa = PBXGroup;
-			children = (
-				E2E6142914AB998A007AF944 /* WebBus.h */,
-				E2E6142A14AB998A007AF944 /* WebBus.m */,
-				E2E6142C14AB99AE007AF944 /* WebBusstops.h */,
-				E2E6142D14AB99AE007AF944 /* WebBusstops.m */,
-				E2E6142F14AB99C3007AF944 /* WebLines.h */,
-				E2E6143014AB99C3007AF944 /* WebLines.m */,
-				E2E6143214ABA6BD007AF944 /* MaisMobilisWebService.h */,
-				E2E6143314ABA6BD007AF944 /* MaisMobilisWebService.m */,
-			);
-			name = Webservice;
-			sourceTree = "<group>";
-		};
 		D74658F314AA9B1D00F99E9C /* ASIAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,20 +190,6 @@
 			path = MaisMobilis/ASIAPI;
 			sourceTree = "<group>";
 		};
-		D79A7FE814B11C68003B19C1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D7327A5714B162FB00D74B24 /* Webservice */,
-				D79A7FF514B15823003B19C1 /* Line.h */,
-				D79A7FF614B15823003B19C1 /* Line.m */,
-				D79A7FF214B15823003B19C1 /* BusStop.h */,
-				D79A7FF314B15823003B19C1 /* BusStop.m */,
-				D79A7FEE14B157D8003B19C1 /* Bus.h */,
-				D79A7FEF14B157D8003B19C1 /* Bus.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
 		E215E44414AA979400C3A4F2 = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +203,7 @@
 				E215E45B14AA979400C3A4F2 /* MaisMobilis */,
 				E215E45014AA979400C3A4F2 /* Products */,
 				E2E6143514ABA97B007AF944 /* SBJson */,
-				D79A7FE814B11C68003B19C1 /* Model */,
+				E2E6142814AB9970007AF944 /* Webservice */,
 			);
 			sourceTree = "<group>";
 		};
@@ -258,9 +229,15 @@
 		E215E45B14AA979400C3A4F2 /* MaisMobilis */ = {
 			isa = PBXGroup;
 			children = (
+				D72CF01614AD15C3003CCEF8 /* Line.m */,
+				D72CF01514AD15C3003CCEF8 /* Line.h */,
+				D72CF01914AD15C3003CCEF8 /* BusStop.m */,
+				D72CF01814AD15C3003CCEF8 /* BusStop.h */,
 				E215E46414AA979500C3A4F2 /* AppDelegate.h */,
 				E215E46514AA979500C3A4F2 /* AppDelegate.m */,
 				E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */,
+				D72CF01114AD15AF003CCEF8 /* Bus.h */,
+				D72CF01214AD15AF003CCEF8 /* Bus.m */,
 				E215E45C14AA979400C3A4F2 /* Supporting Files */,
 				D7888D3614AD32F600554E8D /* MapViewController.h */,
 				D7888D3714AD32F600554E8D /* MapViewController.m */,
@@ -279,6 +256,21 @@
 				E215E46314AA979500C3A4F2 /* MaisMobilis-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E2E6142814AB9970007AF944 /* Webservice */ = {
+			isa = PBXGroup;
+			children = (
+				E2E6142914AB998A007AF944 /* WebBus.h */,
+				E2E6142A14AB998A007AF944 /* WebBus.m */,
+				E2E6142C14AB99AE007AF944 /* WebBusstops.h */,
+				E2E6142D14AB99AE007AF944 /* WebBusstops.m */,
+				E2E6142F14AB99C3007AF944 /* WebLines.h */,
+				E2E6143014AB99C3007AF944 /* WebLines.m */,
+				E2E6143214ABA6BD007AF944 /* MaisMobilisWebService.h */,
+				E2E6143314ABA6BD007AF944 /* MaisMobilisWebService.m */,
+			);
+			name = Webservice;
 			sourceTree = "<group>";
 		};
 		E2E6143514ABA97B007AF944 /* SBJson */ = {
@@ -406,10 +398,10 @@
 				E2E6148014ABAA57007AF944 /* SBJsonTokeniser.m in Sources */,
 				E2E6148114ABAA57007AF944 /* SBJsonUTF8Stream.m in Sources */,
 				E2E6148214ABAA57007AF944 /* SBJsonWriter.m in Sources */,
+				D72CF01314AD15AF003CCEF8 /* Bus.m in Sources */,
+				D72CF01714AD15C3003CCEF8 /* Line.m in Sources */,
+				D72CF01A14AD15C3003CCEF8 /* BusStop.m in Sources */,
 				D7888D3914AD32F700554E8D /* MapViewController.m in Sources */,
-				D79A7FF014B157D8003B19C1 /* Bus.m in Sources */,
-				D79A7FF414B15823003B19C1 /* BusStop.m in Sources */,
-				D79A7FF714B15823003B19C1 /* Line.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
