@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Bus" syncable="YES">
+    <entity name="Bus" representedClassName="Bus" syncable="YES">
         <attribute name="busID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastStopID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -10,13 +10,13 @@
         <attribute name="precision" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
-    <entity name="BusStop" syncable="YES">
+    <entity name="BusStop" representedClassName="BusStop" syncable="YES">
         <attribute name="busStopID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="refPointID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Line" syncable="YES">
+    <entity name="Line" representedClassName="Line" syncable="YES">
         <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="trasporterID" optional="YES" attributeType="String" syncable="YES"/>
