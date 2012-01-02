@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface BusstopAnnotation : MKAnnotationView
+@interface BusstopAnnotation : MKAnnotationView <MKAnnotation>
 {
     CLLocationCoordinate2D _coordinate;
 }
 
 @property CLLocationCoordinate2D coordinate;
 
-- (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate;
+- (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andType:(NSString *)type;
 
 @end
