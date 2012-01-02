@@ -9,7 +9,7 @@
 #import "WebReferencePoint.h"
 #import "MaisMobilisWebService.h"
 #import "AppDelegate.h"
-#import "ReferencePoint.h"
+#import "../ReferencePoint.h"
 #import "SBJson.h"
 
 @implementation WebReferencePoint
@@ -22,7 +22,7 @@
     for (int i=0; i<jsonObjects.count; i++) {
         newRefPoint = [NSEntityDescription insertNewObjectForEntityForName:@"ReferencePoint" inManagedObjectContext:context];
         newRefPoint.referencePointID = [[jsonObjects objectAtIndex:i] objectForKey:@"idPontoReferencia"];
-        newRefPoint.latitude = [[jsonObjects objectAtIndex:i] objectForKey:@"latitue"];
+        newRefPoint.latitude = [[jsonObjects objectAtIndex:i] objectForKey:@"latitude"];
         newRefPoint.longitude = [[jsonObjects objectAtIndex:i] objectForKey:@"longitude"];
               
     }
@@ -35,7 +35,7 @@
     [self persistReferencePoints:jsonObjects];
 }
 
-+ (void) getLinesWithLineID:(NSString *)lineID
++ (void) getReferencePointsWithLineID:(NSString *)lineID
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"pontosreferencia" withQueryString:[NSString stringWithFormat:@"?idLinha=%@", lineID]];
     [self persistReferencePoints:jsonObjects];

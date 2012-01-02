@@ -17,7 +17,7 @@
 #import "WebBus.h"
 #import "MaisMobilisWebService.h"
 #import "AppDelegate.h"
-#import "Bus.h"
+#import "../Bus.h"
 #import "SBJson.h"
 
 @implementation WebBus

@@ -1,18 +1,17 @@
 //
-//  BusStop.m
+//  BusStop_Line.m
 //  MaisMobilis
 //
 //  Created by tom on 1/2/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "BusStop.h"
+#import "BusStop_Line.h"
 
 
-@implementation BusStop
+@implementation BusStop_Line
 
 @dynamic busStopID;
-@dynamic name;
-@dynamic refPointID;
+@dynamic lineID;
 
 @end

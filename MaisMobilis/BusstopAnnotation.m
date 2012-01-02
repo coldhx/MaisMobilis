@@ -11,6 +11,7 @@
 @implementation BusstopAnnotation
 
 @synthesize coordinate=_coordinate;
+@synthesize title;
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate andType:(NSString *)type
 {
@@ -29,10 +30,14 @@
         {
             image = [UIImage imageNamed:@"greensquare.png"];
         }
-        //Everything else, we just have two lines so this is Line 2 (red)
-        else
+        //Line 2 (red)
+        else if([type isEqualToString:@"2"])
         {
             image = [UIImage imageNamed:@"redsquare.png"];
+        }
+        else
+        {
+            image = [UIImage imageNamed:@"redandgreensquare.png"];
         }
         
         if(!image)

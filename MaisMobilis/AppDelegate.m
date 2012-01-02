@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "WebBusstops.h"
+#import "Webservice/WebReferencePoint.h"
 #import "WebLines.h"
 
 @implementation AppDelegate
@@ -22,6 +24,12 @@
     // Override point for customization after application launch.
     //self.window.backgroundColor = [UIColor whiteColor];
     //[self.window makeKeyAndVisible];
+    
+    
+    //Initialize core data content
+    [WebLines getAllLines];
+    [WebReferencePoint getAllReferencePoints];
+    [WebBusstops getAllBusstops];
     
     return YES;
 }

@@ -11,6 +11,7 @@
 #import "BusstopAnnotation.h"
 #import "BusStop.h"
 #import "ReferencePoint.h"
+#import "Line.h"
 
 #define ZOOMLATITUDE 39.74434
 #define ZOOMLONGITUDE -8.80725
@@ -130,23 +131,19 @@
     }
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    NSLog(@"%@", [annotation description]);
+    return (BusstopAnnotation *)annotation;
+}
+
 - (void)loadBusStops
 {
-    CLLocationCoordinate2D coordinate;
-    coordinate.latitude = ZOOMLATITUDE;
-    coordinate.longitude = ZOOMLONGITUDE;
-    
-    BusstopAnnotation *annotation = [[BusstopAnnotation alloc] initWithCoordinate: coordinate andType:@"1"];
-    
-    [mapView addAnnotation:annotation];
-    
-    
-    
-    
-    
+    //Get context
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
     
+    //Fetch buses
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop" inManagedObjectContext:context];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
@@ -159,10 +156,12 @@
         NSLog(@"%@", error.description);
     }
     
+    //For each bus
     for(int i=0; i<results.count; i++)
     {
         BusStop *busStop = [results objectAtIndex:i];
         
+        //Fetch reference points
         entity = [NSEntityDescription entityForName:@"ReferencePoint" inManagedObjectContext:context];
         
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"referencePointID = %@", busStop.refPointID];
@@ -177,13 +176,41 @@
             return;
         }
         
+        //Set coordinate based on reference point
         ReferencePoint *refPoint = [refPointResults objectAtIndex:0];
         
         CLLocationCoordinate2D coordinate;
         coordinate.latitude = [refPoint.latitude doubleValue];
         coordinate.longitude = [refPoint.longitude doubleValue];
         
-        BusstopAnnotation *annotation = [[BusstopAnnotation alloc] initWithCoordinate: coordinate andType:busStop.lineID];
+        //Fetch bus line(s)
+        entity = [NSEntityDescription entityForName:@"BusStop_Line" inManagedObjectContext:context];
+        
+        predicate = [NSPredicate predicateWithFormat:@"busStopID = %@", busStop.busStopID];
+        
+        request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+        [request setPredicate:predicate];
+        
+        NSMutableArray *busLinesResult = [[context executeFetchRequest:request error:&error] mutableCopy];
+        
+        //This should not be hardcoded like this
+        NSString *type = @"3";
+        
+        if(busLinesResult.count == 1)
+        {
+            if([[[busLinesResult objectAtIndex:0] lineID] isEqualToString:@"1"])
+            {
+                type = @"1";
+            }
+            else
+            {
+                type = @"2";
+            }
+        }
+        
+        BusstopAnnotation *annotation = [[BusstopAnnotation alloc] initWithCoordinate: coordinate andType:type];
+        
+        [annotation setTitle:[NSString stringWithFormat:@"%@", busStop.name]];
         
         [mapView addAnnotation:annotation];
     }

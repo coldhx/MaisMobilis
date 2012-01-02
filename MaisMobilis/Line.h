@@ -2,8 +2,8 @@
 //  Line.h
 //  MaisMobilis
 //
-//  Created by Rita Silva on 12/29/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by tom on 1/2/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,6 +14,6 @@
 
 @property (nonatomic, retain) NSString * lineID;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * trasporterID;
+@property (nonatomic, retain) NSString * transporterID;
 
 @end

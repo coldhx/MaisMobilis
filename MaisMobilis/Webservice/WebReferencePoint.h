@@ -11,6 +11,6 @@
 @interface WebReferencePoint : NSObject
 + (void) persistReferencePoints : (NSArray *) jsonObjects;
 + (void) getAllReferencePoints;
-+ (void) getLinesWithLineID:(NSString *)lineID;
++ (void) getReferencePointsWithLineID:(NSString *)lineID;
 
 @end

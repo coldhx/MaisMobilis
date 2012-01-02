@@ -12,6 +12,6 @@
 + (void) persistLines:(NSArray *)jsonObjects;
 + (void) getAllLines;
 + (void)getLinesWithCarrierID: (NSString *)carrierID;
-+ (void)getLinesWithBusstopID: (NSString *)busstopID;
++ (NSArray *)getLinesWithBusstopID: (NSString *)busstopID;
 + (void)getLineWithID: (NSString *)lineID;
 @end

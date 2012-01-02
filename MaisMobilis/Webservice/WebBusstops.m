@@ -9,7 +9,9 @@
 #import "WebBusstops.h"
 #import "MaisMobilisWebService.h"
 #import "AppDelegate.h"
-#import "BusStop.h"
+#import "../BusStop.h"
+#import "../BusStop_Line.h"
+#import "WebLines.h"
 #import "SBJson.h"
 
 @implementation WebBusstops
@@ -18,12 +20,35 @@
     NSManagedObjectContext *context = delegate.managedObjectContext;
     
     BusStop *newBusStop;
-    for (int i=0; i<jsonObjects.count; i++) {
+    BusStop_Line *newBusStop_line;
+    for (int i=0; i<jsonObjects.count; i++)
+    {
         newBusStop = [NSEntityDescription insertNewObjectForEntityForName:@"BusStop" inManagedObjectContext:context];
-        newBusStop.lineID = [[jsonObjects objectAtIndex:i] objectForKey:@"idLinha"];
         newBusStop.busStopID = [[jsonObjects objectAtIndex:i] objectForKey:@"idParagem"];
         newBusStop.name = [[jsonObjects objectAtIndex:i] objectForKey:@"nome"];
-        newBusStop.refPointID = [[jsonObjects objectAtIndex:i] objectForKey:@"idPontoReferencia"];            
+        newBusStop.refPointID = [[jsonObjects objectAtIndex:i] objectForKey:@"idPontoReferencia"];   
+        
+        newBusStop_line = [NSEntityDescription insertNewObjectForEntityForName:@"BusStop_Line" inManagedObjectContext:context];
+        
+        //Fetch lines for bus stop
+        NSArray *busStopLines = [WebLines getLinesWithBusstopID:[NSString stringWithFormat:@"%@", newBusStop.busStopID]];
+        
+        if(i == 12)
+        {
+            NSLog(@"%i", i);
+        }
+        
+        if(!busStopLines)
+        {
+            NSLog(@"Oups...");
+        }
+        
+        for(int j=0; j<busStopLines.count; j++)
+        {
+            newBusStop_line = [NSEntityDescription insertNewObjectForEntityForName:@"BusStop_Line" inManagedObjectContext:context];
+            newBusStop_line.busStopID = newBusStop.busStopID;
+            newBusStop_line.lineID = [[busStopLines objectAtIndex:j] objectForKey:@"idLinha"];
+        }
     }
 }
 

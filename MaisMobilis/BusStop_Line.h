@@ -1,5 +1,5 @@
 //
-//  BusStop.h
+//  BusStop_Line.h
 //  MaisMobilis
 //
 //  Created by tom on 1/2/12.
@@ -10,10 +10,9 @@
 #import <CoreData/CoreData.h>
 
 
-@interface BusStop : NSManagedObject
+@interface BusStop_Line : NSManagedObject
 
 @property (nonatomic, retain) NSString * busStopID;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * refPointID;
+@property (nonatomic, retain) NSString * lineID;
 
 @end

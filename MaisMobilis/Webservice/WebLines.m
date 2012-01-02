@@ -9,7 +9,7 @@
 #import "WebLines.h"
 #import "MaisMobilisWebService.h"
 #import "AppDelegate.h"
-#import "Line.h"
+#import "../Line.h"
 #import "SBJson.h"
 
 @implementation WebLines
@@ -37,10 +37,12 @@
    [self persistLines:jsonObjects];
 }
 
-+ (void) getLinesWithBusstopID:(NSString *)busstopID
++ (NSArray *) getLinesWithBusstopID:(NSString *)busstopID
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"linhas" withQueryString:[NSString stringWithFormat:@"?idParagem=%@", busstopID]];
     [self persistLines:jsonObjects];
+    
+    return jsonObjects;
 }
 
 + (void)getLineWithID:(NSString *)lineID

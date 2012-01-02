@@ -10,20 +10,23 @@
         <attribute name="precision" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="timeStamp" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
-    <entity name="BusStop" syncable="YES">
+    <entity name="BusStop" representedClassName="BusStop" syncable="YES">
         <attribute name="busStopID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="refPointID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Line" syncable="YES">
+    <entity name="BusStop_Line" representedClassName="BusStop_Line" syncable="YES">
+        <attribute name="busStopID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Line" representedClassName="Line" syncable="YES">
         <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="trasporterID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="transporterID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="ReferencePoint" representedClassName="ReferencePoint" syncable="YES">
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="referencePointID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
@@ -31,5 +34,6 @@
         <element name="BusStop" positionX="-297" positionY="171" width="117" height="105"/>
         <element name="Line" positionX="-137" positionY="171" width="128" height="90"/>
         <element name="ReferencePoint" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="BusStop_Line" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>
