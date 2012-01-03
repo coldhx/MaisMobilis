@@ -47,8 +47,8 @@
     Bus *newBus;
     for (int i=0; i<jsonObjects.count; i++) {
         newBus = [NSEntityDescription insertNewObjectForEntityForName:@"Bus" inManagedObjectContext:context];
-        newBus.busID = [[jsonObjects objectAtIndex:i] objectForKey:@"idUltimaParagem"];
-        newBus.lastStopID = [[jsonObjects objectAtIndex:i] objectForKey:@"idParagem"];
+        newBus.busID = [[jsonObjects objectAtIndex:i] objectForKey:@"idAutocarro"];
+        newBus.lastStopID = [[jsonObjects objectAtIndex:i] objectForKey:@"idUltimaParagem"];
         newBus.latitude = [[jsonObjects objectAtIndex:i] objectForKey:@"latitude"];
         newBus.lineID = [[jsonObjects objectAtIndex:i] objectForKey:@"idLinha"];
         newBus.longitude = [[jsonObjects objectAtIndex:i] objectForKey:@"longitude"];
