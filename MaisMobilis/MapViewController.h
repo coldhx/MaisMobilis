@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "BusAnnotation.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
@@ -15,5 +16,9 @@
 
 - (void) resetMapZoomWithLatitude:(CLLocationDegrees)latitude andLongitude:(CLLocationDegrees)longitude;
 - (void) loadBusStops;
+- (void) refreshBuses;
+- (void) addBusAnnotation:(BusAnnotation *) annotation;
+- (void) setAnnotationCoordinate:(NSDictionary *) annotationAndCoordinate;
+- (void) deleteBusAnnotation:(BusAnnotation *) annotation;
 
 @end

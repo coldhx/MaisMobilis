@@ -25,6 +25,25 @@
 +(void) persistBus:(NSArray *)jsonObjects {    
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
+    
+    //Delete all existing buses
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSError *error = nil;
+    NSMutableArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
+    if(results == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    for(int i=0; i<results.count; i++)
+    {
+        [context deleteObject:[results objectAtIndex:i]];
+    }
+    
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    results = [[context executeFetchRequest:request error: &error] mutableCopy];
+    
+    //Add buses
     Bus *newBus;
     for (int i=0; i<jsonObjects.count; i++) {
         newBus = [NSEntityDescription insertNewObjectForEntityForName:@"Bus" inManagedObjectContext:context];

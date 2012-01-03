@@ -10,6 +10,7 @@
 #import "WebBusstops.h"
 #import "Webservice/WebReferencePoint.h"
 #import "WebLines.h"
+#import "WebBus.h"
 
 @implementation AppDelegate
 
@@ -31,7 +32,25 @@
     [WebReferencePoint getAllReferencePoints];
     [WebBusstops getAllBusstops];
     
+    [self performSelectorInBackground:@selector(refreshBuses) withObject:nil];
+    
     return YES;
+}
+
+- (void) refreshBuses
+{
+    while(true)
+    {
+        @try
+        {
+            [WebBus geAllBuses];
+        }
+        @catch (id exception)
+        {
+        }
+        
+        [NSThread sleepForTimeInterval:5];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

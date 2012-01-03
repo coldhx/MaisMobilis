@@ -1,5 +1,5 @@
 //
-//  BusstopAnnotation.h
+//  BusAnnotation.h
 //  MaisMobilis
 //
 //  Created by tom on 1/2/12.
@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface BusstopAnnotation : MKAnnotationView <MKAnnotation>
+@interface BusAnnotation: MKAnnotationView <MKAnnotation>
 {
     CLLocationCoordinate2D _coordinate;
 }
 
-@property(nonatomic, readwrite) CLLocationCoordinate2D coordinate;
+@property(nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *title;
 
 - (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andType:(NSString *)type;

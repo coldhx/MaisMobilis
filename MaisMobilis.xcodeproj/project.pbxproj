@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D72CF01314AD15AF003CCEF8 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = D72CF01214AD15AF003CCEF8 /* Bus.m */; };
 		D746590A14AA9B1D00F99E9C /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658F514AA9B1D00F99E9C /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		D746590B14AA9B1D00F99E9C /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658F814AA9B1D00F99E9C /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		D746590C14AA9B1D00F99E9C /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658FA14AA9B1D00F99E9C /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -41,6 +40,10 @@
 		E2B6173E14B1EA01008E175C /* redandgreensquare.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B6173D14B1EA01008E175C /* redandgreensquare.png */; };
 		E2B6174414B1EBA1008E175C /* BusStop_Line.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B6174314B1EBA1008E175C /* BusStop_Line.m */; };
 		E2B6174714B1EF34008E175C /* BusStop.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B6174614B1EF34008E175C /* BusStop.m */; };
+		E2B6174A14B2112C008E175C /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B6174914B2112C008E175C /* Bus.m */; };
+		E2B6174D14B21598008E175C /* greenbus.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B6174B14B21598008E175C /* greenbus.png */; };
+		E2B6174E14B21598008E175C /* redbus.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B6174C14B21598008E175C /* redbus.png */; };
+		E2B6175114B2221C008E175C /* BusAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B6175014B2221C008E175C /* BusAnnotation.m */; };
 		E2C26AFB14B1D79C004A754A /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C26AFA14B1D79C004A754A /* Line.m */; };
 		E2E6142B14AB998A007AF944 /* WebBus.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142A14AB998A007AF944 /* WebBus.m */; };
 		E2E6142E14AB99AE007AF944 /* WebBusstops.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142D14AB99AE007AF944 /* WebBusstops.m */; };
@@ -62,8 +65,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D72CF01114AD15AF003CCEF8 /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bus.h; sourceTree = "<group>"; };
-		D72CF01214AD15AF003CCEF8 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
 		D74658F414AA9B1D00F99E9C /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		D74658F514AA9B1D00F99E9C /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		D74658F614AA9B1D00F99E9C /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -120,6 +121,12 @@
 		E2B6174314B1EBA1008E175C /* BusStop_Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusStop_Line.m; sourceTree = "<group>"; };
 		E2B6174514B1EF34008E175C /* BusStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusStop.h; sourceTree = "<group>"; };
 		E2B6174614B1EF34008E175C /* BusStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusStop.m; sourceTree = "<group>"; };
+		E2B6174814B2112C008E175C /* Bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bus.h; sourceTree = "<group>"; };
+		E2B6174914B2112C008E175C /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
+		E2B6174B14B21598008E175C /* greenbus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenbus.png; path = MaisMobilis/Images/greenbus.png; sourceTree = "<group>"; };
+		E2B6174C14B21598008E175C /* redbus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redbus.png; path = MaisMobilis/Images/redbus.png; sourceTree = "<group>"; };
+		E2B6174F14B2221C008E175C /* BusAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusAnnotation.h; sourceTree = "<group>"; };
+		E2B6175014B2221C008E175C /* BusAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusAnnotation.m; sourceTree = "<group>"; };
 		E2C26AF914B1D79C004A754A /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
 		E2C26AFA14B1D79C004A754A /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		E2E6142914AB998A007AF944 /* WebBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBus.h; path = MaisMobilis/Webservice/WebBus.h; sourceTree = "<group>"; };
@@ -251,6 +258,8 @@
 				E215E46414AA979500C3A4F2 /* AppDelegate.h */,
 				E215E46514AA979500C3A4F2 /* AppDelegate.m */,
 				E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */,
+				E2B6174814B2112C008E175C /* Bus.h */,
+				E2B6174914B2112C008E175C /* Bus.m */,
 				E2B6174514B1EF34008E175C /* BusStop.h */,
 				E2B6174614B1EF34008E175C /* BusStop.m */,
 				E2B6174214B1EBA1008E175C /* BusStop_Line.h */,
@@ -259,8 +268,6 @@
 				E2B6173A14B1E1FA008E175C /* ReferencePoint.m */,
 				E2C26AF914B1D79C004A754A /* Line.h */,
 				E2C26AFA14B1D79C004A754A /* Line.m */,
-				D72CF01114AD15AF003CCEF8 /* Bus.h */,
-				D72CF01214AD15AF003CCEF8 /* Bus.m */,
 				E215E45C14AA979400C3A4F2 /* Supporting Files */,
 				D7888D3614AD32F600554E8D /* MapViewController.h */,
 				D7888D3714AD32F600554E8D /* MapViewController.m */,
@@ -268,6 +275,8 @@
 				D7888D3B14AD332B00554E8D /* Storyboard.storyboard */,
 				E270F10914B12CDC00AA4531 /* BusstopAnnotation.h */,
 				E270F10A14B12CDD00AA4531 /* BusstopAnnotation.m */,
+				E2B6174F14B2221C008E175C /* BusAnnotation.h */,
+				E2B6175014B2221C008E175C /* BusAnnotation.m */,
 			);
 			path = MaisMobilis;
 			sourceTree = "<group>";
@@ -286,6 +295,8 @@
 		E270F11F14B1407200AA4531 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E2B6174B14B21598008E175C /* greenbus.png */,
+				E2B6174C14B21598008E175C /* redbus.png */,
 				E2B6173D14B1EA01008E175C /* redandgreensquare.png */,
 				E270F12014B1410800AA4531 /* greensquare.png */,
 				E270F12114B1410800AA4531 /* redsquare.png */,
@@ -399,6 +410,8 @@
 				E270F12214B1410800AA4531 /* greensquare.png in Resources */,
 				E270F12314B1410800AA4531 /* redsquare.png in Resources */,
 				E2B6173E14B1EA01008E175C /* redandgreensquare.png in Resources */,
+				E2B6174D14B21598008E175C /* greenbus.png in Resources */,
+				E2B6174E14B21598008E175C /* redbus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +451,6 @@
 				E2E6148014ABAA57007AF944 /* SBJsonTokeniser.m in Sources */,
 				E2E6148114ABAA57007AF944 /* SBJsonUTF8Stream.m in Sources */,
 				E2E6148214ABAA57007AF944 /* SBJsonWriter.m in Sources */,
-				D72CF01314AD15AF003CCEF8 /* Bus.m in Sources */,
 				D7888D3914AD32F700554E8D /* MapViewController.m in Sources */,
 				E270F10B14B12CDD00AA4531 /* BusstopAnnotation.m in Sources */,
 				E270F10F14B1398400AA4531 /* WebReferencePoint.m in Sources */,
@@ -446,6 +458,8 @@
 				E2B6173B14B1E1FA008E175C /* ReferencePoint.m in Sources */,
 				E2B6174414B1EBA1008E175C /* BusStop_Line.m in Sources */,
 				E2B6174714B1EF34008E175C /* BusStop.m in Sources */,
+				E2B6174A14B2112C008E175C /* Bus.m in Sources */,
+				E2B6175114B2221C008E175C /* BusAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

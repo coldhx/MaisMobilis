@@ -33,11 +33,6 @@
         //Fetch lines for bus stop
         NSArray *busStopLines = [WebLines getLinesWithBusstopID:[NSString stringWithFormat:@"%@", newBusStop.busStopID]];
         
-        if(i == 12)
-        {
-            NSLog(@"%i", i);
-        }
-        
         if(!busStopLines)
         {
             NSLog(@"Oups...");

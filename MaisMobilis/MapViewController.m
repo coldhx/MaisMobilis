@@ -9,9 +9,11 @@
 #import "AppDelegate.h"
 #import "MapViewController.h"
 #import "BusstopAnnotation.h"
+#import "BusAnnotation.h"
 #import "BusStop.h"
 #import "ReferencePoint.h"
 #import "Line.h"
+#import "Bus.h"
 
 #define ZOOMLATITUDE 39.74434
 #define ZOOMLONGITUDE -8.80725
@@ -65,7 +67,20 @@
     //Load bus stops onto the map
     [self loadBusStops];
     
+    //Begin refreshing buses
+    [self performSelectorInBackground:@selector(refreshBuses) withObject:nil];
+    
+    //Zoom to interesting area on map
     [self resetMapZoomWithLatitude:ZOOMLATITUDE andLongitude:ZOOMLONGITUDE];
+}
+
+- (void)viewDidUnload
+{
+    [self setMapView:nil];
+    [self setMapView:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
 }
 
 - (void) resetMapZoomWithLatitude:(CLLocationDegrees)latitude andLongitude:(CLLocationDegrees)longitude
@@ -79,15 +94,6 @@
     MKCoordinateRegion adjustedRegion = [mapView regionThatFits:viewRegion];
     
     [mapView setRegion:adjustedRegion animated:YES];
-}
-
-- (void)viewDidUnload
-{
-    [self setMapView:nil];
-    [self setMapView:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -133,7 +139,6 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-    NSLog(@"%@", [annotation description]);
     return (BusstopAnnotation *)annotation;
 }
 
@@ -143,7 +148,7 @@
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
     
-    //Fetch buses
+    //Fetch bus stops
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop" inManagedObjectContext:context];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
@@ -156,7 +161,7 @@
         NSLog(@"%@", error.description);
     }
     
-    //For each bus
+    //For each bus stop
     for(int i=0; i<results.count; i++)
     {
         BusStop *busStop = [results objectAtIndex:i];
@@ -216,4 +221,109 @@
     }
 }
 
+- (void)refreshBuses
+{
+    //Array of annotations
+    NSMutableDictionary *annotations = [[NSMutableDictionary alloc] init];
+    
+    //Get context
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    
+    //Fetch buses
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
+    
+    NSFetchRequest *request;
+    NSError *error = nil;
+    NSMutableArray *results;
+    
+    while(true)
+    {
+        NSLog(@"REFRESHIIIING!");
+        @try
+        {
+            request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+            results = [[context executeFetchRequest:request error: &error] mutableCopy];
+            
+            if(results == nil)
+            {
+                NSLog(@"%@", error.description);
+            }
+            
+            for(int i=0; i<results.count; i++)
+            {
+                BusAnnotation *annotation;
+                
+                Bus *bus = [results objectAtIndex:i];
+                
+                CLLocationCoordinate2D coordinate;
+                coordinate.latitude = [bus.latitude doubleValue];
+                coordinate.longitude = [bus.longitude doubleValue];
+                
+                if([annotations objectForKey:bus.busID] == nil)
+                {
+                    annotation = [[BusAnnotation alloc] initWithCoordinate:coordinate andType:bus.lineID];
+                
+                    [annotations setObject:annotation forKey:bus.busID];
+                    [self performSelectorOnMainThread:@selector(addBusAnnotation:) withObject:annotation waitUntilDone:YES];
+                }
+                else
+                {
+                    annotation = [annotations objectForKey:bus.busID];
+                    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+                    [dic setValue:annotation forKey:@"annotation"];
+                    [dic setValue:[[NSNumber alloc] initWithDouble:coordinate.latitude] forKey:@"latitude"];
+                    [dic setValue:[[NSNumber alloc] initWithDouble:coordinate.longitude] forKey:@"longitude"];
+                    
+                    [self performSelectorOnMainThread:@selector(setAnnotationCoordinate:) withObject:dic waitUntilDone:YES];
+                }
+                
+                //Remove buses that are no longer active (NOT WORKING!)
+                for (NSString* key in annotations)
+                {
+                    Boolean del = YES;
+                    
+                    for(int j=0; j<results.count; j++)
+                    {
+                        if([key isEqualToString:[[results objectAtIndex:j] busID]])
+                        {
+                            del = NO;
+                        }
+                    }
+                    
+                    if(del)
+                    {
+                        [self performSelectorOnMainThread:@selector(deleteBusAnnotation:) withObject:[annotations objectForKey:key] waitUntilDone:YES];
+                    }
+                }
+            }
+        }
+        @catch (id exception)
+        {
+        }
+        
+        [NSThread sleepForTimeInterval:5];
+    }
+}
+
+- (void) addBusAnnotation:(BusAnnotation*) annotation
+{
+    [mapView addAnnotation:annotation];
+}
+
+- (void) deleteBusAnnotation:(BusAnnotation *) annotation
+{
+    [mapView removeAnnotation:annotation];
+}
+
+- (void) setAnnotationCoordinate:(NSDictionary *) annotationAndCoordinate
+{
+    BusAnnotation *annotation = [annotationAndCoordinate objectForKey:@"annotation"];
+    
+    CLLocationCoordinate2D coordinate;
+    coordinate.latitude = [[annotationAndCoordinate objectForKey:@"latitude"] doubleValue];
+    coordinate.longitude = [[annotationAndCoordinate objectForKey:@"longitude"] doubleValue];
+    
+    [annotation setCoordinate:coordinate];
+}
 @end

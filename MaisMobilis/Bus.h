@@ -2,8 +2,8 @@
 //  Bus.h
 //  MaisMobilis
 //
-//  Created by Rita Silva on 12/29/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by tom on 1/2/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -14,11 +14,11 @@
 
 @property (nonatomic, retain) NSString * busID;
 @property (nonatomic, retain) NSString * lastStopID;
-@property (nonatomic, retain) NSNumber * latitude;
+@property (nonatomic, retain) NSString * latitude;
 @property (nonatomic, retain) NSString * lineID;
-@property (nonatomic, retain) NSNumber * longitude;
-@property (nonatomic, retain) NSNumber * meanVelocity;
-@property (nonatomic, retain) NSNumber * precision;
-@property (nonatomic, retain) NSNumber * timeStamp;
+@property (nonatomic, retain) NSString * longitude;
+@property (nonatomic, retain) NSString * meanVelocity;
+@property (nonatomic, retain) NSString * precision;
+@property (nonatomic, retain) NSString * timeStamp;
 
 @end
