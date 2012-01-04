@@ -7,7 +7,7 @@
 //
 
 #import "BusesTableViewController.h"
-#import "BusDetailTViewController.h"
+#import "BusesDetailViewController.h"
 #import "AppDelegate.h"
 #import "Bus.h"
 #import "Line.h"
@@ -165,33 +165,14 @@
 
 #pragma mark - Table view delegate
 
-
-- (NSString*) loadline : (Bus*) autocarro
-{
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Line" inManagedObjectContext:context];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lineID = %@",autocarro.lineID];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-    [request setPredicate:predicate];
-    
-    NSError *error = nil;
-    NSArray *results = [context executeFetchRequest:request error: &error] ;
-    Line *linha = [results objectAtIndex:0];
-    
-    return linha.name;
-}
-
-
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showSelectedBus"]) 
+    if ([[segue identifier] isEqualToString:@"showBusDetails"]) 
     {
-        BusDetailTViewController *busDetailVC = [segue destinationViewController];
+        BusesDetailViewController *busDetailVC = [segue destinationViewController];
         NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
         Bus *b = [_buses objectAtIndex:selectedIndex];
-        [busDetailVC setAutocarro:b];
-        [busDetailVC setLineName:[self loadline:b]];
+        [busDetailVC setBus:b];
     }
 }
 

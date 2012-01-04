@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D705BE4914B3E87100BE8DE4 /* WebEta.m in Sources */ = {isa = PBXBuildFile; fileRef = D705BE4814B3E87100BE8DE4 /* WebEta.m */; };
+		D707693414B3BBD300B3936F /* BusesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707693314B3BBD300B3936F /* BusesDetailViewController.m */; };
 		D746590A14AA9B1D00F99E9C /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658F514AA9B1D00F99E9C /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		D746590B14AA9B1D00F99E9C /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658F814AA9B1D00F99E9C /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		D746590C14AA9B1D00F99E9C /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658FA14AA9B1D00F99E9C /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -23,7 +25,6 @@
 		D7888D3914AD32F700554E8D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7888D3714AD32F600554E8D /* MapViewController.m */; };
 		D7888D3C14AD332B00554E8D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7888D3B14AD332B00554E8D /* Storyboard.storyboard */; };
 		D7C7BFB814B34FB2007265CE /* BusesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C7BFB614B34FB2007265CE /* BusesTableViewController.m */; };
-		D7C7BFBC14B35C71007265CE /* BusDetailTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C7BFBB14B35C71007265CE /* BusDetailTViewController.m */; };
 		E215E45414AA979400C3A4F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45314AA979400C3A4F2 /* UIKit.framework */; };
 		E215E45614AA979400C3A4F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45514AA979400C3A4F2 /* Foundation.framework */; };
 		E215E45814AA979400C3A4F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45714AA979400C3A4F2 /* CoreGraphics.framework */; };
@@ -66,6 +67,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D705BE4714B3E87100BE8DE4 /* WebEta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebEta.h; path = MaisMobilis/Webservice/WebEta.h; sourceTree = "<group>"; };
+		D705BE4814B3E87100BE8DE4 /* WebEta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebEta.m; path = MaisMobilis/Webservice/WebEta.m; sourceTree = "<group>"; };
+		D707693214B3BBD300B3936F /* BusesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusesDetailViewController.h; sourceTree = "<group>"; };
+		D707693314B3BBD300B3936F /* BusesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusesDetailViewController.m; sourceTree = "<group>"; };
 		D74658F414AA9B1D00F99E9C /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		D74658F514AA9B1D00F99E9C /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		D74658F614AA9B1D00F99E9C /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -97,8 +102,6 @@
 		D7888D3B14AD332B00554E8D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		D7C7BFB514B34FB2007265CE /* BusesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusesTableViewController.h; sourceTree = "<group>"; };
 		D7C7BFB614B34FB2007265CE /* BusesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusesTableViewController.m; sourceTree = "<group>"; };
-		D7C7BFBA14B35C71007265CE /* BusDetailTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusDetailTViewController.h; sourceTree = "<group>"; };
-		D7C7BFBB14B35C71007265CE /* BusDetailTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusDetailTViewController.m; sourceTree = "<group>"; };
 		E215E44F14AA979400C3A4F2 /* MaisMobilis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaisMobilis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E215E45314AA979400C3A4F2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E215E45514AA979400C3A4F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -282,8 +285,8 @@
 				E270F10A14B12CDD00AA4531 /* BusstopAnnotation.m */,
 				E2B6174F14B2221C008E175C /* BusAnnotation.h */,
 				E2B6175014B2221C008E175C /* BusAnnotation.m */,
-				D7C7BFBA14B35C71007265CE /* BusDetailTViewController.h */,
-				D7C7BFBB14B35C71007265CE /* BusDetailTViewController.m */,
+				D707693214B3BBD300B3936F /* BusesDetailViewController.h */,
+				D707693314B3BBD300B3936F /* BusesDetailViewController.m */,
 			);
 			path = MaisMobilis;
 			sourceTree = "<group>";
@@ -324,6 +327,8 @@
 				E2E6143314ABA6BD007AF944 /* MaisMobilisWebService.m */,
 				E270F10D14B1398400AA4531 /* WebReferencePoint.h */,
 				E270F10E14B1398400AA4531 /* WebReferencePoint.m */,
+				D705BE4714B3E87100BE8DE4 /* WebEta.h */,
+				D705BE4814B3E87100BE8DE4 /* WebEta.m */,
 			);
 			name = Webservice;
 			sourceTree = "<group>";
@@ -467,7 +472,8 @@
 				E2B6174A14B2112C008E175C /* Bus.m in Sources */,
 				E2B6175114B2221C008E175C /* BusAnnotation.m in Sources */,
 				D7C7BFB814B34FB2007265CE /* BusesTableViewController.m in Sources */,
-				D7C7BFBC14B35C71007265CE /* BusDetailTViewController.m in Sources */,
+				D707693414B3BBD300B3936F /* BusesDetailViewController.m in Sources */,
+				D705BE4914B3E87100BE8DE4 /* WebEta.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
