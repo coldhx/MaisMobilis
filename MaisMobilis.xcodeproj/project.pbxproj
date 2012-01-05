@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D705BE4914B3E87100BE8DE4 /* WebEta.m in Sources */ = {isa = PBXBuildFile; fileRef = D705BE4814B3E87100BE8DE4 /* WebEta.m */; };
+		D705BE5014B3F1FD00BE8DE4 /* StopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D705BE4F14B3F1FD00BE8DE4 /* StopTableViewController.m */; };
 		D707693414B3BBD300B3936F /* BusesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D707693314B3BBD300B3936F /* BusesDetailViewController.m */; };
+		D73EC08C14B628DC0013DAF3 /* BStopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D73EC08B14B628DC0013DAF3 /* BStopDetailViewController.m */; };
 		D746590A14AA9B1D00F99E9C /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658F514AA9B1D00F99E9C /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		D746590B14AA9B1D00F99E9C /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658F814AA9B1D00F99E9C /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		D746590C14AA9B1D00F99E9C /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D74658FA14AA9B1D00F99E9C /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -69,8 +71,12 @@
 /* Begin PBXFileReference section */
 		D705BE4714B3E87100BE8DE4 /* WebEta.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebEta.h; path = MaisMobilis/Webservice/WebEta.h; sourceTree = "<group>"; };
 		D705BE4814B3E87100BE8DE4 /* WebEta.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebEta.m; path = MaisMobilis/Webservice/WebEta.m; sourceTree = "<group>"; };
+		D705BE4E14B3F1FD00BE8DE4 /* StopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTableViewController.h; sourceTree = "<group>"; };
+		D705BE4F14B3F1FD00BE8DE4 /* StopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTableViewController.m; sourceTree = "<group>"; };
 		D707693214B3BBD300B3936F /* BusesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusesDetailViewController.h; sourceTree = "<group>"; };
 		D707693314B3BBD300B3936F /* BusesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusesDetailViewController.m; sourceTree = "<group>"; };
+		D73EC08A14B628DC0013DAF3 /* BStopDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BStopDetailViewController.h; sourceTree = "<group>"; };
+		D73EC08B14B628DC0013DAF3 /* BStopDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BStopDetailViewController.m; sourceTree = "<group>"; };
 		D74658F414AA9B1D00F99E9C /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		D74658F514AA9B1D00F99E9C /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		D74658F614AA9B1D00F99E9C /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -287,6 +293,10 @@
 				E2B6175014B2221C008E175C /* BusAnnotation.m */,
 				D707693214B3BBD300B3936F /* BusesDetailViewController.h */,
 				D707693314B3BBD300B3936F /* BusesDetailViewController.m */,
+				D705BE4E14B3F1FD00BE8DE4 /* StopTableViewController.h */,
+				D705BE4F14B3F1FD00BE8DE4 /* StopTableViewController.m */,
+				D73EC08A14B628DC0013DAF3 /* BStopDetailViewController.h */,
+				D73EC08B14B628DC0013DAF3 /* BStopDetailViewController.m */,
 			);
 			path = MaisMobilis;
 			sourceTree = "<group>";
@@ -474,6 +484,8 @@
 				D7C7BFB814B34FB2007265CE /* BusesTableViewController.m in Sources */,
 				D707693414B3BBD300B3936F /* BusesDetailViewController.m in Sources */,
 				D705BE4914B3E87100BE8DE4 /* WebEta.m in Sources */,
+				D705BE5014B3F1FD00BE8DE4 /* StopTableViewController.m in Sources */,
+				D73EC08C14B628DC0013DAF3 /* BStopDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
