@@ -8,7 +8,9 @@
 
 #import "StopTableViewController.h"
 #import "BusStop.h"
-#import "AppDelegate.h"
+#import "BStopDetailViewController.h"
+#import "DataController.h"
+
 
 
 @implementation StopTableViewController
@@ -37,7 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadBusStops];
+    _busStops = [DataController getAllBusStops];
 }
 
 - (void)viewDidUnload
@@ -98,23 +100,36 @@
     UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
     [cellLabel setText:stop.name];
     
+    NSArray* lines = [DataController getLineIdsForBusStopID:stop.busStopID];
+    NSString* imageName;
+    if([lines count] > 1) 
+    {
+        imageName = @"redandgreensquare.png"; 
+    }
+    else if([[[lines objectAtIndex:0] lineID]isEqualToString:@"1"])
+    {
+        imageName = @"greensquare.png";
+    }
+    else if([[[lines objectAtIndex:0] lineID] isEqualToString:@"2"])
+    {
+        imageName = @"redsquare.png";
+    }
+    
+    UIImageView *cellImage = (UIImageView *)[cell viewWithTag:2];
+    [cellImage setImage:[UIImage imageNamed:imageName]];
     
     return cell;
 }
 
-- (void) loadBusStops
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop"                                                                                                                               inManagedObjectContext:context];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-    
-    NSError *error = nil;
-    _busStops = [context executeFetchRequest:request error: &error] ;
-    
-    if(_busStops == nil)
+    if ([[segue identifier] isEqualToString:@"showBusStopDetails"]) 
     {
-        NSLog(@"%@", error.description);
+        BStopDetailViewController *busStopDetailVC = [segue destinationViewController];
+        NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
+        BusStop *bs = [_busStops objectAtIndex:selectedIndex];
+        [busStopDetailVC setBusStop:bs];
     }
 }
 

@@ -8,9 +8,8 @@
 
 #import "BusesTableViewController.h"
 #import "BusesDetailViewController.h"
-#import "AppDelegate.h"
+#import "DataController.h"
 #import "Bus.h"
-#import "Line.h"
 
 
 @implementation BusesTableViewController
@@ -39,11 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    _buses = [DataController getAllBuses];
 }
 
 - (void)viewDidUnload
@@ -56,12 +51,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self loadBuses];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    _buses = [DataController getAllBuses];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -107,22 +103,6 @@
     [cellLabel setText:autocarro.busID];
     
     return cell;
-}
-
-- (void) loadBuses
-{
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-    
-    NSError *error = nil;
-    _buses = [context executeFetchRequest:request error: &error] ;
-    
-    if(_buses == nil)
-    {
-        NSLog(@"%@", error.description);
-    }
 }
 
 /*

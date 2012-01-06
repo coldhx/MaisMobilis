@@ -7,10 +7,7 @@
 //
 
 #import "BusesDetailViewController.h"
-#import "AppDelegate.h"
-#import "Line.h"
-#import "BusStop.h"
-#import "WebEta.h"
+#import "DataController.h"
 
 @implementation BusesDetailViewController
 
@@ -45,9 +42,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [lineLabel setText:[self loadline]];
-    //[nextStopLabel setText:[self loadNextStop]];
-    //[estimatedTimeLabel setText:[self loadEta]];
+    [lineLabel setText:[DataController getLineNameByLineID:[_bus lineID]]];
+    //[nextStopLabel setText:[DataController getNextStopByBusID:[_bus busID]]];
+    //[estimatedTimeLabel setText:[DataController getEtaByBusID:[_bus busID]]];
     
 }
 
@@ -62,47 +59,6 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma mark - data loading
-
-- (NSString*) loadline
-{
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Line" inManagedObjectContext:context];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lineID = %@",_bus.lineID];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-    [request setPredicate:predicate];
-    
-    NSError *error = nil;
-    NSArray *results = [context executeFetchRequest:request error: &error] ;
-    Line *linha = [results objectAtIndex:0];
-    
-    return linha.name;
-}
-
-- (NSString*) loadNextStop
-{
-    NSString *nextStopID = [WebEta getBusStopForBusstopID: _bus.busID];
-    
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop" inManagedObjectContext:context];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"busStopID = %@",nextStopID];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-    [request setPredicate:predicate];
-    
-    NSError *error = nil;
-    NSArray *results = [context executeFetchRequest:request error: &error] ;
-    BusStop *paragem = [results objectAtIndex:0];
-    
-    return paragem.name;
-}
-
-- (NSString *) loadEta
-{
-    return [WebEta getEtaForBusstopID: _bus.busID];
 }
 
 

@@ -15,6 +15,4 @@
 
 @property (nonatomic, retain) NSArray *buses;
 
-- (void) loadBuses;
-
 @end

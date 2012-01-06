@@ -17,12 +17,6 @@
     Bus *_bus;
 }
 
-- (NSString*) loadline;
-- (NSString*) loadNextStop;
-- (NSString *) loadEta;
-
-
-
 @property (nonatomic, retain) Bus *bus;
 
 @end

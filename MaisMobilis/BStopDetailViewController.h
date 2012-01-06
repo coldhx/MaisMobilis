@@ -11,9 +11,14 @@
 
 @interface BStopDetailViewController : UIViewController
 {
+    IBOutlet UILabel *lineLabel;
+    IBOutlet UILabel *nextBuses;
+    IBOutlet UITextView *nameTextView;
     BusStop * _busStop;
 }
 
 @property (nonatomic, retain) BusStop* busStop;
+
+- (NSString*) getLineIdsString;
 
 @end

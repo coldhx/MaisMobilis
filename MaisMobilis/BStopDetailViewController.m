@@ -7,8 +7,9 @@
 //
 
 #import "BStopDetailViewController.h"
+#import "DataController.h"
 
-@implementation BStopDetailViewController
+@implementation BStopDetailViewController 
 
 @synthesize busStop = _busStop;
 
@@ -38,13 +39,12 @@
 }
 */
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [nameTextView setText:[_busStop name]];
+    [lineLabel setText:[self getLineIdsString]];
 }
-*/
 
 - (void)viewDidUnload
 {
@@ -57,6 +57,25 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (NSString *) getLineIdsString
+{
+    NSString *ret = @"N/A";
+    NSArray *results = [DataController getLineIdsForBusStopID:_busStop.busStopID];
+    BusStop_Line* bl = [results objectAtIndex:0];
+    ret = bl.lineID;
+    
+    if([results count]>1)
+    {
+        for(int i=1; i<results.count; i++)
+        {
+            bl = [results objectAtIndex:i];
+            ret = [ret stringByAppendingFormat:@", %@", bl.lineID];
+        }
+        
+    }
+    return ret;
 }
 
 @end
