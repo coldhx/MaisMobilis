@@ -17,7 +17,7 @@
 {
     self = [super initWithAnnotation:self reuseIdentifier:@"BusStopAnnotation"];
     self.canShowCallout = YES;
-    
+
     UIImage *image;
     
     if(self)

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "Bus.h"
 
 @interface BusAnnotation: MKAnnotationView <MKAnnotation>
 {
@@ -16,7 +17,7 @@
 
 @property(nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *subtitle;
 
 - (id) initWithCoordinate:(CLLocationCoordinate2D)coordinate andType:(NSString *)type;
-
 @end

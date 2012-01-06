@@ -12,12 +12,12 @@
 
 @synthesize coordinate=_coordinate;
 @synthesize title;
+@synthesize subtitle;
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate andType:(NSString *)type
 {
     self = [super initWithAnnotation:self reuseIdentifier:@"BusStopAnnotation"];
     self.canShowCallout = YES;
-    
     UIImage *image;
     
     if(self)

@@ -14,6 +14,7 @@
 #import "ReferencePoint.h"
 #import "Line.h"
 #import "Bus.h"
+#import "Webservice/WebEta.h"
 
 #define ZOOMLATITUDE 39.74434
 #define ZOOMLONGITUDE -8.80725
@@ -269,17 +270,31 @@
                 }
                 else
                 {
+                    NSString *eta;
+                    @try
+                    {
+                        eta = [WebEta getEtaForBusstopID:[bus busID]];
+                        eta = [NSString stringWithFormat:@"%d:%d", [eta intValue]/60, [eta intValue]%60];
+                        
+                    }
+                    @catch (NSException *exception)
+                    {
+                        eta = @"N/D";
+                    }
+                    
                     annotation = [annotations objectForKey:bus.busID];
                     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
                     [dic setValue:annotation forKey:@"annotation"];
                     [dic setValue:[[NSNumber alloc] initWithDouble:coordinate.latitude] forKey:@"latitude"];
                     [dic setValue:[[NSNumber alloc] initWithDouble:coordinate.longitude] forKey:@"longitude"];
+                    [dic setValue:[bus meanVelocity] forKey:@"meanVelocity"];
+                    [dic setValue:eta forKey:@"eta"];
                     
                     [self performSelectorOnMainThread:@selector(setAnnotationCoordinate:) withObject:dic waitUntilDone:YES];
                 }
                 
                 //Remove buses that are no longer active (NOT WORKING!)
-                for (NSString* key in annotations)
+                /*for (NSString* key in annotations)
                 {
                     Boolean del = YES;
                     
@@ -295,7 +310,7 @@
                     {
                         [self performSelectorOnMainThread:@selector(deleteBusAnnotation:) withObject:[annotations objectForKey:key] waitUntilDone:YES];
                     }
-                }
+                }*/
             }
         }
         @catch (id exception)
@@ -319,6 +334,7 @@
 - (void) setAnnotationCoordinate:(NSDictionary *) annotationAndCoordinate
 {
     BusAnnotation *annotation = [annotationAndCoordinate objectForKey:@"annotation"];
+    [annotation setSubtitle:[[annotationAndCoordinate objectForKey:@"meanVelocity"] stringByAppendingFormat:@" (%@)", [annotationAndCoordinate objectForKey:@"eta"]]];
     
     CLLocationCoordinate2D coordinate;
     coordinate.latitude = [[annotationAndCoordinate objectForKey:@"latitude"] doubleValue];
