@@ -13,8 +13,9 @@
 @synthesize coordinate=_coordinate;
 @synthesize title;
 @synthesize subtitle;
+@synthesize busID=_busID;
 
-- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate andType:(NSString *)type
+- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate andType:(NSString *)type andBusID:(NSString *)busID
 {
     self = [super initWithAnnotation:self reuseIdentifier:@"BusStopAnnotation"];
     self.canShowCallout = YES;
@@ -23,6 +24,7 @@
     if(self)
     {
         _coordinate = coordinate;
+        _busID = busID;
         
         //This should not be hard coded like this
         //Line 1 (Green)

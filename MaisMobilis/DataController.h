@@ -22,5 +22,5 @@
 + (NSString *) getNextStopByBusID: (NSString *) busID;
 + (NSString *) getEtaByBusID : (NSString *) busID;
 + (NSArray *) getAllBuses;
-
++ (Bus *) getBusByBusID:(NSString *) busID;
 @end

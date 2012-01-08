@@ -2,7 +2,7 @@
 //  BusStop_Line.h
 //  MaisMobilis
 //
-//  Created by tom on 1/2/12.
+//  Created by tom on 1/8/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,5 +14,6 @@
 
 @property (nonatomic, retain) NSString * busStopID;
 @property (nonatomic, retain) NSString * lineID;
+@property (nonatomic, retain) NSString * numeral;
 
 @end

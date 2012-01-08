@@ -15,6 +15,7 @@
 #import "Line.h"
 #import "Bus.h"
 #import "Webservice/WebEta.h"
+#import "BusesDetailViewController.h"
 
 #define ZOOMLATITUDE 39.74434
 #define ZOOMLONGITUDE -8.80725
@@ -140,7 +141,25 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    //[button addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside]
+    ((BusstopAnnotation *)annotation).rightCalloutAccessoryView = button;
     return (BusstopAnnotation *)annotation;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{/*
+    if([view class] == [BusAnnotation class])
+    {
+        BusesDetailViewController *busesViewController = [[BusesDetailViewController alloc] initWithNibName:nil bundle:nil];
+        [busesViewController setBus:<#(Bus *)#>];
+        
+        [[self navigationController] pushViewController:busesViewController animated:YES];
+    }
+    else if([view class] == [BusstopAnnotation class])
+    {
+        NSLog(@"Clicked a busstop! :D");
+    }*/
 }
 
 - (void)loadBusStops
@@ -263,7 +282,7 @@
                 
                 if([annotations objectForKey:bus.busID] == nil)
                 {
-                    annotation = [[BusAnnotation alloc] initWithCoordinate:coordinate andType:bus.lineID];
+                    annotation = [[BusAnnotation alloc] initWithCoordinate:coordinate andType:bus.lineID andBusID:[bus busID]];
                 
                     [annotations setObject:annotation forKey:bus.busID];
                     [self performSelectorOnMainThread:@selector(addBusAnnotation:) withObject:annotation waitUntilDone:YES];
@@ -317,7 +336,7 @@
         {
         }
         
-        [NSThread sleepForTimeInterval:5];
+        [NSThread sleepForTimeInterval:3];
     }
 }
 

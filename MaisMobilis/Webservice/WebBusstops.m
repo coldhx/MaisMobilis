@@ -30,6 +30,7 @@
         
         newBusStop_line = [NSEntityDescription insertNewObjectForEntityForName:@"BusStop_Line" inManagedObjectContext:context];
         
+        /*
         //Fetch lines for bus stop
         NSArray *busStopLines = [WebLines getLinesWithBusstopID:[NSString stringWithFormat:@"%@", newBusStop.busStopID]];
         
@@ -43,7 +44,9 @@
             newBusStop_line = [NSEntityDescription insertNewObjectForEntityForName:@"BusStop_Line" inManagedObjectContext:context];
             newBusStop_line.busStopID = newBusStop.busStopID;
             newBusStop_line.lineID = [[busStopLines objectAtIndex:j] objectForKey:@"idLinha"];
+            
         }
+        */
     }
 }
 

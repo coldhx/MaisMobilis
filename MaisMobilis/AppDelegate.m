@@ -11,6 +11,7 @@
 #import "Webservice/WebReferencePoint.h"
 #import "WebLines.h"
 #import "WebBus.h"
+#import "Webservice/WebBusstopLines.h"
 
 @implementation AppDelegate
 
@@ -31,6 +32,7 @@
     [WebLines getAllLines];
     [WebReferencePoint getAllReferencePoints];
     [WebBusstops getAllBusstops];
+    [WebBusstopLines getAllBusstopLines];
     
     
     [self performSelectorInBackground:@selector(refreshBuses) withObject:nil];

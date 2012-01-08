@@ -101,5 +101,28 @@
     return buses;
 }
 
++ (Bus *) getBusByBusID:(NSString *) busID
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"busID = %@", busID];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSMutableArray *bus = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(bus == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    return [bus objectAtIndex:0];
+}
+
+
+
 
 @end
