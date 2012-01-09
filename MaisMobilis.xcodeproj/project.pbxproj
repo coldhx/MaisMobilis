@@ -243,6 +243,48 @@
 			path = MaisMobilis/ASIAPI;
 			sourceTree = "<group>";
 		};
+		D78BFAD414BA6F4300A602B9 /* UIControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D763279D14BA5C0000CB2C47 /* AlertTableViewController.h */,
+				D763279E14BA5C0000CB2C47 /* AlertTableViewController.m */,
+				D73EC08A14B628DC0013DAF3 /* BStopDetailViewController.h */,
+				D73EC08B14B628DC0013DAF3 /* BStopDetailViewController.m */,
+				D7888D3614AD32F600554E8D /* MapViewController.h */,
+				D7888D3714AD32F600554E8D /* MapViewController.m */,
+				D705BE4E14B3F1FD00BE8DE4 /* StopTableViewController.h */,
+				D705BE4F14B3F1FD00BE8DE4 /* StopTableViewController.m */,
+				D707693214B3BBD300B3936F /* BusesDetailViewController.h */,
+				D707693314B3BBD300B3936F /* BusesDetailViewController.m */,
+				D7C7BFB514B34FB2007265CE /* BusesTableViewController.h */,
+				D7C7BFB614B34FB2007265CE /* BusesTableViewController.m */,
+			);
+			name = UIControllers;
+			sourceTree = "<group>";
+		};
+		D78BFAD514BA6F8600A602B9 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				D78BFABF14BA676100A602B9 /* Alert.h */,
+				D78BFAC014BA676100A602B9 /* Alert.m */,
+				D78BFAC814BA676100A602B9 /* Bus.h */,
+				D78BFAC914BA676100A602B9 /* Bus.m */,
+				E2B6174F14B2221C008E175C /* BusAnnotation.h */,
+				E2B6175014B2221C008E175C /* BusAnnotation.m */,
+				D78BFAC514BA676100A602B9 /* BusStop.h */,
+				D78BFAC614BA676100A602B9 /* BusStop.m */,
+				D78BFACB14BA676100A602B9 /* BusStop_Line.h */,
+				D78BFACC14BA676100A602B9 /* BusStop_Line.m */,
+				D78BFACE14BA676200A602B9 /* Line.h */,
+				D78BFACF14BA676200A602B9 /* Line.m */,
+				D78BFAD114BA676200A602B9 /* ReferencePoint.h */,
+				D78BFAD214BA676200A602B9 /* ReferencePoint.m */,
+				D78BFAC214BA676100A602B9 /* Route.h */,
+				D78BFAC314BA676100A602B9 /* Route.m */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
 		E215E44414AA979400C3A4F2 = {
 			isa = PBXGroup;
 			children = (
@@ -283,43 +325,17 @@
 		E215E45B14AA979400C3A4F2 /* MaisMobilis */ = {
 			isa = PBXGroup;
 			children = (
-				D78BFABF14BA676100A602B9 /* Alert.h */,
-				D78BFAC014BA676100A602B9 /* Alert.m */,
-				D763279D14BA5C0000CB2C47 /* AlertTableViewController.h */,
-				D763279E14BA5C0000CB2C47 /* AlertTableViewController.m */,
 				E215E46414AA979500C3A4F2 /* AppDelegate.h */,
 				E215E46514AA979500C3A4F2 /* AppDelegate.m */,
-				D73EC08A14B628DC0013DAF3 /* BStopDetailViewController.h */,
-				D73EC08B14B628DC0013DAF3 /* BStopDetailViewController.m */,
-				D78BFAC814BA676100A602B9 /* Bus.h */,
-				D78BFAC914BA676100A602B9 /* Bus.m */,
-				E2B6174F14B2221C008E175C /* BusAnnotation.h */,
-				E2B6175014B2221C008E175C /* BusAnnotation.m */,
-				D707693214B3BBD300B3936F /* BusesDetailViewController.h */,
-				D707693314B3BBD300B3936F /* BusesDetailViewController.m */,
-				D7C7BFB514B34FB2007265CE /* BusesTableViewController.h */,
-				D7C7BFB614B34FB2007265CE /* BusesTableViewController.m */,
-				D78BFAC514BA676100A602B9 /* BusStop.h */,
-				D78BFAC614BA676100A602B9 /* BusStop.m */,
-				D78BFACB14BA676100A602B9 /* BusStop_Line.h */,
-				D78BFACC14BA676100A602B9 /* BusStop_Line.m */,
 				E270F10914B12CDC00AA4531 /* BusstopAnnotation.h */,
 				E270F10A14B12CDD00AA4531 /* BusstopAnnotation.m */,
 				D76B224C14B67D3500338950 /* DataController.h */,
 				D76B224D14B67D3500338950 /* DataController.m */,
-				D78BFACE14BA676200A602B9 /* Line.h */,
-				D78BFACF14BA676200A602B9 /* Line.m */,
+				D78BFAD514BA6F8600A602B9 /* Entities */,
 				E215E46714AA979500C3A4F2 /* MaisMobilis.xcdatamodeld */,
-				D7888D3614AD32F600554E8D /* MapViewController.h */,
-				D7888D3714AD32F600554E8D /* MapViewController.m */,
-				D78BFAD114BA676200A602B9 /* ReferencePoint.h */,
-				D78BFAD214BA676200A602B9 /* ReferencePoint.m */,
-				D78BFAC214BA676100A602B9 /* Route.h */,
-				D78BFAC314BA676100A602B9 /* Route.m */,
-				D705BE4E14B3F1FD00BE8DE4 /* StopTableViewController.h */,
-				D705BE4F14B3F1FD00BE8DE4 /* StopTableViewController.m */,
 				D7888D3B14AD332B00554E8D /* Storyboard.storyboard */,
 				E215E45C14AA979400C3A4F2 /* Supporting Files */,
+				D78BFAD414BA6F4300A602B9 /* UIControllers */,
 			);
 			path = MaisMobilis;
 			sourceTree = "<group>";
