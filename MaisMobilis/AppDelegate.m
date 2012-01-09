@@ -7,10 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "WebBusstops.h"
+#import "Webservice/WebBusstops.h"
 #import "Webservice/WebReferencePoint.h"
-#import "WebLines.h"
-#import "WebBus.h"
+#import "Webservice/WebLines.h"
+#import "Webservice/WebBus.h"
 #import "Webservice/WebBusstopLines.h"
 
 @implementation AppDelegate

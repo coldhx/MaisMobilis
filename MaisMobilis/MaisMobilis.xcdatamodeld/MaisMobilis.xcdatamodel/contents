@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="11B26" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Alert" representedClassName="Alert" syncable="YES">
+        <attribute name="alertID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="busStopDelayNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="routeID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="stopTime" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
     <entity name="Bus" representedClassName="Bus" syncable="YES">
         <attribute name="busID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastStopID" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,11 +37,19 @@
         <attribute name="longitude" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="referencePointID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Route" representedClassName="Route" syncable="YES">
+        <attribute name="destinBusStopID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="initialBusStopID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routeID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Bus" positionX="36" positionY="171" width="128" height="165"/>
         <element name="BusStop" positionX="-297" positionY="171" width="117" height="105"/>
         <element name="BusStop_Line" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Line" positionX="-137" positionY="171" width="128" height="90"/>
         <element name="ReferencePoint" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="Alert" positionX="160" positionY="192" width="128" height="120"/>
+        <element name="Route" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>

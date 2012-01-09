@@ -1,18 +1,19 @@
 //
-//  Line.m
+//  Route.m
 //  MaisMobilis
 //
 //  Created by Rita Silva on 1/9/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "Line.h"
+#import "Route.h"
 
 
-@implementation Line
+@implementation Route
 
+@dynamic destinBusStopID;
+@dynamic initialBusStopID;
 @dynamic lineID;
-@dynamic name;
-@dynamic transporterID;
+@dynamic routeID;
 
 @end

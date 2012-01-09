@@ -100,8 +100,19 @@
     
     Bus *autocarro = [_buses objectAtIndex:indexPath.row];
     UILabel *cellLabel = (UILabel *)[cell viewWithTag:1];
-    [cellLabel setText:autocarro.busID];
+    [cellLabel setText:[DataController getLineNameByLineID:[autocarro lineID]]];
     
+    NSString *imageName;
+    if ([[autocarro lineID] isEqualToString:@"1"]) 
+    {
+        imageName = @"greensquare.png";
+    } else 
+    {
+        imageName = @"redsquare.png";
+    }
+    
+    UIImageView *lineColorImage = (UIImageView *) [cell viewWithTag:2];
+    [lineColorImage setImage:[UIImage imageNamed: imageName]];    
     return cell;
 }
 

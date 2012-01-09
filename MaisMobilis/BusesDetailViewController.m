@@ -42,10 +42,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [lineLabel setText:[DataController getLineNameByLineID:[_bus lineID]]];
-    //[nextStopLabel setText:[DataController getNextStopByBusID:[_bus busID]]];
-    //[estimatedTimeLabel setText:[DataController getEtaByBusID:[_bus busID]]];
-    
+    @try {
+        
+        [lineLabel setText:[DataController getLineNameByLineID:[_bus lineID]]];
+        [nextStopLabel setText:[DataController getNextStopByBusID:[_bus busID]]];
+        [estimatedTimeLabel setText:[DataController getEtaByBusID:[_bus busID]]];
+        
+    }
+    @catch (NSException *exception) {
+        
+    }
 }
 
 - (void)viewDidUnload
