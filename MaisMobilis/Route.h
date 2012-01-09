@@ -16,5 +16,6 @@
 @property (nonatomic, retain) NSString * initialBusStopID;
 @property (nonatomic, retain) NSString * lineID;
 @property (nonatomic, retain) NSString * routeID;
+@property (nonatomic, retain) NSString * desination;
 
 @end

@@ -1,18 +1,20 @@
 //
-//  AlertTableViewController.m
+//  RoutesTableViewController.m
 //  MaisMobilis
 //
-//  Created by Rita Silva on 1/8/12.
+//  Created by Rita Silva on 1/9/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "AlertTableViewController.h"
-#import "Alert.h"
-#import "AlertDetailViewController.h"
+#import "RoutesTableViewController.h"
+#import "DataController.h"
+#import "RouteDetailViewController.h"
+#import "Route.h"
 
-@implementation AlertTableViewController
 
-@synthesize alerts = _alerts;
+@implementation RoutesTableViewController
+
+@synthesize routes = _routes;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -42,7 +44,6 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
 }
 
 - (void)viewDidUnload
@@ -87,64 +88,65 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_alerts count];
+
+    return [_routes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"alertCell";
+    static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    Alert *a = [_alerts objectAtIndex:indexPath.row];
-    UILabel *titleLabel = (UILabel *)[cell viewWithTag:1];
-    [titleLabel setText:@"cenas"];
+    Route *r = [_routes objectAtIndex:[indexPath row]];
+    UILabel *designationLabel = (UILabel *)[cell viewWithTag:1];
+    [designationLabel setText:[r desination]];
     
-    UILabel *subtitleLabel = (UILabel *)[cell viewWithTag:2];
-    [subtitleLabel setText:@"cenas"];
     
     return cell;
 }
 
 /*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+*/
 
+/*
+// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data sourceeee
+        // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
- 
+*/
 
 /*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPathhhh
- {
- }
- */
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+}
+*/
 
 /*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
 
 #pragma mark - Table view delegate
 
@@ -161,12 +163,12 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showAlertDetails"]) 
+    if ([[segue identifier] isEqualToString:@"showRouteDetails"]) 
     {
-        AlertDetailViewController *alertDetailVC = [segue destinationViewController];
+        RouteDetailViewController *routeDetailVC = [segue destinationViewController];
         NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
-        Alert *a = [_alerts objectAtIndex:selectedIndex];
-        [alertDetailVC setAlert:a];
+        Route *r = [_routes objectAtIndex:selectedIndex];
+        [routeDetailVC setRoute:r];
     }
 }
 
