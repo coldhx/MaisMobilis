@@ -13,4 +13,6 @@
     NSArray * _alerts;
 }
 
+@property (nonatomic, retain) NSArray * alerts;
+
 @end
