@@ -54,7 +54,7 @@
         <element name="BusStop_Line" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Line" positionX="-137" positionY="171" width="128" height="90"/>
         <element name="ReferencePoint" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="Route" positionX="160" positionY="192" width="128" height="105"/>
         <element name="Version" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="Route" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>
