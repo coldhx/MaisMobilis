@@ -59,6 +59,8 @@
 		E2B6174D14B21598008E175C /* greenbus.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B6174B14B21598008E175C /* greenbus.png */; };
 		E2B6174E14B21598008E175C /* redbus.png in Resources */ = {isa = PBXBuildFile; fileRef = E2B6174C14B21598008E175C /* redbus.png */; };
 		E2B6175114B2221C008E175C /* BusAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B6175014B2221C008E175C /* BusAnnotation.m */; };
+		E2B8CAAA14BBAB3300705381 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B8CAA914BBAB3300705381 /* Version.m */; };
+		E2B8CAAE14BBACE700705381 /* WebVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B8CAAD14BBACE700705381 /* WebVersion.m */; };
 		E2E6142B14AB998A007AF944 /* WebBus.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142A14AB998A007AF944 /* WebBus.m */; };
 		E2E6142E14AB99AE007AF944 /* WebBusstops.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6142D14AB99AE007AF944 /* WebBusstops.m */; };
 		E2E6143114AB99C3007AF944 /* WebLines.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E6143014AB99C3007AF944 /* WebLines.m */; };
@@ -172,6 +174,10 @@
 		E2B6174C14B21598008E175C /* redbus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redbus.png; path = MaisMobilis/Images/redbus.png; sourceTree = "<group>"; };
 		E2B6174F14B2221C008E175C /* BusAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusAnnotation.h; sourceTree = "<group>"; };
 		E2B6175014B2221C008E175C /* BusAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusAnnotation.m; sourceTree = "<group>"; };
+		E2B8CAA814BBAB3300705381 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		E2B8CAA914BBAB3300705381 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
+		E2B8CAAC14BBACE700705381 /* WebVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebVersion.h; path = MaisMobilis/Webservice/WebVersion.h; sourceTree = "<group>"; };
+		E2B8CAAD14BBACE700705381 /* WebVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebVersion.m; path = MaisMobilis/Webservice/WebVersion.m; sourceTree = "<group>"; };
 		E2E6142914AB998A007AF944 /* WebBus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBus.h; path = MaisMobilis/Webservice/WebBus.h; sourceTree = "<group>"; };
 		E2E6142A14AB998A007AF944 /* WebBus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebBus.m; path = MaisMobilis/Webservice/WebBus.m; sourceTree = "<group>"; };
 		E2E6142C14AB99AE007AF944 /* WebBusstops.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebBusstops.h; path = MaisMobilis/Webservice/WebBusstops.h; sourceTree = "<group>"; };
@@ -290,6 +296,8 @@
 		D78BFAD514BA6F8600A602B9 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				E2B8CAA814BBAB3300705381 /* Version.h */,
+				E2B8CAA914BBAB3300705381 /* Version.m */,
 				D78BFABF14BA676100A602B9 /* Alert.h */,
 				D78BFAC014BA676100A602B9 /* Alert.m */,
 				D78BFAC814BA676100A602B9 /* Bus.h */,
@@ -405,6 +413,8 @@
 				D705BE4814B3E87100BE8DE4 /* WebEta.m */,
 				E23BC1E714B91E0A00942484 /* WebBusstopLines.h */,
 				E23BC1E814B91E0A00942484 /* WebBusstopLines.m */,
+				E2B8CAAC14BBACE700705381 /* WebVersion.h */,
+				E2B8CAAD14BBACE700705381 /* WebVersion.m */,
 			);
 			name = Webservice;
 			sourceTree = "<group>";
@@ -562,6 +572,8 @@
 				D78BFAE614BB5BFB00A602B9 /* NewAlertViewController.m in Sources */,
 				D78BFAE914BB5C7700A602B9 /* AlertDetailViewController.m in Sources */,
 				D78BFAEC14BB5DAE00A602B9 /* RouteDetailViewController.m in Sources */,
+				E2B8CAAA14BBAB3300705381 /* Version.m in Sources */,
+				E2B8CAAE14BBACE700705381 /* WebVersion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
