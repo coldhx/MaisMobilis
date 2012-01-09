@@ -148,18 +148,30 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{/*
+{
     if([view class] == [BusAnnotation class])
     {
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = delegate.managedObjectContext;
+        BusAnnotation *busAnnotation = (BusAnnotation *)view;
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"busID = %@", busAnnotation.busID];
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+        [request setPredicate:predicate];
+        NSError *error = nil;
+        NSMutableArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
+        
+        Bus *bus = [results objectAtIndex:0];
+        
         BusesDetailViewController *busesViewController = [[BusesDetailViewController alloc] initWithNibName:nil bundle:nil];
-        [busesViewController setBus:<#(Bus *)#>];
+        [busesViewController setBus:bus];
         
         [[self navigationController] pushViewController:busesViewController animated:YES];
     }
     else if([view class] == [BusstopAnnotation class])
     {
         NSLog(@"Clicked a busstop! :D");
-    }*/
+    }
 }
 
 - (void)loadBusStops
@@ -313,7 +325,7 @@
                 }
                 
                 //Remove buses that are no longer active (NOT WORKING!)
-                /*for (NSString* key in annotations)
+                for (NSString* key in annotations)
                 {
                     Boolean del = YES;
                     
@@ -329,7 +341,7 @@
                     {
                         [self performSelectorOnMainThread:@selector(deleteBusAnnotation:) withObject:[annotations objectForKey:key] waitUntilDone:YES];
                     }
-                }*/
+                }
             }
         }
         @catch (id exception)
