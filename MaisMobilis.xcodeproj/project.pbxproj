@@ -35,6 +35,11 @@
 		D78BFACD14BA676100A602B9 /* BusStop_Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BFACC14BA676100A602B9 /* BusStop_Line.m */; };
 		D78BFAD014BA676200A602B9 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BFACF14BA676200A602B9 /* Line.m */; };
 		D78BFAD314BA676200A602B9 /* ReferencePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BFAD214BA676200A602B9 /* ReferencePoint.m */; };
+		D78BFADC14BB521700A602B9 /* RoutesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BFADB14BB521700A602B9 /* RoutesTableViewController.m */; };
+		D78BFAE014BB523F00A602B9 /* NewRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BFADF14BB523F00A602B9 /* NewRouteViewController.m */; };
+		D78BFAE614BB5BFB00A602B9 /* NewAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BFAE514BB5BFB00A602B9 /* NewAlertViewController.m */; };
+		D78BFAE914BB5C7700A602B9 /* AlertDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BFAE814BB5C7700A602B9 /* AlertDetailViewController.m */; };
+		D78BFAEC14BB5DAE00A602B9 /* RouteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BFAEB14BB5DAE00A602B9 /* RouteDetailViewController.m */; };
 		D7C7BFB814B34FB2007265CE /* BusesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C7BFB614B34FB2007265CE /* BusesTableViewController.m */; };
 		E215E45414AA979400C3A4F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45314AA979400C3A4F2 /* UIKit.framework */; };
 		E215E45614AA979400C3A4F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45514AA979400C3A4F2 /* Foundation.framework */; };
@@ -129,6 +134,16 @@
 		D78BFACF14BA676200A602B9 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		D78BFAD114BA676200A602B9 /* ReferencePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferencePoint.h; sourceTree = "<group>"; };
 		D78BFAD214BA676200A602B9 /* ReferencePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferencePoint.m; sourceTree = "<group>"; };
+		D78BFADA14BB521700A602B9 /* RoutesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesTableViewController.h; sourceTree = "<group>"; };
+		D78BFADB14BB521700A602B9 /* RoutesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesTableViewController.m; sourceTree = "<group>"; };
+		D78BFADE14BB523F00A602B9 /* NewRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRouteViewController.h; sourceTree = "<group>"; };
+		D78BFADF14BB523F00A602B9 /* NewRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRouteViewController.m; sourceTree = "<group>"; };
+		D78BFAE414BB5BFB00A602B9 /* NewAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewAlertViewController.h; sourceTree = "<group>"; };
+		D78BFAE514BB5BFB00A602B9 /* NewAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewAlertViewController.m; sourceTree = "<group>"; };
+		D78BFAE714BB5C7700A602B9 /* AlertDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertDetailViewController.h; sourceTree = "<group>"; };
+		D78BFAE814BB5C7700A602B9 /* AlertDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertDetailViewController.m; sourceTree = "<group>"; };
+		D78BFAEA14BB5DAE00A602B9 /* RouteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteDetailViewController.h; sourceTree = "<group>"; };
+		D78BFAEB14BB5DAE00A602B9 /* RouteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDetailViewController.m; sourceTree = "<group>"; };
 		D7C7BFB514B34FB2007265CE /* BusesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusesTableViewController.h; sourceTree = "<group>"; };
 		D7C7BFB614B34FB2007265CE /* BusesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusesTableViewController.m; sourceTree = "<group>"; };
 		E215E44F14AA979400C3A4F2 /* MaisMobilis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaisMobilis.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,18 +261,28 @@
 		D78BFAD414BA6F4300A602B9 /* UIControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D78BFAE714BB5C7700A602B9 /* AlertDetailViewController.h */,
+				D78BFAE814BB5C7700A602B9 /* AlertDetailViewController.m */,
 				D763279D14BA5C0000CB2C47 /* AlertTableViewController.h */,
 				D763279E14BA5C0000CB2C47 /* AlertTableViewController.m */,
 				D73EC08A14B628DC0013DAF3 /* BStopDetailViewController.h */,
 				D73EC08B14B628DC0013DAF3 /* BStopDetailViewController.m */,
-				D7888D3614AD32F600554E8D /* MapViewController.h */,
-				D7888D3714AD32F600554E8D /* MapViewController.m */,
-				D705BE4E14B3F1FD00BE8DE4 /* StopTableViewController.h */,
-				D705BE4F14B3F1FD00BE8DE4 /* StopTableViewController.m */,
 				D707693214B3BBD300B3936F /* BusesDetailViewController.h */,
 				D707693314B3BBD300B3936F /* BusesDetailViewController.m */,
 				D7C7BFB514B34FB2007265CE /* BusesTableViewController.h */,
 				D7C7BFB614B34FB2007265CE /* BusesTableViewController.m */,
+				D7888D3614AD32F600554E8D /* MapViewController.h */,
+				D7888D3714AD32F600554E8D /* MapViewController.m */,
+				D78BFAE414BB5BFB00A602B9 /* NewAlertViewController.h */,
+				D78BFAE514BB5BFB00A602B9 /* NewAlertViewController.m */,
+				D78BFADE14BB523F00A602B9 /* NewRouteViewController.h */,
+				D78BFADF14BB523F00A602B9 /* NewRouteViewController.m */,
+				D78BFADA14BB521700A602B9 /* RoutesTableViewController.h */,
+				D78BFADB14BB521700A602B9 /* RoutesTableViewController.m */,
+				D705BE4E14B3F1FD00BE8DE4 /* StopTableViewController.h */,
+				D705BE4F14B3F1FD00BE8DE4 /* StopTableViewController.m */,
+				D78BFAEA14BB5DAE00A602B9 /* RouteDetailViewController.h */,
+				D78BFAEB14BB5DAE00A602B9 /* RouteDetailViewController.m */,
 			);
 			name = UIControllers;
 			sourceTree = "<group>";
@@ -532,6 +557,11 @@
 				D78BFACD14BA676100A602B9 /* BusStop_Line.m in Sources */,
 				D78BFAD014BA676200A602B9 /* Line.m in Sources */,
 				D78BFAD314BA676200A602B9 /* ReferencePoint.m in Sources */,
+				D78BFADC14BB521700A602B9 /* RoutesTableViewController.m in Sources */,
+				D78BFAE014BB523F00A602B9 /* NewRouteViewController.m in Sources */,
+				D78BFAE614BB5BFB00A602B9 /* NewAlertViewController.m in Sources */,
+				D78BFAE914BB5C7700A602B9 /* AlertDetailViewController.m in Sources */,
+				D78BFAEC14BB5DAE00A602B9 /* RouteDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

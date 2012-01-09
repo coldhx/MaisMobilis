@@ -38,18 +38,19 @@
         <attribute name="referencePointID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Route" representedClassName="Route" syncable="YES">
+        <attribute name="desination" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="destinBusStopID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="initialBusStopID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="routeID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Alert" positionX="160" positionY="192" width="128" height="120"/>
         <element name="Bus" positionX="36" positionY="171" width="128" height="165"/>
         <element name="BusStop" positionX="-297" positionY="171" width="117" height="105"/>
         <element name="BusStop_Line" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Line" positionX="-137" positionY="171" width="128" height="90"/>
         <element name="ReferencePoint" positionX="160" positionY="192" width="128" height="90"/>
-        <element name="Alert" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="Route" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="Route" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>
