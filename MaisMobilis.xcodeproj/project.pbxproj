@@ -567,13 +567,13 @@
 				D78BFACD14BA676100A602B9 /* BusStop_Line.m in Sources */,
 				D78BFAD014BA676200A602B9 /* Line.m in Sources */,
 				D78BFAD314BA676200A602B9 /* ReferencePoint.m in Sources */,
-				E2B8CAAA14BBAB3300705381 /* Version.m in Sources */,
-				E2B8CAAE14BBACE700705381 /* WebVersion.m in Sources */,
 				D78BFADC14BB521700A602B9 /* RoutesTableViewController.m in Sources */,
 				D78BFAE014BB523F00A602B9 /* NewRouteViewController.m in Sources */,
 				D78BFAE614BB5BFB00A602B9 /* NewAlertViewController.m in Sources */,
 				D78BFAE914BB5C7700A602B9 /* AlertDetailViewController.m in Sources */,
 				D78BFAEC14BB5DAE00A602B9 /* RouteDetailViewController.m in Sources */,
+				E2B8CAAA14BBAB3300705381 /* Version.m in Sources */,
+				E2B8CAAE14BBACE700705381 /* WebVersion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
