@@ -12,17 +12,19 @@
 
 @synthesize coordinate=_coordinate;
 @synthesize title;
+@synthesize busstopID=_busstopID;
 
-- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate andType:(NSString *)type
+- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate andType:(NSString *)type andBusstopID:(NSString *)busstopID
 {
     self = [super initWithAnnotation:self reuseIdentifier:@"BusStopAnnotation"];
     self.canShowCallout = YES;
-
+    
     UIImage *image;
     
     if(self)
     {
         _coordinate = coordinate;
+        _busstopID = busstopID;
         
         //This should not be hard coded like this
         //Line 1 (Green)

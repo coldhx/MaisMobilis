@@ -80,7 +80,7 @@
 
 + (NSString *) getEtaByBusID : (NSString *) busID
 {
-    return [WebEta getEtaForBusstopID: busID];
+    return [WebEta getEtaForBusID: busID];
 }
 
 + (NSArray *) getAllBuses

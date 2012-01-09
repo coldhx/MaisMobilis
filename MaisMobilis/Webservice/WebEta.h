@@ -10,8 +10,7 @@
 
 @interface WebEta : NSObject
 
-+ (NSString *) getEtaForBusstopID:(NSString *)busID;
++ (NSString *) getEtaForBusID:(NSString *)busID;
 + (NSString *) getBusStopForBusstopID:(NSString *)busID;
-
 
 @end

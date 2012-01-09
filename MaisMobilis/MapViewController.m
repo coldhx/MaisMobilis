@@ -16,6 +16,7 @@
 #import "Bus.h"
 #import "Webservice/WebEta.h"
 #import "BusesDetailViewController.h"
+#import "BStopDetailViewController.h";
 
 #define ZOOMLATITUDE 39.74434
 #define ZOOMLONGITUDE -8.80725
@@ -148,29 +149,48 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
+{        
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity;
+    NSPredicate *predicate;
+    NSFetchRequest *request;
+    NSError *error;
+    NSMutableArray *results;
+    
     if([view class] == [BusAnnotation class])
     {
-        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-        NSManagedObjectContext *context = delegate.managedObjectContext;
         BusAnnotation *busAnnotation = (BusAnnotation *)view;
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"busID = %@", busAnnotation.busID];
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+        entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
+        predicate = [NSPredicate predicateWithFormat:@"busID = %@", busAnnotation.busID];
+        request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
         [request setPredicate:predicate];
-        NSError *error = nil;
-        NSMutableArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
+        error = nil;
+        results = [[context executeFetchRequest:request error: &error] mutableCopy];
         
         Bus *bus = [results objectAtIndex:0];
         
-        BusesDetailViewController *busesViewController = [[BusesDetailViewController alloc] initWithNibName:nil bundle:nil];
+        BusesDetailViewController *busesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"busDetails"];
         [busesViewController setBus:bus];
         
         [[self navigationController] pushViewController:busesViewController animated:YES];
     }
     else if([view class] == [BusstopAnnotation class])
     {
-        NSLog(@"Clicked a busstop! :D");
+        BusstopAnnotation *busstopAnnotation = (BusstopAnnotation *)view;
+        entity = [NSEntityDescription entityForName:@"BusStop" inManagedObjectContext:context];
+        predicate = [NSPredicate predicateWithFormat:@"busStopID = %@", busstopAnnotation.busstopID];
+        request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+        [request setPredicate:predicate];
+        error = nil;
+        results = [[context executeFetchRequest:request error: &error] mutableCopy];
+        
+        BusStop *busstop = [results objectAtIndex:0];
+        
+        BStopDetailViewController *busstopViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"busstopDetails"];
+        [busstopViewController setBusStop:busstop];
+        
+        [[self navigationController] pushViewController:busstopViewController animated:YES];
     }
 }
 
@@ -245,7 +265,7 @@
             }
         }
         
-        BusstopAnnotation *annotation = [[BusstopAnnotation alloc] initWithCoordinate: coordinate andType:type];
+        BusstopAnnotation *annotation = [[BusstopAnnotation alloc] initWithCoordinate: coordinate andType:type andBusstopID:busStop.busStopID];
         
         [annotation setTitle:[NSString stringWithFormat:@"%@", busStop.name]];
         
@@ -304,7 +324,7 @@
                     NSString *eta;
                     @try
                     {
-                        eta = [WebEta getEtaForBusstopID:[bus busID]];
+                        eta = [WebEta getEtaForBusID:[bus busID]];
                         eta = [NSString stringWithFormat:@"%d:%d", [eta intValue]/60, [eta intValue]%60];
                         
                     }

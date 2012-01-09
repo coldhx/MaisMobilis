@@ -12,7 +12,7 @@
 
 @implementation WebEta
 
-+ (NSString *) getEtaForBusstopID:(NSString *)busID
++ (NSString *) getEtaForBusID:(NSString *)busID
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"etas" withQueryString:[NSString stringWithFormat:@"?idAutocarro=%@", busID]];
     
