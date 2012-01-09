@@ -19,5 +19,6 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (void) refreshBuses;
-
+- (void) resetStore;
+- (void) initializeCoreData;
 @end

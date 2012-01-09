@@ -4,17 +4,17 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "MaisMobilis/Webservice/WebBus.m"
-         timestampString = "347758025.307597"
+         filePath = "MaisMobilis/AppDelegate.m"
+         timestampString = "347844005.393901"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "26"
-         endingLineNumber = "26"
-         landmarkName = "+persistBus:"
+         startingLineNumber = "35"
+         endingLineNumber = "35"
+         landmarkName = "-initializeCoreData"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

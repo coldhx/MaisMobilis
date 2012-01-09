@@ -32,7 +32,5 @@
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"linhasparagens" withQueryString:@""];
     [self persistReferencePoints:jsonObjects];
-    
-    NSLog(@"%@", jsonObjects.description);
 }
 @end

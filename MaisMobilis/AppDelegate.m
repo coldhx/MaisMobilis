@@ -12,6 +12,8 @@
 #import "Webservice/WebLines.h"
 #import "Webservice/WebBus.h"
 #import "Webservice/WebBusstopLines.h"
+#import "Webservice/WebVersion.h"
+#import "Version.h"
 
 @implementation AppDelegate
 
@@ -22,22 +24,65 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    //self.window.backgroundColor = [UIColor whiteColor];
-    //[self.window makeKeyAndVisible];
-    
-    
-    //Initialize core data content
-    [WebLines getAllLines];
-    [WebReferencePoint getAllReferencePoints];
-    [WebBusstops getAllBusstops];
-    [WebBusstopLines getAllBusstopLines];
-    
-    
+    [self initializeCoreData];
+    //Begin pulling bus info from the Webservice from time to time.
     [self performSelectorInBackground:@selector(refreshBuses) withObject:nil];
-    
     return YES;
+}
+
+- (void) initializeCoreData
+{    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    
+    //Check database version
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Version" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSError *error = nil;
+    NSArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
+    
+    Boolean update = NO;
+    
+    if(results.count == 0)
+    {
+        update = YES;
+        Version *version = [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:context];
+        version.dataVersion = [WebVersion getDataVersion];
+    }
+    else
+    {
+        Version *version = [results objectAtIndex:0];
+        NSString *currentVersion = [WebVersion getDataVersion];
+        if(![version.dataVersion isEqualToString: currentVersion])
+        {
+            update = YES;
+        }
+    }
+    
+    if(update)
+    {
+        //Initialize core data content
+        [self resetStore];
+        [WebLines getAllLines];
+        [WebReferencePoint getAllReferencePoints];
+        [WebBusstops getAllBusstops];
+        [WebBusstopLines getAllBusstopLines];
+        [context save:nil];
+    }
+}
+
+- (void) resetStore
+{
+    NSPersistentStore *store = [self.persistentStoreCoordinator.persistentStores lastObject];
+    NSError *error = nil;
+    NSURL *storeURL = store.URL;
+    [self.persistentStoreCoordinator removePersistentStore:store error:&error];
+    [[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
+    if (![self.persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    {
+        NSLog(@"Error creating new store after cleaning!");
+    }
+
 }
 
 - (void) refreshBuses
