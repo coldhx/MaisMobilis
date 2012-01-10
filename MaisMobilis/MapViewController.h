@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "BusAnnotation.h"
+#import "BusstopAnnotation.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate>
 
@@ -20,5 +21,7 @@
 - (void) addBusAnnotation:(BusAnnotation *) annotation;
 - (void) setAnnotationCoordinate:(NSDictionary *) annotationAndCoordinate;
 - (void) deleteBusAnnotation:(BusAnnotation *) annotation;
+- (void) refreshBusstopAnnotation:(BusstopAnnotation *)annotation;
+- (void) setBusstopAnnotationSubTitle:(BusstopAnnotation *) annotationAndSubtitle;
 
 @end

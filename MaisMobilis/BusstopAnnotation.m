@@ -13,6 +13,8 @@
 @synthesize coordinate=_coordinate;
 @synthesize title;
 @synthesize busstopID=_busstopID;
+@synthesize isSelected=_isSelected;
+@synthesize subtitle;
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate andType:(NSString *)type andBusstopID:(NSString *)busstopID
 {
@@ -25,6 +27,7 @@
     {
         _coordinate = coordinate;
         _busstopID = busstopID;
+        _isSelected = NO;
         
         //This should not be hard coded like this
         //Line 1 (Green)

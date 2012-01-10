@@ -12,5 +12,6 @@
 
 + (NSString *) getEtaForBusID:(NSString *)busID;
 + (NSString *) getBusStopForBusstopID:(NSString *)busID;
++ (NSArray *) getETAsForBusstopID:(NSString *)busstopID;
 
 @end

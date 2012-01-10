@@ -26,4 +26,11 @@
     return [[jsonObjects objectAtIndex:0] objectForKey:@"idParagem"];
 }
 
++ (NSArray *) getETAsForBusstopID:(NSString *)busstopID
+{    
+    NSArray *jsonObjects = [MaisMobilisWebService doGET:@"etas" withQueryString:[NSString stringWithFormat:@"?idParagem=%@", busstopID]];
+    
+    return jsonObjects;
+}
+
 @end
