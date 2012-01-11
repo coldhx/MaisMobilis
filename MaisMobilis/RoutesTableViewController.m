@@ -9,10 +9,15 @@
 #import "RoutesTableViewController.h"
 #import "DataController.h"
 #import "RouteDetailViewController.h"
+#import "NewRouteTableViewController.h"
 #import "Route.h"
+#import "AppDelegate.h"
 
 
-@implementation RoutesTableViewController
+@implementation RoutesTableViewController{
+    
+    __weak IBOutlet UILabel *textLabelOutlet;
+}
 
 @synthesize routes = _routes;
 
@@ -38,6 +43,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -48,6 +55,7 @@
 
 - (void)viewDidUnload
 {
+    textLabelOutlet = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -101,9 +109,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    
+    
     Route *r = [_routes objectAtIndex:[indexPath row]];
-    UILabel *designationLabel = (UILabel *)[cell viewWithTag:1];
-    [designationLabel setText:[r desination]];
+    textLabelOutlet.text = [r desination];
+    
+    //UILabel *designationLabel = (UILabel *)[cell viewWithTag:1];
+    //[designationLabel setText:[r desination]];
     
     
     return cell;
@@ -167,9 +179,21 @@
     {
         RouteDetailViewController *routeDetailVC = [segue destinationViewController];
         NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
-        Route *r = [_routes objectAtIndex:selectedIndex];
-        [routeDetailVC setRoute:r];
+        if(_routes != nil) 
+        {
+            Route *r = [_routes objectAtIndex:selectedIndex];
+            [routeDetailVC setRoute:r];
+        }
+    }
+    else if ([[segue identifier] isEqualToString:@"addRoute"])
+    {
+        NewRouteTableViewController *newRouteTVC = [segue destinationViewController];
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = delegate.managedObjectContext; 
+        Route *newRoute   =[NSEntityDescription insertNewObjectForEntityForName:@"Route" inManagedObjectContext: context];
+        newRouteTVC.route = newRoute;
     }
 }
+
 
 @end

@@ -36,7 +36,7 @@
     NSManagedObjectContext *context = delegate.managedObjectContext;
     
     //Check database version
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Version" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Versions" inManagedObjectContext:context];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
     NSError *error = nil;
     NSArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
@@ -46,7 +46,7 @@
     if(results.count == 0)
     {
         update = YES;
-        Version *version = [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:context];
+        Version *version = [NSEntityDescription insertNewObjectForEntityForName:@"Versions" inManagedObjectContext:context];
         version.dataVersion = [WebVersion getDataVersion];
     }
     else

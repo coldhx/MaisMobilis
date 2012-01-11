@@ -258,19 +258,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JJR-bm-Jop">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="idp-NY-1Y1" detailTextLabel="R6g-F2-CfE" style="IBUITableViewCellStyleSubtitle" id="JJR-bm-Jop">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="280" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="Designação do percurso" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" minimumFontSize="10" id="UkX-BR-b1v">
-                                            <rect key="frame" x="20" y="11" width="260" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="idp-NY-1Y1">
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R6g-F2-CfE">
+                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -288,59 +295,45 @@
                     <navigationItem key="navigationItem" title="Percursos" id="qGT-3m-PU4">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Tu-UW-hVA">
                             <connections>
-                                <segue destination="Zlf-Bl-ylW" kind="push" id="zfM-TG-mZu"/>
+                                <segue destination="n8p-3R-HdF" kind="push" identifier="addRoute" id="lG0-KZ-fsl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textLabelOutlet" destination="idp-NY-1Y1" id="qNh-c3-Gt2"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-1299" y="1868"/>
         </scene>
-        <scene sceneID="dUO-2o-8mh">
+        <scene sceneID="ZYr-AF-G9I">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q3e-Gh-gs5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="Zlf-Bl-ylW" customClass="NewRouteViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="esx-lT-gnP">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RwG-kB-tw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="n8p-3R-HdF" customClass="NewRouteTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Nvf-3Y-i8f">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XgQ-e9-PvB">
-                                <rect key="frame" x="20" y="20" width="280" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" none="YES" button="YES" notEnabled="YES"/>
-                                </accessibility>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Designação" textAlignment="right" lineBreakMode="tailTruncation" minimumFontSize="10" id="qhK-GQ-nVX">
-                                <rect key="frame" x="29" y="33" width="90" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <color key="textColor" name="selectedKnobColor" catalog="System" colorSpace="catalog"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="jH8-Kz-3Go">
-                                <rect key="frame" x="122" y="28" width="178" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Novo percurso" id="IG8-aW-EcA">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="KJU-wI-m1f"/>
-                    </navigationItem>
-                </viewController>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3iv-0T-zee">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="n8p-3R-HdF" id="BrB-2R-PYk"/>
+                            <outlet property="delegate" destination="n8p-3R-HdF" id="jQN-eD-rI1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Novo percurso" id="wv9-gH-H3y"/>
+                </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-435" y="1868"/>
+            <point key="canvasLocation" x="-435" y="1873"/>
         </scene>
         <scene sceneID="EyQ-Dt-N4H">
             <objects>
@@ -692,7 +685,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woO-Kc-YGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="qLG-rR-Av8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mapa" id="lnt-3q-W7j"/>
+                    <tabBarItem key="tabBarItem" title="Mapa" image="mapTab.png" id="lnt-3q-W7j"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="lPk-f3-R0v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -707,6 +700,9 @@
             <point key="canvasLocation" x="-1730" y="-434"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mapTab.png" width="60" height="60"/>
+    </resources>
     <classes>
         <class className="AlertDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AlertDetailViewController.h"/>
@@ -739,8 +735,8 @@
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
         </class>
-        <class className="NewRouteViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewRouteViewController.h"/>
+        <class className="NewRouteTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewRouteTableViewController.h"/>
         </class>
         <class className="RouteDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RouteDetailViewController.h"/>

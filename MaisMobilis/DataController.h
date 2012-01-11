@@ -23,4 +23,5 @@
 + (NSString *) getEtaByBusID : (NSString *) busID;
 + (NSArray *) getAllBuses;
 + (Bus *) getBusByBusID:(NSString *) busID;
++ (NSArray *) getBusStopsWithSameLineIdAs: (NSString *) bsID;
 @end

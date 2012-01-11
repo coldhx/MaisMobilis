@@ -2,7 +2,7 @@
 //  Route.m
 //  MaisMobilis
 //
-//  Created by Rita Silva on 1/9/12.
+//  Created by Rita Silva on 1/10/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,10 +11,10 @@
 
 @implementation Route
 
+@dynamic desination;
 @dynamic destinBusStopID;
 @dynamic initialBusStopID;
 @dynamic lineID;
 @dynamic routeID;
-@dynamic desination;
 
 @end

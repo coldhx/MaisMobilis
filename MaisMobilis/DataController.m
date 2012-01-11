@@ -123,6 +123,43 @@
 }
 
 
++ (NSArray *) getBusStopsWithSameLineIdAs: (NSString *) bsID
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop_Line" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"busStopID = %@", bsID];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSMutableArray *bsl = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(bsl == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    BusStop_Line *busstopline = [bsl objectAtIndex:0];
+    
+    entity = [NSEntityDescription entityForName:@"BusStop_Line" inManagedObjectContext:context];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    predicate = [NSPredicate predicateWithFormat:@"lineID = %@", [busstopline lineID]];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+    
+    NSArray *res = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(res == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    return res;
+   
+}
+
 
 
 @end
