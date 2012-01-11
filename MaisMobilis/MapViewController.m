@@ -16,7 +16,7 @@
 #import "Bus.h"
 #import "Webservice/WebEta.h"
 #import "BusesDetailViewController.h"
-#import "BStopDetailViewController.h";
+#import "BStopDetailViewController.h"
 
 #define ZOOMLATITUDE 39.74434
 #define ZOOMLONGITUDE -8.80725
@@ -140,14 +140,17 @@
     }
 }
 
+//Called for evety annotation on the map
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
+    //Should be checking the call that the instance belongs to!!
     UIButton *button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     //[button addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside]
     ((BusstopAnnotation *)annotation).rightCalloutAccessoryView = button;
     return (BusstopAnnotation *)annotation;
 }
 
+//Called when the arrow in an annotation is touched
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {        
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -191,6 +194,28 @@
         [busstopViewController setBusStop:busstop];
         
         [[self navigationController] pushViewController:busstopViewController animated:YES];
+    }
+}
+
+//Called when an annotation is selected
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    if([view class] == [BusstopAnnotation class])
+    {
+        BusstopAnnotation *annotation = (BusstopAnnotation *)view;
+        annotation.isSelected = YES;
+        
+        [self performSelectorInBackground:@selector(refreshBusstopAnnotation:) withObject:annotation];
+    }
+}
+
+//Called when an annotation is deselected
+- (void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
+{
+    if([view class] == [BusstopAnnotation class])
+    {
+        BusstopAnnotation *annotation = (BusstopAnnotation *)view;
+        annotation.isSelected = NO;
     }
 }
 
@@ -370,6 +395,70 @@
         
         [NSThread sleepForTimeInterval:3];
     }
+}
+
+- (void) refreshBusstopAnnotation:(BusstopAnnotation *)annotation
+{    
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
+    NSFetchRequest *request;
+    NSError *error = nil;
+    NSPredicate *predicate;
+    Bus *bus;
+    NSArray *objects;
+    NSString *subtitle = @"";
+    NSArray *etas;
+    
+    while(annotation.isSelected)
+    {
+        subtitle = @"";
+        @try
+        {
+            etas = [WebEta getETAsForBusstopID:annotation.busstopID];
+        }
+        @catch (NSException *exception)
+        {
+            //Do nothing;
+            continue;
+        }
+        
+        for(int i=0; i<etas.count; i++)
+        {
+            request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+            predicate = [NSPredicate predicateWithFormat:@"busID = %@", [[etas objectAtIndex:i] objectForKey:@"idAutocarro"]];
+            [request setPredicate: predicate];
+            NSMutableArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
+            
+            if(results.count > 0)
+            {
+                bus = [results objectAtIndex:0];
+                //Should not be hardcoded like this!!
+                if([bus.lineID isEqualToString:@"1"])
+                {
+                    subtitle = [subtitle stringByAppendingFormat:@"Verde"];
+                }
+                else
+                {
+                    subtitle = [subtitle stringByAppendingFormat:@"Vermelho"];
+                }
+                
+                subtitle = [subtitle stringByAppendingFormat:@"(#%@): %d:%d, ", bus.busID, [[[etas objectAtIndex:i] objectForKey:@"eta"] intValue]/60, [[[etas objectAtIndex:i] objectForKey:@"eta"] intValue]%60];
+            }
+        }
+        
+        objects = [[NSArray alloc] initWithObjects:annotation, subtitle, nil];
+        [self performSelectorOnMainThread:@selector(setBusstopAnnotationSubTitle:) withObject:objects waitUntilDone:YES];
+        [NSThread sleepForTimeInterval:3];
+    }
+}
+
+- (void) setBusstopAnnotationSubTitle:(NSArray *) annotationAndSubtitle
+{
+    BusstopAnnotation *annotation = [annotationAndSubtitle objectAtIndex:0];
+    NSString *subTitle = [annotationAndSubtitle objectAtIndex:1];
+    
+    [annotation setSubtitle:subTitle];
 }
 
 - (void) addBusAnnotation:(BusAnnotation*) annotation
