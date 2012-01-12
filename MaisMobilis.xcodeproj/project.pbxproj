@@ -338,7 +338,6 @@
 		E215E44414AA979400C3A4F2 = {
 			isa = PBXGroup;
 			children = (
-				E2B384F014BE511700465021 /* Reachability */,
 				D7F6103914BE798E00A48958 /* Default@2x.png */,
 				D7C4AFD714BD3FC600EDAE7A /* logo.png */,
 				E270F11F14B1407200AA4531 /* Images */,
