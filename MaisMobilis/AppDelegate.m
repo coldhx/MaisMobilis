@@ -13,7 +13,9 @@
 #import "Webservice/WebBus.h"
 #import "Webservice/WebBusstopLines.h"
 #import "Webservice/WebVersion.h"
+#import "MaisMobilisWebService.h"
 #import "Version.h"
+#import "Reachability.h"
 
 @implementation AppDelegate
 
@@ -24,10 +26,33 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Check connectivity
+    NetworkStatus networkStatus = [[Reachability reachabilityWithHostName:[MaisMobilisWebService getAPIUrl]] currentReachabilityStatus];
+    
+    if(networkStatus == NotReachable)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sem ligação à Internet!" message:@"Esta aplicação requer ligação à internet. Poderá utilizar as suas funções que não façam uso de conectividade à Internet." delegate:nil cancelButtonTitle:@"Continuar" otherButtonTitles:@"Definições", nil];
+        
+        [alert show];
+    }
+    
+    //Register for connectivity notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    maisMobilisServerReachable = [Reachability reachabilityWithHostName:[MaisMobilisWebService getAPIUrl]];
+    [maisMobilisServerReachable startNotifier];
+    
+    //Initiallize CoreData data
     [self initializeCoreData];
+    
     //Begin pulling bus info from the Webservice from time to time.
     [self performSelectorInBackground:@selector(refreshBuses) withObject:nil];
+    
     return YES;
+}
+
+- (void) reachabilityChanged: (NSNotification* )note;
+{
+    NSLog(@"%@", [note description]);
 }
 
 - (void) initializeCoreData
@@ -36,7 +61,7 @@
     NSManagedObjectContext *context = delegate.managedObjectContext;
     
     //Check database version
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Versions" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Version" inManagedObjectContext:context];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
     NSError *error = nil;
     NSArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
@@ -46,7 +71,7 @@
     if(results.count == 0)
     {
         update = YES;
-        Version *version = [NSEntityDescription insertNewObjectForEntityForName:@"Versions" inManagedObjectContext:context];
+        Version *version = [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:context];
         version.dataVersion = [WebVersion getDataVersion];
     }
     else

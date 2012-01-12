@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Reachability;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    Reachability *maisMobilisServerReachable;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -21,4 +25,5 @@
 - (void) refreshBuses;
 - (void) resetStore;
 - (void) initializeCoreData;
+- (void) reachabilityChanged: (NSNotification* )note;
 @end

@@ -178,6 +178,8 @@
 		E270F10E14B1398400AA4531 /* WebReferencePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebReferencePoint.m; path = MaisMobilis/Webservice/WebReferencePoint.m; sourceTree = "<group>"; };
 		E270F12014B1410800AA4531 /* greensquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greensquare.png; path = MaisMobilis/Images/greensquare.png; sourceTree = "<group>"; };
 		E270F12114B1410800AA4531 /* redsquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redsquare.png; path = MaisMobilis/Images/redsquare.png; sourceTree = "<group>"; };
+		E2B384F114BE51A200465021 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = MaisMobilis/Reachability.h; sourceTree = "<group>"; };
+		E2B384F214BE51A200465021 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = MaisMobilis/Reachability.m; sourceTree = "<group>"; };
 		E2B6173D14B1EA01008E175C /* redandgreensquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redandgreensquare.png; path = MaisMobilis/Images/redandgreensquare.png; sourceTree = "<group>"; };
 		E2B6174B14B21598008E175C /* greenbus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenbus.png; path = MaisMobilis/Images/greenbus.png; sourceTree = "<group>"; };
 		E2B6174C14B21598008E175C /* redbus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redbus.png; path = MaisMobilis/Images/redbus.png; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 		E215E44414AA979400C3A4F2 = {
 			isa = PBXGroup;
 			children = (
+				E2B384F014BE511700465021 /* Reachability */,
 				D7C4AFD714BD3FC600EDAE7A /* logo.png */,
 				E270F11F14B1407200AA4531 /* Images */,
 				E25056CE14B0DCC200E23C40 /* MapKit.framework */,
@@ -405,6 +408,15 @@
 				E270F12114B1410800AA4531 /* redsquare.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		E2B384F014BE511700465021 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				E2B384F114BE51A200465021 /* Reachability.h */,
+				E2B384F214BE51A200465021 /* Reachability.m */,
+			);
+			name = Reachability;
 			sourceTree = "<group>";
 		};
 		E2E6142814AB9970007AF944 /* Webservice */ = {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="878" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="872" systemVersion="11B26" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Alert" representedClassName="Alert" syncable="YES">
         <attribute name="alertID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="busStopDelayNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -44,7 +44,7 @@
         <attribute name="lineID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="routeID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Versions" representedClassName="Version" syncable="YES">
+    <entity name="Version" representedClassName="Version" syncable="YES">
         <attribute name="dataVersion" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
@@ -55,6 +55,6 @@
         <element name="Line" positionX="-137" positionY="171" width="128" height="90"/>
         <element name="ReferencePoint" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Route" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="Versions" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="Version" positionX="160" positionY="192" width="128" height="60"/>
     </elements>
 </model>

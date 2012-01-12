@@ -11,5 +11,7 @@
 #import "SBJson.h"
 
 @interface MaisMobilisWebService : NSObject
+
 +(NSArray *) doGET:(NSString *)resource withQueryString:(NSString *)queryString;
++(NSString *)getAPIUrl;
 @end

@@ -45,5 +45,10 @@ NSString *APIKEY = @"gA5etlof24DX6JnoaaZAALJC73KzemHAClTIItB0yBOkmGYvdICqlbnWK2C
     return jsonObjects;
 }
 
++(NSString *)getAPIUrl
+{
+    return APIURL;
+}
+
 
 @end
