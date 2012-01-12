@@ -7,7 +7,10 @@
 //
 
 #import "NewRouteTableViewController.h"
-#import "RouteBusStopPickerTVController.h"
+#import "InitBusStopPickerTVController.h"
+#import "DestBusStopPickerTVController.h"
+#import "RoutesTableViewController.h"
+#import "DataController.h"
 
 #define DESIGNATION_SECTION 0
 #define ORIGSTOP_SECTION 1
@@ -16,6 +19,8 @@
 
 @implementation NewRouteTableViewController
 @synthesize route;
+@synthesize textField;
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -39,24 +44,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -114,7 +112,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"newRouteCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -124,24 +122,45 @@
    
     CGRect Field1Frame = CGRectMake (10, 10, 290, 70);
     NSString *text = nil;
-    UITextField *textField = nil;
+    BusStop *bs = nil;
     
     switch (indexPath.section) {
         case DESIGNATION_SECTION:
             text = @"";
-            textField = [[UITextField alloc] initWithFrame:Field1Frame];
-            textField.tag = 20;
-            [cell.contentView addSubview:textField];
-            textField = (UITextField *)[cell.contentView viewWithTag:20];
+            if(textField == nil) 
+            {
+                textField = [[UITextField alloc] initWithFrame:Field1Frame];
+                textField.tag = 20;
+                [cell.contentView addSubview:textField];
+                textField = (UITextField *)[cell.contentView viewWithTag:20];
+            }
             
             break;
         case ORIGSTOP_SECTION:
-            text = @"Vazio";
+            if([route initialBusStopID] != nil)
+            {
+                bs = [DataController getBusStopByBusStopID:[route initialBusStopID]];
+                text = bs.name;
+            }
+            else
+            {
+                text = @"Vazio";
+            }
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
+            
         case DESTSTOP_SECTION:
-            text = @"Vazio";
+            if([route destinBusStopID] != nil)
+            {
+                bs = [DataController getBusStopByBusStopID:[route destinBusStopID]];
+                text = bs.name;
+            }
+            else
+            {
+                text = @"Vazio"; 
+            }
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
             
         default:
             break;
@@ -163,14 +182,12 @@
     
     switch (section) {
         case ORIGSTOP_SECTION:
-            nextViewController = [[RouteBusStopPickerTVController alloc] initWithStyle:UITableViewStyleGrouped];
-            ((RouteBusStopPickerTVController*) nextViewController).route = self.route;
-            ((RouteBusStopPickerTVController*) nextViewController).type = 1;
+            nextViewController = [[InitBusStopPickerTVController alloc] initWithStyle:UITableViewStyleGrouped];
+            ((InitBusStopPickerTVController*) nextViewController).route = self.route;
             break;
         case DESTSTOP_SECTION:
-            nextViewController = [[RouteBusStopPickerTVController alloc] initWithStyle:UITableViewStyleGrouped];
-            ((RouteBusStopPickerTVController*) nextViewController).route = self.route;
-            ((RouteBusStopPickerTVController*) nextViewController).type = 2;
+            nextViewController = [[DestBusStopPickerTVController alloc] initWithStyle:UITableViewStyleGrouped];
+            ((DestBusStopPickerTVController*) nextViewController).route = self.route;
             break;
             
         default:
@@ -181,5 +198,39 @@
         [self.navigationController pushViewController:nextViewController animated:YES];
     }
 }
+
+- (IBAction)save:(id)sender {
+    route.desination = textField.text;
+    
+    NSError *error = nil;
+	if (![route.managedObjectContext save:&error]) 
+    {
+		
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		return;
+	}
+    
+    [self.delegate newRouteTableViewController: self didAddRoute:route];
+    
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)cancel:(id)sender {
+    [route.managedObjectContext deleteObject:route];
+    
+    NSError *error = nil;
+	if (![route.managedObjectContext save:&error]) 
+    {
+		
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		return;
+	}
+    
+    [self.delegate newRouteTableViewController: self didAddRoute:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
 
 @end

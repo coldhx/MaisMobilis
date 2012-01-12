@@ -17,11 +17,14 @@
 @interface DataController : NSObject
 
 + (NSArray *) getLineIdsForBusStopID :(NSString *) busStopID;
-+ (NSArray *) getAllBusStops;
++ (NSMutableArray *) getAllBusStops;
 + (NSString*) getLineNameByLineID : (NSString *) lineID;
 + (NSString *) getNextStopByBusID: (NSString *) busID;
 + (NSString *) getEtaByBusID : (NSString *) busID;
 + (NSArray *) getAllBuses;
 + (Bus *) getBusByBusID:(NSString *) busID;
-+ (NSArray *) getBusStopsWithSameLineIdAs: (NSString *) bsID;
++ (BusStop *) getBusStopByBusStopID: (NSString *) bsID;
++ (NSMutableArray *) getBusStopsWithSameLineIdAs: (NSString *) bsID;
++ (NSMutableArray *) getAllRoutes;
+
 @end

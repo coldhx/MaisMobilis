@@ -1,19 +1,19 @@
 //
-//  RouteDetailViewController.h
+//  RouteDetailTableViewController.h
 //  MaisMobilis
 //
-//  Created by Rita Silva on 1/9/12.
+//  Created by Rita Silva on 1/12/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "Route.h"
 
-@interface RouteDetailViewController : UIViewController
-{
-    Route *_route;
-}
 
+@interface RouteDetailTableViewController : UITableViewController
+{
+    Route *route;
+}
 @property (nonatomic, retain) Route *route;
 
 @end

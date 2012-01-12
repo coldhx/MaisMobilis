@@ -8,16 +8,13 @@
 
 #import "RoutesTableViewController.h"
 #import "DataController.h"
-#import "RouteDetailViewController.h"
+#import "RouteDetailTableViewController.h"
 #import "NewRouteTableViewController.h"
 #import "Route.h"
 #import "AppDelegate.h"
 
 
-@implementation RoutesTableViewController{
-    
-    __weak IBOutlet UILabel *textLabelOutlet;
-}
+@implementation RoutesTableViewController
 
 @synthesize routes = _routes;
 
@@ -43,8 +40,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,7 +50,6 @@
 
 - (void)viewDidUnload
 {
-    textLabelOutlet = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -64,6 +58,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _routes = [DataController getAllRoutes];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -102,82 +98,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"routeCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    
-    
     Route *r = [_routes objectAtIndex:[indexPath row]];
-    textLabelOutlet.text = [r desination];
-    
-    //UILabel *designationLabel = (UILabel *)[cell viewWithTag:1];
-    //[designationLabel setText:[r desination]];
-    
+    cell.textLabel.text = r.desination;
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showRouteDetails"]) 
+    if ([[segue identifier] isEqualToString:@"showRouteDetail"]) 
     {
-        RouteDetailViewController *routeDetailVC = [segue destinationViewController];
+        RouteDetailTableViewController *routeDetailVC = [segue destinationViewController];
         NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
         if(_routes != nil) 
         {
@@ -193,6 +133,12 @@
         Route *newRoute   =[NSEntityDescription insertNewObjectForEntityForName:@"Route" inManagedObjectContext: context];
         newRouteTVC.route = newRoute;
     }
+}
+
+- (void) newRouteTableViewController: (NewRouteTableViewController *) newRouteTableViewController didAddRoute: (Route *) route {
+    if(route)
+        [self.tableView reloadData];
+    
 }
 
 

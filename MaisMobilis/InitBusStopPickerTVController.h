@@ -11,16 +11,18 @@
 
 @class Route;
 
-@interface RouteBusStopPickerTVController : UITableViewController 
+@interface InitBusStopPickerTVController : UITableViewController 
 {
+    NSIndexPath * checkedIndexPath;
     @private
         Route *route;
-        NSArray *busStops;
+        NSMutableArray *busStops;
 
 }
 
-@property (nonatomic, retain, readonly) NSArray *busStops;
+@property (nonatomic, retain, readonly) NSMutableArray *busStops;
 @property (nonatomic, retain) Route *route;
 @property (nonatomic) NSInteger type;
+@property (nonatomic, retain) NSIndexPath *checkedIndexPath;
 
 @end

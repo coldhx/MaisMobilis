@@ -6,22 +6,21 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "RouteBusStopPickerTVController.h"
+#import "InitBusStopPickerTVController.h"
 #import "NewRouteTableViewController.h"
 #import "DataController.h"
 
-#define ORIGIN 1
-#define DEST 2
-
-@interface RouteBusStopPickerTVController()
-@property (nonatomic, retain) NSArray *busStops;
+@interface InitBusStopPickerTVController()
+@property (nonatomic, retain) NSMutableArray *busStops;
 @end
 
-@implementation RouteBusStopPickerTVController
+@implementation InitBusStopPickerTVController
+
 
 @synthesize busStops;
 @synthesize route;
 @synthesize type;
+@synthesize checkedIndexPath;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -46,32 +45,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if(type == ORIGIN)
+    
+    if([route destinBusStopID] != nil)
     {
-        if([route destinBusStopID] != nil)
-        {
-            busStops = [DataController getBusStopsWithSameLineIdAs:[route destinBusStopID]];
-        }
-        else
-            busStops = [DataController getAllBusStops];
-            
+        busStops = [DataController getBusStopsWithSameLineIdAs:[route destinBusStopID]];
     }
-    else if(type == DEST)
-    {
-        if([route initialBusStopID] != nil)
-        {
-            busStops = [DataController getBusStopsWithSameLineIdAs:[route initialBusStopID]];
-        }
-        else
-           busStops = [DataController getAllBusStops];  
-    }
+    else
+        busStops = [DataController getAllBusStops];
+   
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    busStops = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -124,10 +111,18 @@
     BusStop *bs = [busStops objectAtIndex:[indexPath row]];
     cell.textLabel.text = bs.name;
     
-    if ((type == ORIGIN && bs.busStopID == route.initialBusStopID) 
-        || (type == DEST && bs.busStopID == route.destinBusStopID)){
+    if([self.checkedIndexPath isEqual:indexPath])
+    {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
+    if([self.checkedIndexPath isEqual:indexPath])
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else 
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    } 
     
     return cell;
 }
@@ -137,31 +132,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     BusStop *bs = [busStops objectAtIndex:[indexPath row]];
-    if(type == ORIGIN) 
+    
+    /*if([route initialBusStopID] != nil)
     {
-        if([route initialBusStopID] != nil)
-        {
-            NSInteger index = [busStops indexOfObject:bs];
-            NSIndexPath *selectionIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
-            UITableViewCell *checkedCell = [tableView cellForRowAtIndexPath:selectionIndexPath];
-            checkedCell.accessoryType = UITableViewCellAccessoryNone;
-        }
-        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark]; 
-        route.initialBusStopID = [bs busStopID];
-    }
-    else if(type == DEST)
+        NSInteger index = [busStops indexOfObject:bs];
+        NSIndexPath *selectionIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        UITableViewCell *checkedCell = [tableView cellForRowAtIndexPath:selectionIndexPath];
+        checkedCell.accessoryType = UITableViewCellAccessoryNone;
+    }*/
+    
+    if(self.checkedIndexPath)
     {
-        if([route destinBusStopID] != nil)
-        {
-            NSInteger index = [busStops indexOfObject:bs];
-            NSIndexPath *selectionIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
-            UITableViewCell *checkedCell = [tableView cellForRowAtIndexPath:selectionIndexPath];
-            checkedCell.accessoryType = UITableViewCellAccessoryNone;
-        }
-        [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType:UITableViewCellAccessoryCheckmark]; 
-        route.destinBusStopID = [bs busStopID];
+        UITableViewCell* uncheckCell = [tableView cellForRowAtIndexPath:self.checkedIndexPath];
+        uncheckCell.accessoryType = UITableViewCellAccessoryNone;
     }
+    
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    self.checkedIndexPath = indexPath;
+    route.initialBusStopID = [bs busStopID];
+    
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

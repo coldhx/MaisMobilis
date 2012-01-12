@@ -26,7 +26,7 @@
     return results;
 }
 
-+ (NSArray *) getAllBusStops 
++ (NSMutableArray *) getAllBusStops 
 {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
@@ -34,7 +34,7 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
     
     NSError *error = nil;
-    NSArray *busStops = [context executeFetchRequest:request error: &error] ;
+    NSMutableArray *busStops =  [[context executeFetchRequest:request error:&error] mutableCopy];
     
     if(busStops == nil)
     {
@@ -122,8 +122,29 @@
     return [bus objectAtIndex:0];
 }
 
++ (BusStop *) getBusStopByBusStopID: (NSString *) bsID
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"busStopID = %@", bsID];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSMutableArray *busStop = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(busStop == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    return [busStop objectAtIndex:0];
 
-+ (NSArray *) getBusStopsWithSameLineIdAs: (NSString *) bsID
+}
+
++ (NSMutableArray *) getBusStopsWithSameLineIdAs: (NSString *) bsID
 {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
@@ -149,17 +170,39 @@
     request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
     [request setPredicate:predicate];
     
-    NSArray *res = [[context executeFetchRequest:request error:&error] mutableCopy];
+    NSArray *relations = [[context executeFetchRequest:request error:&error] mutableCopy];
     
-    if(res == nil)
+    if(relations == nil)
     {
         NSLog(@"%@", error.description);
     }
     
-    return res;
-   
+    NSMutableArray *res = [[NSMutableArray alloc] init];
+    
+    for (int i=0; i<[relations count]; i++) {
+        [res insertObject:[self getBusStopByBusStopID:[[relations objectAtIndex:i] busStopID]] atIndex:i];
+    }
+
+    return res;   
 }
 
++ (NSMutableArray *)getAllRoutes
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Route"                                                                                                                               inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    
+    NSError *error = nil;
+    NSMutableArray *routes =  [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(routes == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    return routes;
 
+}
 
 @end
