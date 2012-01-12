@@ -44,24 +44,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -119,7 +112,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"newRouteCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -134,10 +127,13 @@
     switch (indexPath.section) {
         case DESIGNATION_SECTION:
             text = @"";
-            textField = [[UITextField alloc] initWithFrame:Field1Frame];
-            textField.tag = 20;
-            [cell.contentView addSubview:textField];
-            textField = (UITextField *)[cell.contentView viewWithTag:20];
+            if(textField == nil) 
+            {
+                textField = [[UITextField alloc] initWithFrame:Field1Frame];
+                textField.tag = 20;
+                [cell.contentView addSubview:textField];
+                textField = (UITextField *)[cell.contentView viewWithTag:20];
+            }
             
             break;
         case ORIGSTOP_SECTION:
@@ -147,7 +143,9 @@
                 text = bs.name;
             }
             else
+            {
                 text = @"Vazio";
+            }
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
             
@@ -158,8 +156,11 @@
                 text = bs.name;
             }
             else
-                text = @"Vazio";            
+            {
+                text = @"Vazio"; 
+            }
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
             
         default:
             break;
@@ -212,6 +213,24 @@
     [self.delegate newRouteTableViewController: self didAddRoute:route];
     
     
-   [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
+- (IBAction)cancel:(id)sender {
+    [route.managedObjectContext deleteObject:route];
+    
+    NSError *error = nil;
+	if (![route.managedObjectContext save:&error]) 
+    {
+		
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		return;
+	}
+    
+    [self.delegate newRouteTableViewController: self didAddRoute:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+
 @end

@@ -25,6 +25,8 @@
 @property (nonatomic, retain) id <NewRouteTableViewController> delegate;
 
 - (IBAction)save:(id)sender;
+- (IBAction)cancel:(id)sender;
+- (NSString *) getImageName: (NSString*) busStopID;
 
 @end
 

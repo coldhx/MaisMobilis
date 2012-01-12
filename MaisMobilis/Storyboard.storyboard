@@ -234,31 +234,31 @@
             </objects>
             <point key="canvasLocation" x="-1299" y="1291"/>
         </scene>
-        <scene sceneID="cQ7-Ee-qsd">
+        <scene sceneID="URK-HO-okb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nRZ-eC-WK0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="Fc6-6m-U44" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Percursos" id="obe-R9-Iww"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="TMO-Un-rhS">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rny-VI-d9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="x7L-0a-oCj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Percursos" id="Bxk-ON-jWt"/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="SbH-Tb-UoV">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="489-xr-PTV" kind="relationship" relationship="rootViewController" id="4Us-GZ-KRj"/>
+                        <segue destination="lQC-WH-Ey0" kind="relationship" relationship="rootViewController" id="47L-Zh-JfS"/>
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-1730" y="1868"/>
+            <point key="canvasLocation" x="-1730" y="1867"/>
         </scene>
-        <scene sceneID="Thj-JK-1Go">
+        <scene sceneID="W8H-SP-Jh4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lsJ-Yn-k8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="489-xr-PTV" customClass="RoutesTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RtM-G1-TyL">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jpE-uN-c9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="lQC-WH-Ey0" customClass="RoutesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Q1V-bA-ZIm">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JJR-bm-Jop">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="routeCell" id="5Pd-zK-xfy">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -267,36 +267,68 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="wbM-f4-fVr" kind="push" identifier="showRouteDetails" id="w38-SC-l1o"/>
+                                    <segue destination="JVp-R1-Doh" kind="push" identifier="showRouteDetail" id="Xh6-tQ-kLv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="489-xr-PTV" id="VTI-PD-W9P"/>
-                            <outlet property="delegate" destination="489-xr-PTV" id="fod-br-h0p"/>
+                            <outlet property="dataSource" destination="lQC-WH-Ey0" id="2S6-SG-LUp"/>
+                            <outlet property="delegate" destination="lQC-WH-Ey0" id="vHv-jJ-Ucu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Percursos" id="qGT-3m-PU4">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Tu-UW-hVA">
+                    <navigationItem key="navigationItem" title="Percursos" id="qID-xZ-W1Y">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bdy-Ah-E4B">
                             <connections>
-                                <segue destination="n8p-3R-HdF" kind="push" identifier="addRoute" id="lG0-KZ-fsl"/>
+                                <segue destination="bVp-qf-W8u" kind="push" identifier="addRoute" id="n7X-R4-ZDJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-1299" y="1868"/>
+            <point key="canvasLocation" x="-1299" y="1867"/>
         </scene>
-        <scene sceneID="ZYr-AF-G9I">
+        <scene sceneID="pHD-b6-Y1i">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RwG-kB-tw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="n8p-3R-HdF" customClass="NewRouteTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Nvf-3Y-i8f">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9c2-OF-Qzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="JVp-R1-Doh" customClass="RouteDetailTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="hyr-uU-47s">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3iv-0T-zee">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Gfx-mn-FJI">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="On2-rN-GDz" kind="push" identifier="showBusStopDetail" id="RC8-bx-vPZ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="JVp-R1-Doh" id="q2u-TM-aao"/>
+                            <outlet property="delegate" destination="JVp-R1-Doh" id="Y2E-xx-aEn"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Detalhes" id="UGE-To-1jJ"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="-868" y="1867"/>
+        </scene>
+        <scene sceneID="8nh-sE-hTP">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eQU-Sc-91F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="bVp-qf-W8u" customClass="NewRouteTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="t7K-ha-mSd">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newRouteCell" id="9aQ-4R-Pb5">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -307,36 +339,25 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="n8p-3R-HdF" id="BrB-2R-PYk"/>
-                            <outlet property="delegate" destination="n8p-3R-HdF" id="jQN-eD-rI1"/>
+                            <outlet property="dataSource" destination="bVp-qf-W8u" id="VvH-bO-efA"/>
+                            <outlet property="delegate" destination="bVp-qf-W8u" id="4UX-qR-xCa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Novo percurso" id="wv9-gH-H3y">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="4j6-3C-Xej">
+                    <navigationItem key="navigationItem" title="Novo percurso" id="nV8-8I-CLc">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mtW-ft-WpA">
                             <connections>
-                                <action selector="save:" destination="n8p-3R-HdF" id="F7Q-gI-Z3P"/>
+                                <action selector="cancel:" destination="bVp-qf-W8u" id="oz0-fv-AFB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="CQ8-xa-L0g">
+                            <connections>
+                                <action selector="save:" destination="bVp-qf-W8u" id="X98-QH-rla"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-435" y="1873"/>
-        </scene>
-        <scene sceneID="EyQ-Dt-N4H">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0tK-bD-lDJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="wbM-f4-fVr" customClass="RouteDetailViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JBD-ZG-3Pr">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Detalhes" id="jEQ-OB-n0e">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="YBV-Vy-KM9"/>
-                    </navigationItem>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="-868" y="1868"/>
+            <point key="canvasLocation" x="-435" y="1867"/>
         </scene>
         <scene sceneID="cMK-Tl-NdX">
             <objects>
@@ -661,8 +682,8 @@
                         <segue destination="qLG-rR-Av8" kind="relationship" relationship="viewControllers" id="Ei5-EZ-qha"/>
                         <segue destination="NzP-3L-Hu6" kind="relationship" relationship="viewControllers" id="lW1-Dy-qdP"/>
                         <segue destination="QcT-Fs-MgH" kind="relationship" relationship="viewControllers" id="WBx-GX-iKF"/>
-                        <segue destination="Fc6-6m-U44" kind="relationship" relationship="viewControllers" id="RQO-u8-NiS"/>
                         <segue destination="HW6-9T-FnU" kind="relationship" relationship="viewControllers" id="jSf-53-hvL"/>
+                        <segue destination="x7L-0a-oCj" kind="relationship" relationship="viewControllers" id="9BD-Kz-Mgh"/>
                     </connections>
                 </tabBarController>
             </objects>
@@ -725,11 +746,12 @@
         <class className="NewRouteTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewRouteTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="save:"/>
             </relationships>
         </class>
-        <class className="RouteDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RouteDetailViewController.h"/>
+        <class className="RouteDetailTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RouteDetailTableViewController.h"/>
         </class>
         <class className="RoutesTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RoutesTableViewController.h"/>
@@ -743,4 +765,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="RC8-bx-vPZ"/>
+    </inferredMetricsTieBreakers>
 </document>
