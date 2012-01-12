@@ -62,7 +62,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" id="P4X-x2-JnA">
-                                            <rect key="frame" x="7" y="4" width="35" height="35"/>
+                                            <rect key="frame" x="20" y="14" width="15" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -133,7 +133,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" id="TX1-Fw-I21">
-                                            <rect key="frame" x="7" y="4" width="35" height="35"/>
+                                            <rect key="frame" x="20" y="14" width="15" height="15"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -169,7 +169,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfK-UP-Ocm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="HW6-9T-FnU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Alerta" id="lj4-0O-sjP"/>
+                    <tabBarItem key="tabBarItem" title="Alertas" id="lj4-0O-sjP"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="WAL-aW-VcM">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -258,28 +258,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="idp-NY-1Y1" detailTextLabel="R6g-F2-CfE" style="IBUITableViewCellStyleSubtitle" id="JJR-bm-Jop">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JJR-bm-Jop">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="280" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="idp-NY-1Y1">
-                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R6g-F2-CfE">
-                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
@@ -299,9 +283,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="textLabelOutlet" destination="idp-NY-1Y1" id="qNh-c3-Gt2"/>
-                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-1299" y="1868"/>
@@ -330,7 +311,13 @@
                             <outlet property="delegate" destination="n8p-3R-HdF" id="jQN-eD-rI1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Novo percurso" id="wv9-gH-H3y"/>
+                    <navigationItem key="navigationItem" title="Novo percurso" id="wv9-gH-H3y">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="4j6-3C-Xej">
+                            <connections>
+                                <action selector="save:" destination="n8p-3R-HdF" id="F7Q-gI-Z3P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-435" y="1873"/>
@@ -737,6 +724,9 @@
         </class>
         <class className="NewRouteTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewRouteTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="save:"/>
+            </relationships>
         </class>
         <class className="RouteDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RouteDetailViewController.h"/>

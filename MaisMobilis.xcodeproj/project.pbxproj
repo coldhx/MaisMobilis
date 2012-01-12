@@ -41,10 +41,12 @@
 		D78BFAE914BB5C7700A602B9 /* AlertDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BFAE814BB5C7700A602B9 /* AlertDetailViewController.m */; };
 		D78BFAEC14BB5DAE00A602B9 /* RouteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78BFAEB14BB5DAE00A602B9 /* RouteDetailViewController.m */; };
 		D790153914BC93270087EBE2 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = D790153814BC93270087EBE2 /* Version.m */; };
-		D7C4AFCD14BD22DB00EDAE7A /* RouteBusStopPickerTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C4AFCC14BD22DB00EDAE7A /* RouteBusStopPickerTVController.m */; };
+		D7C4AFCD14BD22DB00EDAE7A /* InitBusStopPickerTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C4AFCC14BD22DB00EDAE7A /* InitBusStopPickerTVController.m */; };
 		D7C4AFD414BD2D7700EDAE7A /* mapTab.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C4AFD314BD2D7700EDAE7A /* mapTab.png */; };
 		D7C4AFD814BD3FC600EDAE7A /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C4AFD714BD3FC600EDAE7A /* logo.png */; };
 		D7C7BFB814B34FB2007265CE /* BusesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C7BFB614B34FB2007265CE /* BusesTableViewController.m */; };
+		D7F6103A14BE798E00A48958 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7F6103914BE798E00A48958 /* Default@2x.png */; };
+		D7F6103E14BE892A00A48958 /* DestBusStopPickerTVController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F6103D14BE892A00A48958 /* DestBusStopPickerTVController.m */; };
 		E215E45414AA979400C3A4F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45314AA979400C3A4F2 /* UIKit.framework */; };
 		E215E45614AA979400C3A4F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45514AA979400C3A4F2 /* Foundation.framework */; };
 		E215E45814AA979400C3A4F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E215E45714AA979400C3A4F2 /* CoreGraphics.framework */; };
@@ -151,12 +153,15 @@
 		D78BFAEB14BB5DAE00A602B9 /* RouteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteDetailViewController.m; sourceTree = "<group>"; };
 		D790153714BC93270087EBE2 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
 		D790153814BC93270087EBE2 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
-		D7C4AFCB14BD22DB00EDAE7A /* RouteBusStopPickerTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteBusStopPickerTVController.h; sourceTree = "<group>"; };
-		D7C4AFCC14BD22DB00EDAE7A /* RouteBusStopPickerTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteBusStopPickerTVController.m; sourceTree = "<group>"; };
+		D7C4AFCB14BD22DB00EDAE7A /* InitBusStopPickerTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitBusStopPickerTVController.h; sourceTree = "<group>"; };
+		D7C4AFCC14BD22DB00EDAE7A /* InitBusStopPickerTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitBusStopPickerTVController.m; sourceTree = "<group>"; };
 		D7C4AFD314BD2D7700EDAE7A /* mapTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mapTab.png; path = MaisMobilis/Images/mapTab.png; sourceTree = "<group>"; };
 		D7C4AFD714BD3FC600EDAE7A /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D7C7BFB514B34FB2007265CE /* BusesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusesTableViewController.h; sourceTree = "<group>"; };
 		D7C7BFB614B34FB2007265CE /* BusesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusesTableViewController.m; sourceTree = "<group>"; };
+		D7F6103914BE798E00A48958 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		D7F6103C14BE892A00A48958 /* DestBusStopPickerTVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DestBusStopPickerTVController.h; sourceTree = "<group>"; };
+		D7F6103D14BE892A00A48958 /* DestBusStopPickerTVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DestBusStopPickerTVController.m; sourceTree = "<group>"; };
 		E215E44F14AA979400C3A4F2 /* MaisMobilis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaisMobilis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E215E45314AA979400C3A4F2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E215E45514AA979400C3A4F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -296,8 +301,10 @@
 				D78BFAEB14BB5DAE00A602B9 /* RouteDetailViewController.m */,
 				D759F68614BBD35300097C10 /* NewRouteTableViewController.h */,
 				D759F68714BBD35300097C10 /* NewRouteTableViewController.m */,
-				D7C4AFCB14BD22DB00EDAE7A /* RouteBusStopPickerTVController.h */,
-				D7C4AFCC14BD22DB00EDAE7A /* RouteBusStopPickerTVController.m */,
+				D7C4AFCB14BD22DB00EDAE7A /* InitBusStopPickerTVController.h */,
+				D7C4AFCC14BD22DB00EDAE7A /* InitBusStopPickerTVController.m */,
+				D7F6103C14BE892A00A48958 /* DestBusStopPickerTVController.h */,
+				D7F6103D14BE892A00A48958 /* DestBusStopPickerTVController.m */,
 			);
 			name = UIControllers;
 			sourceTree = "<group>";
@@ -329,6 +336,7 @@
 		E215E44414AA979400C3A4F2 = {
 			isa = PBXGroup;
 			children = (
+				D7F6103914BE798E00A48958 /* Default@2x.png */,
 				D7C4AFD714BD3FC600EDAE7A /* logo.png */,
 				E270F11F14B1407200AA4531 /* Images */,
 				E25056CE14B0DCC200E23C40 /* MapKit.framework */,
@@ -522,6 +530,7 @@
 				E2B6174E14B21598008E175C /* redbus.png in Resources */,
 				D7C4AFD414BD2D7700EDAE7A /* mapTab.png in Resources */,
 				D7C4AFD814BD3FC600EDAE7A /* logo.png in Resources */,
+				D7F6103A14BE798E00A48958 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,7 +596,8 @@
 				D7817B5914BC902600CBCD00 /* ReferencePoint.m in Sources */,
 				D7817B5C14BC903F00CBCD00 /* Route.m in Sources */,
 				D790153914BC93270087EBE2 /* Version.m in Sources */,
-				D7C4AFCD14BD22DB00EDAE7A /* RouteBusStopPickerTVController.m in Sources */,
+				D7C4AFCD14BD22DB00EDAE7A /* InitBusStopPickerTVController.m in Sources */,
+				D7F6103E14BE892A00A48958 /* DestBusStopPickerTVController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

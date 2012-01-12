@@ -14,10 +14,7 @@
 #import "AppDelegate.h"
 
 
-@implementation RoutesTableViewController{
-    
-    __weak IBOutlet UILabel *textLabelOutlet;
-}
+@implementation RoutesTableViewController
 
 @synthesize routes = _routes;
 
@@ -43,8 +40,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -55,7 +50,6 @@
 
 - (void)viewDidUnload
 {
-    textLabelOutlet = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -64,6 +58,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    _routes = [DataController getAllRoutes];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -109,10 +105,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    
-    
     Route *r = [_routes objectAtIndex:[indexPath row]];
-    textLabelOutlet.text = [r desination];
+    cell.textLabel.text = r.desination;
     
     //UILabel *designationLabel = (UILabel *)[cell viewWithTag:1];
     //[designationLabel setText:[r desination]];
@@ -193,6 +187,11 @@
         Route *newRoute   =[NSEntityDescription insertNewObjectForEntityForName:@"Route" inManagedObjectContext: context];
         newRouteTVC.route = newRoute;
     }
+}
+
+- (void) newRouteTableViewController: (NewRouteTableViewController *) newRouteTableViewController didAddRoute: (Route *) route {
+    [self.tableView reloadData];
+    
 }
 
 

@@ -10,9 +10,9 @@
 
 @interface StopTableViewController : UITableViewController
 {
-    NSArray *_busStops;
+    NSMutableArray *_busStops;
 }
 
-@property (nonatomic, retain) NSArray *busStops;
+@property (nonatomic, retain) NSMutableArray *busStops;
 
 @end
