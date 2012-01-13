@@ -128,6 +128,9 @@
     CGRect Field1Frame = CGRectMake (10, 10, 290, 70);
     NSString *text = nil;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"HH:mm";
+    
     switch (indexPath.section) {
         case NUMBUSSTOPS_SECTION:
             text =@"";
@@ -149,11 +152,12 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             break;
         case TIMES_SECTION:
-            switch (indexPath.row) {
+            switch (indexPath.row)
+            {
                 case 0:
                     if([alert startTime] != nil)
                     {
-                    
+                        text = [dateFormatter stringFromDate:[alert startTime]];
                     }
                     else
                         text = @"Hora de início";
@@ -161,10 +165,10 @@
                 case 1:
                     if([alert stopTime] != nil)
                     {
-                        
+                        text = [dateFormatter stringFromDate:[alert stopTime]];
                     }
                     else
-                        text = @"Hora final";
+                        text = @"Hora de fim";
                     
                 default:
                     break;
@@ -231,6 +235,18 @@
             ((RoutePickerTableViewController*) nextViewController).alert = self.alert;
             break;
             
+        case TIMES_SECTION:
+            if(indexPath.row == 0)
+            {
+                [self showUIDatePickerFor:UIDATEPICKERSTARTTIME];
+            }
+            else if(indexPath.row == 1)
+            {
+                [self showUIDatePickerFor:UIDATEPICKERSTOPTIME];
+            }
+            
+            break;
+            
         default:
             break;
     }
@@ -240,7 +256,78 @@
     }
 }
 
-- (IBAction)save:(id)sender {
+- (void) showUIDatePickerFor:(int) element
+{
+    actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    
+    [actionSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    
+    pickerView = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, 0, 0)];
+    pickerView.datePickerMode = UIDatePickerModeTime;
+    
+    [actionSheet addSubview:pickerView];
+    
+    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Guardar"]];
+    closeButton.momentary = YES;
+    closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    closeButton.tintColor = [UIColor blackColor];
+    
+    SEL selector = element == UIDATEPICKERSTARTTIME ? @selector(saveStartTime) : @selector(saveStopTime);
+    
+    [closeButton addTarget:self action:selector forControlEvents:UIControlEventValueChanged];
+    
+    [actionSheet addSubview:closeButton];
+    [actionSheet showInView:[[UIApplication sharedApplication] keyWindow]];
+    [actionSheet setBounds:CGRectMake(0, 0, 320, 485)];
+}
+
+- (void) saveStartTime
+{
+    [self saveTimeFor:UIDATEPICKERSTARTTIME];
+}
+
+- (void) saveStopTime
+{
+    
+    [self saveTimeFor:UIDATEPICKERSTOPTIME];
+}
+
+- (void) saveTimeFor:(int) element
+{
+    if(element == UIDATEPICKERSTARTTIME)
+    {
+        alert.startTime = pickerView.date;
+    }
+    else if(element == UIDATEPICKERSTOPTIME)
+    {
+        alert.stopTime = pickerView.date;
+    }
+    
+    [[self tableView] reloadData];
+    
+    //Dismiss action sheet
+    if(actionSheet != nil)
+    {
+        [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    }
+}
+
+- (IBAction)save:(id)sender
+{
+    alert.busStopDelayNumber = [NSNumber numberWithInt:[busStopsNumber.text intValue]];
+    
+    NSError *error = nil;
+    
+	if (![alert.managedObjectContext save:&error]) 
+    {
+		
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		return;
+	}
+    
+    [self.delegate newAlertTableViewController: self didAddAlert:alert];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)cancel:(id)sender {

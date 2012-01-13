@@ -46,4 +46,6 @@
 + (NSString *) getRouteNameForRouteID: (NSString*) routeID;
 + (NSString *) getLineIdsStringForBusStop: (BusStop*) busStop;
 + (NSString *) getLineNameForBusID: (NSString *) busID;
++ (NSMutableArray *) getAllAlerts;
+
 @end

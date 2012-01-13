@@ -349,4 +349,21 @@
     return r;
 }
 
++ (NSMutableArray *) getAllAlerts
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Alert" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    
+    NSError *error = nil;
+    NSMutableArray *alerts = [[context executeFetchRequest:request error:&error] mutableCopy];
+    if(alerts == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    return alerts;
+}
+
 @end

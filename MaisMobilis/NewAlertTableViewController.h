@@ -16,12 +16,17 @@
 @protocol NewAlertTableViewController;
 @class Alert;
 
+#define UIDATEPICKERSTARTTIME 0
+#define UIDATEPICKERSTOPTIME 1
+
 @interface NewAlertTableViewController : UITableViewController <UINavigationControllerDelegate>
 {
     @private
     Alert* alert;
     UITextField *busStopsNumber;
     id <NewAlertTableViewController> delegate;
+    UIActionSheet *actionSheet;
+    UIDatePicker *pickerView;
 }
 
 @property (nonatomic, retain) Alert *alert;
@@ -30,6 +35,11 @@
 
 - (IBAction)save:(id)sender;
 - (IBAction)cancel:(id)sender;
+
+- (void) showUIDatePickerFor:(int) element;
+- (void) saveStartTime;
+- (void) saveStopTime;
+- (void) saveTimeFor:(int) element;
 
 @end
 
