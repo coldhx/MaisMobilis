@@ -153,7 +153,7 @@
                 case 0:
                     if([alert startTime] != nil)
                     {
-#warning program stuffs here
+                    
                     }
                     else
                         text = @"Hora de início";
@@ -161,10 +161,10 @@
                 case 1:
                     if([alert stopTime] != nil)
                     {
-#warning program stuffs here
+                        
                     }
                     else
-                        text = @"Hora de fim";
+                        text = @"Hora final";
                     
                 default:
                     break;

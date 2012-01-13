@@ -306,4 +306,47 @@
     return [r desination];
 }
 
++ (NSString *) getLineIdsStringForBusStop: (BusStop*) busStop
+{
+    NSString *ret = @"N/A";
+    NSArray *results = [self getLineIdsForBusStopID:busStop.busStopID];
+    BusStop_Line* bl = [results objectAtIndex:0];
+    ret = bl.lineID;
+    
+    if([results count]>1)
+    {
+        for(int i=1; i<results.count; i++)
+        {
+            bl = [results objectAtIndex:i];
+            ret = [ret stringByAppendingFormat:@", %@", bl.lineID];
+        }
+        
+    }
+    return ret;
+}
+
++ (NSString *) getLineNameForBusID: (NSString *) busID
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"busID = %@", busID];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSMutableArray *bus = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(bus == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    Bus *b = [bus objectAtIndex:0];
+    NSString *r = [self getLineNameByLineID:[b lineID]];
+    
+    return r;
+}
+
 @end

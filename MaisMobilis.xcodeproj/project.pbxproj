@@ -31,6 +31,7 @@
 		D752E68A14BFDBCF00A2455A /* busTab.png in Resources */ = {isa = PBXBuildFile; fileRef = D752E68814BFDBCF00A2455A /* busTab.png */; };
 		D752E68C14BFEAE100A2455A /* alertTab.png in Resources */ = {isa = PBXBuildFile; fileRef = D752E68B14BFEAE100A2455A /* alertTab.png */; };
 		D752E68F14BFF7BE00A2455A /* RoutePickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D752E68E14BFF7BE00A2455A /* RoutePickerTableViewController.m */; };
+		D752E69614C0760C00A2455A /* BuseStopDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D752E69514C0760C00A2455A /* BuseStopDetailTableViewController.m */; };
 		D759F68814BBD35300097C10 /* NewRouteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D759F68714BBD35300097C10 /* NewRouteTableViewController.m */; };
 		D763279F14BA5C0000CB2C47 /* AlertTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D763279E14BA5C0000CB2C47 /* AlertTableViewController.m */; };
 		D76B224E14B67D3500338950 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D76B224D14B67D3500338950 /* DataController.m */; };
@@ -135,6 +136,8 @@
 		D752E68B14BFEAE100A2455A /* alertTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = alertTab.png; path = MaisMobilis/Images/alertTab.png; sourceTree = "<group>"; };
 		D752E68D14BFF7BE00A2455A /* RoutePickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutePickerTableViewController.h; sourceTree = "<group>"; };
 		D752E68E14BFF7BE00A2455A /* RoutePickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutePickerTableViewController.m; sourceTree = "<group>"; };
+		D752E69414C0760B00A2455A /* BuseStopDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuseStopDetailTableViewController.h; sourceTree = "<group>"; };
+		D752E69514C0760C00A2455A /* BuseStopDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuseStopDetailTableViewController.m; sourceTree = "<group>"; };
 		D759F68614BBD35300097C10 /* NewRouteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewRouteTableViewController.h; sourceTree = "<group>"; };
 		D759F68714BBD35300097C10 /* NewRouteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewRouteTableViewController.m; sourceTree = "<group>"; };
 		D763279D14BA5C0000CB2C47 /* AlertTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertTableViewController.h; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 				D705BE4F14B3F1FD00BE8DE4 /* StopTableViewController.m */,
 				D752E68D14BFF7BE00A2455A /* RoutePickerTableViewController.h */,
 				D752E68E14BFF7BE00A2455A /* RoutePickerTableViewController.m */,
+				D752E69414C0760B00A2455A /* BuseStopDetailTableViewController.h */,
+				D752E69514C0760C00A2455A /* BuseStopDetailTableViewController.m */,
 			);
 			name = UIControllers;
 			sourceTree = "<group>";
@@ -632,6 +637,7 @@
 				D74E508B14BFCA340083E3DF /* AlertDetailTableViewController.m in Sources */,
 				D752E68614BFDA4A00A2455A /* NewAlertTableViewController.m in Sources */,
 				D752E68F14BFF7BE00A2455A /* RoutePickerTableViewController.m in Sources */,
+				D752E69614C0760C00A2455A /* BuseStopDetailTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,5 +44,6 @@
 + (void) loadAllBusstopLinesIntoCoreData;
 + (void) loadAllBusesIntoCoreData;
 + (NSString *) getRouteNameForRouteID: (NSString*) routeID;
-
++ (NSString *) getLineIdsStringForBusStop: (BusStop*) busStop;
++ (NSString *) getLineNameForBusID: (NSString *) busID;
 @end
