@@ -652,11 +652,8 @@
 				D752E68614BFDA4A00A2455A /* NewAlertTableViewController.m in Sources */,
 				D752E68F14BFF7BE00A2455A /* RoutePickerTableViewController.m in Sources */,
 				D752E69614C0760C00A2455A /* BuseStopDetailTableViewController.m in Sources */,
-<<<<<<< HEAD
 				D76ABBFA14C0AAA8003C5893 /* BusDetailTableViewController.m in Sources */,
-=======
 				E2F025BC14C0C07E0000A2C2 /* BusObserver.m in Sources */,
->>>>>>> Added workaround for background running, added classes to observe buses and generate alerts
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
