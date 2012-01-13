@@ -102,12 +102,16 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+        
     BusStop *bs = [busStops objectAtIndex:[indexPath row]];
-    cell.textLabel.text = bs.name;
-    if([bs.busStopID isEqualToString: [route destinBusStopID]])
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
+    cell.textLabel.text = bs.name;
+    cell.imageView.image = [UIImage imageNamed: [self getImageName:bs]];
+    
+    if([bs.busStopID isEqualToString: [route destinBusStopID]])
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
     if([self.checkedIndexPath isEqual:indexPath])
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -129,14 +133,6 @@
 {
     BusStop *bs = [busStops objectAtIndex:[indexPath row]];
     
-    /*if([route initialBusStopID] != nil)
-     {
-     NSInteger index = [busStops indexOfObject:bs];
-     NSIndexPath *selectionIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
-     UITableViewCell *checkedCell = [tableView cellForRowAtIndexPath:selectionIndexPath];
-     checkedCell.accessoryType = UITableViewCellAccessoryNone;
-     }*/
-    
     if(self.checkedIndexPath)
     {
         UITableViewCell* uncheckCell = [tableView cellForRowAtIndexPath:self.checkedIndexPath];
@@ -155,5 +151,26 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+- (NSString *) getImageName: (BusStop*) bs
+{
+    NSArray* lines = [DataController getLineIdsForBusStopID:bs.busStopID];
+    NSString* imageName;
+    if([lines count] > 1) 
+    {
+        imageName = @"redandgreensquare.png"; 
+    }
+    else if([[[lines objectAtIndex:0] lineID]isEqualToString:@"1"])
+    {
+        imageName = @"greensquare.png";
+    }
+    else if([[[lines objectAtIndex:0] lineID] isEqualToString:@"2"])
+    {
+        imageName = @"redsquare.png";
+    }
+    return imageName;
+}
+
 
 @end

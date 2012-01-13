@@ -10,10 +10,10 @@
 
 @interface RoutesTableViewController : UITableViewController
 {
-    NSArray *_routes;
+    NSMutableArray *_routes;
 }
 
-@property (nonatomic, retain) NSArray * routes;
+@property (nonatomic, retain) NSMutableArray * routes;
 
 
 

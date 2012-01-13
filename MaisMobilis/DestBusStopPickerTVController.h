@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Route.h"
+#import "BusStop.h"
 
 @class Route;
 
@@ -21,5 +22,6 @@
 @property (nonatomic, retain, readonly) NSMutableArray *busStops;
 @property (nonatomic, retain) Route *route;
 @property (nonatomic, retain) NSIndexPath *checkedIndexPath;
+-(NSString *) getImageName: (BusStop*) bs;
 
 @end

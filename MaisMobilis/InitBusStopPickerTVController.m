@@ -110,8 +110,9 @@
     
     BusStop *bs = [busStops objectAtIndex:[indexPath row]];
     cell.textLabel.text = bs.name;
+    cell.imageView.image = [UIImage imageNamed: [self getImageName:bs]];
     
-    if([self.checkedIndexPath isEqual:indexPath])
+    if([bs.busStopID isEqualToString: [route initialBusStopID]])
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
@@ -156,6 +157,25 @@
     
     [self.navigationController popViewControllerAnimated:YES];
     
+}
+
+- (NSString *) getImageName: (BusStop*) bs
+{
+    NSArray* lines = [DataController getLineIdsForBusStopID:bs.busStopID];
+    NSString* imageName;
+    if([lines count] > 1) 
+    {
+        imageName = @"redandgreensquare.png"; 
+    }
+    else if([[[lines objectAtIndex:0] lineID]isEqualToString:@"1"])
+    {
+        imageName = @"greensquare.png";
+    }
+    else if([[[lines objectAtIndex:0] lineID] isEqualToString:@"2"])
+    {
+        imageName = @"redsquare.png";
+    }
+    return imageName;
 }
 
 @end
