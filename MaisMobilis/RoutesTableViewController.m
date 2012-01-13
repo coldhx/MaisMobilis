@@ -173,6 +173,7 @@
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = delegate.managedObjectContext; 
         Route *newRoute   =[NSEntityDescription insertNewObjectForEntityForName:@"Route" inManagedObjectContext: context];
+        newRoute.routeID = [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] stringValue];
         newRouteTVC.route = newRoute;
     }
 }

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Alert.h"
 
 @interface AlertDetailTableViewController : UITableViewController
+{
+    Alert *alert;
+}
+
+@property (nonatomic, retain) Alert *alert;
 
 @end

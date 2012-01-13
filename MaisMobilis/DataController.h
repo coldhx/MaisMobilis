@@ -11,6 +11,7 @@
 #import "Bus.h"
 #import "BusStop.h"
 #import "Line.h"
+#import "Route.h"
 #import "ReferencePoint.h"
 #import "BusStop_Line.h"
 #import "Webservice/WebEta.h"
@@ -42,5 +43,6 @@
 + (void) loadAllBusstopsIntoCoreData;
 + (void) loadAllBusstopLinesIntoCoreData;
 + (void) loadAllBusesIntoCoreData;
++ (NSString *) getRouteNameForRouteID: (NSString*) routeID;
 
 @end

@@ -16,9 +16,7 @@
 #define DESTSTOP_SECTION 2
 
 @implementation RouteDetailTableViewController
-{
-    NSInteger section;
-}
+
 
 @synthesize route;
 

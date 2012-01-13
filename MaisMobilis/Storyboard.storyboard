@@ -26,7 +26,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHl-Ml-tw3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="NzP-3L-Hu6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Autocarros" id="mqE-Eg-Txr"/>
+                    <tabBarItem key="tabBarItem" title="Autocarros" image="busTab.png" id="mqE-Eg-Txr"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="xaI-1Y-LA2">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -98,7 +98,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfM-yU-QDe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="QcT-Fs-MgH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Paragens" id="utk-oY-PY1"/>
+                    <tabBarItem key="tabBarItem" title="Paragens" image="busStopTab.png" id="utk-oY-PY1"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="qvL-as-2k7">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -169,7 +169,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfK-UP-Ocm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="HW6-9T-FnU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Alertas" id="lj4-0O-sjP"/>
+                    <tabBarItem key="tabBarItem" title="Alertas" image="alertTab.png" id="lj4-0O-sjP"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="WAL-aW-VcM">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -189,7 +189,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="UEs-gi-vFp">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="alertCell" id="UEs-gi-vFp">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -221,7 +221,7 @@
         <scene sceneID="F2o-Ka-zMx">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jio-v2-d4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="Bzo-AA-y86" sceneMemberID="viewController">
+                <tableViewController id="Bzo-AA-y86" customClass="AlertDetailTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="791-tS-Gbx">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,7 +250,7 @@
         <scene sceneID="bx8-NK-HAz">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooE-fs-3qr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="ONg-fS-bQr" sceneMemberID="viewController">
+                <tableViewController id="ONg-fS-bQr" customClass="NewAlertTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="cki-OD-Ip8">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -272,8 +272,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Novo alerta" id="Yxm-MG-GUA">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xQP-ZR-AdK"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="b9z-TC-d3a"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xQP-ZR-AdK">
+                            <connections>
+                                <action selector="cancel:" destination="ONg-fS-bQr" id="w2s-5R-LqG"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="b9z-TC-d3a">
+                            <connections>
+                                <action selector="save:" destination="ONg-fS-bQr" id="7qC-UU-L9P"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
             </objects>
@@ -633,10 +641,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="alertTab.png" width="60" height="60"/>
+        <image name="busStopTab.png" width="60" height="60"/>
+        <image name="busTab.png" width="60" height="60"/>
         <image name="courseTab.png" width="60" height="60"/>
         <image name="mapTab.png" width="60" height="60"/>
     </resources>
     <classes>
+        <class className="AlertDetailTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AlertDetailTableViewController.h"/>
+        </class>
         <class className="AlertTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AlertTableViewController.h"/>
         </class>
@@ -663,6 +677,13 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MapViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NewAlertTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewAlertTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="save:"/>
             </relationships>
         </class>
         <class className="NewRouteTableViewController" superclassName="UITableViewController">

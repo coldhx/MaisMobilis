@@ -283,4 +283,27 @@
     [WebBus geAllBuses];
 }
 
++ (NSString *) getRouteNameForRouteID: (NSString*) routeID
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Route" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"routeID = %@", routeID];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSMutableArray *route = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(route == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    Route *r = [route objectAtIndex:0];
+    
+    return [r desination];
+}
+
 @end

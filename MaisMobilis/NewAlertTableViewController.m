@@ -1,17 +1,21 @@
 //
-//  AlertDetailTableViewController.m
+//  NewAlertTableViewController.m
 //  MaisMobilis
 //
 //  Created by Rita Silva on 1/13/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "AlertDetailTableViewController.h"
+#import "NewAlertTableViewController.h"
+#import "RoutePickerTableViewController.h"
+#import "DataController.h"
+#import "Alert.h"
+#import "Route.h"
 
-
-@implementation AlertDetailTableViewController
-
+@implementation NewAlertTableViewController
 @synthesize alert;
+@synthesize delegate;
+@synthesize busStopsNumber;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -53,6 +57,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -80,16 +85,35 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    if(section == TIMES_SECTION)
+        return 2;
+    else
+        return 1;
+}
+
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *title = nil;
+    
+    switch (section) {
+        case TIMES_SECTION:
+            title = @"Intervalo de tempo:";
+            break;
+        case ROUTE_SECTION:
+            title = @"Percurso:";
+            break;
+        case NUMBUSSTOPS_SECTION:
+            title = @"Paragens de Antecedência:";
+            break;
+        default:
+            break;
+    }
+    return title;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -101,7 +125,56 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
+    CGRect Field1Frame = CGRectMake (10, 10, 290, 70);
+    NSString *text = nil;
+    
+    switch (indexPath.section) {
+        case NUMBUSSTOPS_SECTION:
+            text =@"";
+            if(busStopsNumber == nil){
+                busStopsNumber = [[UITextField alloc] initWithFrame:Field1Frame];
+                busStopsNumber.keyboardType = UIKeyboardTypeDecimalPad;
+                busStopsNumber.tag = 20;
+                [cell.contentView addSubview:busStopsNumber];
+                busStopsNumber = (UITextField*)[cell.contentView viewWithTag:20];
+            }
+            break;
+        case ROUTE_SECTION:
+            if([alert routeID] != nil)
+            {
+                text = [DataController getRouteNameForRouteID:[alert routeID]];
+            }
+            else
+                text = @"Vazio";
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            break;
+        case TIMES_SECTION:
+            switch (indexPath.row) {
+                case 0:
+                    if([alert startTime] != nil)
+                    {
+#warning program stuffs here
+                    }
+                    else
+                        text = @"Hora de início";
+                    break;
+                case 1:
+                    if([alert stopTime] != nil)
+                    {
+#warning program stuffs here
+                    }
+                    else
+                        text = @"Hora de fim";
+                    
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
+    }
+    
+    cell.textLabel.text = text;
     
     return cell;
 }
@@ -149,13 +222,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    NSInteger section = indexPath.section;
+    UIViewController *nextViewController = nil;
+    
+    switch (section) {
+        case ROUTE_SECTION:
+            nextViewController = [[RoutePickerTableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            ((RoutePickerTableViewController*) nextViewController).alert = self.alert;
+            break;
+            
+        default:
+            break;
+    }
+    
+    if(nextViewController) {
+        [self.navigationController pushViewController:nextViewController animated:YES];
+    }
 }
 
+- (IBAction)save:(id)sender {
+}
+
+- (IBAction)cancel:(id)sender {
+    [alert.managedObjectContext deleteObject:alert];
+    
+    NSError *error = nil;
+	if (![alert.managedObjectContext save:&error]) 
+    {
+		
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		return;
+	}
+    
+    [self.delegate newAlertTableViewController: self didAddAlert:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

@@ -10,9 +10,9 @@
 
 @interface AlertTableViewController : UITableViewController
 {
-    NSArray * _alerts;
+    NSMutableArray * _alerts;
 }
 
-@property (nonatomic, retain) NSArray * alerts;
+@property (nonatomic, retain) NSMutableArray * alerts;
 
 @end

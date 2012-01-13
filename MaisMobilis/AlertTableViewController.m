@@ -8,7 +8,9 @@
 
 #import "AlertTableViewController.h"
 #import "AlertDetailTableViewController.h"
+#import "NewAlertTableViewController.h"
 #import "Alert.h"
+#import "DataController.h"
 
 
 @implementation AlertTableViewController
@@ -93,7 +95,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"alertCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -101,6 +103,8 @@
     }
     
     Alert *a = [_alerts objectAtIndex:indexPath.row];
+    cell.textLabel.text = [DataController getRouteNameForRouteID:[a routeID]];
+    cell.detailTextLabel.text = @"ababa";
     
     return cell;
 }
@@ -116,8 +120,14 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data sourceeee
+    if (editingStyle == UITableViewCellEditingStyleDelete) 
+    {
+        Alert *a = [_alerts objectAtIndex:indexPath.row];
+        [_alerts removeObject: a];
+        
+        NSManagedObjectContext *context = a.managedObjectContext;
+        [context deleteObject:a];
+        
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -157,13 +167,28 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"showAlertDetails"]) 
+    if ([[segue identifier] isEqualToString:@"showAlertDetail"]) 
     {
         AlertDetailTableViewController *alertDetailVC = [segue destinationViewController];
         NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
         Alert *a = [_alerts objectAtIndex:selectedIndex];
-        //[alertDetailVC setAlert:a];
+        [alertDetailVC setAlert:a];
+    }
+    else if([[segue identifier] isEqualToString:@"addAlert"])
+    {
+        NewAlertTableViewController *newController = [segue destinationViewController];
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = delegate.managedObjectContext;
+        Alert *newAlert = [NSEntityDescription insertNewObjectForEntityForName:@"Alert" inManagedObjectContext: context];
+        newController.alert = newAlert;
+
     }
 }
+
+- (void) newAlertTableViewController: (NewAlertTableViewController*) newAlertTableViewController didAddAlert:(Alert *)alert {
+    if(alert)
+        [self.tableView reloadData];
+}
+
 
 @end
