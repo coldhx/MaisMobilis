@@ -71,11 +71,14 @@
     //Load bus stops onto the map
     [self loadBusStops];
     
-    //Begin refreshing buses
-    [self performSelectorInBackground:@selector(refreshBuses) withObject:nil];
-    
     //Zoom to interesting area on map
     [self resetMapZoomWithLatitude:ZOOMLATITUDE andLongitude:ZOOMLONGITUDE];
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    //Begin refreshing buses
+    [self performSelectorInBackground:@selector(refreshBuses) withObject:nil];
 }
 
 - (void)viewDidUnload
@@ -257,7 +260,8 @@
     NSError *error = nil;
     NSArray *results;
     
-    while(true)
+    //While view is visible
+    while([[self view] window] != nil)
     {
         NSLog(@"REFRESHIIIING!");
         @try

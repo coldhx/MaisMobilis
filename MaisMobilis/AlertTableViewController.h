@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BusObserver.h"
 
 @interface AlertTableViewController : UITableViewController
 {

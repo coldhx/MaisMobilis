@@ -182,6 +182,7 @@
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         NSManagedObjectContext *context = delegate.managedObjectContext;
         Alert *newAlert = [NSEntityDescription insertNewObjectForEntityForName:@"Alert" inManagedObjectContext: context];
+        newAlert.alertID = [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] stringValue];
         newController.alert = newAlert;
 
     }
@@ -189,7 +190,14 @@
 
 - (void) newAlertTableViewController: (NewAlertTableViewController*) newAlertTableViewController didAddAlert:(Alert *)alert {
     if(alert)
+    {
         [self.tableView reloadData];
+        
+        //Begin observing bus position
+        BusObserver *observer = [BusObserver getInstance];
+        //Route *route = [DataController getRouteNameForRouteID: alert.routeID];
+        [observer addObserverWithID:alert.alertID forLine:<#(NSString *)#> andBusstop:<#(NSString *)#> withTolerance:<#(NSNumber *)#>]
+    }
 }
 
 
