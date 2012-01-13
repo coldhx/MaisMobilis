@@ -83,6 +83,11 @@
     return [WebEta getEtaForBusID: busID];
 }
 
++ (NSArray *) getEtaByBusstopID : (NSString *) busstopID
+{
+    return [WebEta getETAsForBusstopID:busstopID];
+}
+
 + (NSArray *) getAllBuses
 {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -203,6 +208,79 @@
     
     return routes;
 
+}
+
+
++ (NSArray *) getDatabaseVersion
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Version" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSError *error = nil;
+    NSArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
+    
+    if(results == nil)
+    {
+        NSLog(@"%@", error.description);
+    
+    }
+    return results;
+}
+
++ (ReferencePoint *) getReferencePointByReferencePointID: (NSString *)referencePointID;
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"ReferencePoint" inManagedObjectContext:context];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"referencePointID = %@", referencePointID];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+        
+    NSError *error = nil;
+    NSMutableArray *results = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(results == nil)
+    {
+        NSLog(@"%@", error.description);
+        
+    }
+    
+    return [results objectAtIndex:0];
+}
+
++ (NSString *) getWebDatabaseVersion
+{
+    return [WebVersion getDataVersion];
+}
+
++ (void) loadAllLinesIntoCoreData
+{
+    [WebLines getAllLines];
+}
+
++ (void) loadAllReferencePointsIntoCoreData
+{
+    [WebReferencePoint getAllReferencePoints];
+}
+
++ (void) loadAllBusstopsIntoCoreData;
+{
+    [WebBusstops getAllBusstops];
+}
+
++ (void) loadAllBusstopLinesIntoCoreData
+{
+    [WebBusstopLines getAllBusstopLines];
+}
+
++ (void) loadAllBusesIntoCoreData
+{
+    [WebBus geAllBuses];
 }
 
 @end

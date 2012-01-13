@@ -7,15 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "Webservice/WebBusstops.h"
-#import "Webservice/WebReferencePoint.h"
-#import "Webservice/WebLines.h"
-#import "Webservice/WebBus.h"
-#import "Webservice/WebBusstopLines.h"
-#import "Webservice/WebVersion.h"
-#import "MaisMobilisWebService.h"
-#import "Version.h"
-#import "Reachability.h"
 
 @implementation AppDelegate
 
@@ -30,9 +21,6 @@
     [self checkConnectivity];
     //Initiallize CoreData data
     [self initializeCoreData];
-    
-    //Begin pulling bus info from the Webservice from time to time.
-    //[self performSelectorInBackground:@selector(refreshBuses) withObject:nil];
     
     return YES;
 }
@@ -51,7 +39,7 @@
     
     //Register for connectivity notifications
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-    maisMobilisServerReachable = [Reachability reachabilityWithHostName:[MaisMobilisWebService getAPIUrl]];
+    maisMobilisServerReachable = [Reachability reachabilityWithHostName:@"www.google.com"];
     [maisMobilisServerReachable startNotifier];
 }
 
@@ -65,24 +53,26 @@
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.managedObjectContext;
     
-    //Check database version
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Version" inManagedObjectContext:context];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-    NSError *error = nil;
-    NSArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
+    NSArray *results = [DataController getDatabaseVersion];
     
     Boolean update = NO;
     
     if(results.count == 0)
     {
         update = YES;
-        Version *version = [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:context];
-        version.dataVersion = [WebVersion getDataVersion];
+        NSString *currentWebDatabaseVersion = [DataController getWebDatabaseVersion];
+        
+        if(currentWebDatabaseVersion != nil)
+        {
+            Version *version = [NSEntityDescription insertNewObjectForEntityForName:@"Version" inManagedObjectContext:context];
+            version.dataVersion = currentWebDatabaseVersion;
+        }
     }
     else
     {
         Version *version = [results objectAtIndex:0];
-        NSString *currentVersion = [WebVersion getDataVersion];
+        NSString *currentVersion = [DataController getWebDatabaseVersion];
+        
         if(currentVersion != nil &&![version.dataVersion isEqualToString: currentVersion])
         {
             update = YES;
@@ -93,11 +83,13 @@
     {
         //Initialize core data content
         [self resetStore];
-        [WebLines getAllLines];
-        [WebReferencePoint getAllReferencePoints];
-        [WebBusstops getAllBusstops];
-        [WebBusstopLines getAllBusstopLines];
-        [WebBus geAllBuses];
+        
+        [DataController loadAllLinesIntoCoreData];
+        [DataController loadAllReferencePointsIntoCoreData];
+        [DataController loadAllBusstopsIntoCoreData];
+        [DataController loadAllBusstopLinesIntoCoreData];
+        [DataController loadAllBusesIntoCoreData];
+        
         [context save:nil];
     }
 }
@@ -114,22 +106,6 @@
         NSLog(@"Error creating new store after cleaning!");
     }
 
-}
-
-- (void) refreshBuses
-{
-    while(true)
-    {
-        @try
-        {
-            [WebBus geAllBuses];
-        }
-        @catch (id exception)
-        {
-        }
-        
-        [NSThread sleepForTimeInterval:5];
-    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

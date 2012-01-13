@@ -87,7 +87,10 @@
         if(delete == YES)
         {
             //Apagar autocarro
-            [context deleteObject: bus];
+            if(bus != nil)
+            {
+                [context deleteObject: bus];
+            }
         }
     }
 }

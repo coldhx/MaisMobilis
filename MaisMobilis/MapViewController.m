@@ -153,26 +153,11 @@
 
 //Called when the arrow in an annotation is touched
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{        
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSEntityDescription *entity;
-    NSPredicate *predicate;
-    NSFetchRequest *request;
-    NSError *error;
-    NSMutableArray *results;
-    
+{
     if([view class] == [BusAnnotation class])
     {
         BusAnnotation *busAnnotation = (BusAnnotation *)view;
-        entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
-        predicate = [NSPredicate predicateWithFormat:@"busID = %@", busAnnotation.busID];
-        request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-        [request setPredicate:predicate];
-        error = nil;
-        results = [[context executeFetchRequest:request error: &error] mutableCopy];
-        
-        Bus *bus = [results objectAtIndex:0];
+        Bus *bus = [DataController getBusByBusID:busAnnotation.busID];
         
         BusesDetailViewController *busesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"busDetails"];
         [busesViewController setBus:bus];
@@ -182,14 +167,7 @@
     else if([view class] == [BusstopAnnotation class])
     {
         BusstopAnnotation *busstopAnnotation = (BusstopAnnotation *)view;
-        entity = [NSEntityDescription entityForName:@"BusStop" inManagedObjectContext:context];
-        predicate = [NSPredicate predicateWithFormat:@"busStopID = %@", busstopAnnotation.busstopID];
-        request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-        [request setPredicate:predicate];
-        error = nil;
-        results = [[context executeFetchRequest:request error: &error] mutableCopy];
-        
-        BusStop *busstop = [results objectAtIndex:0];
+        BusStop *busstop = [DataController getBusStopByBusStopID:busstopAnnotation.busstopID];
         
         BStopDetailViewController *busstopViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"busstopDetails"];
         [busstopViewController setBusStop:busstop];
@@ -222,59 +200,20 @@
 
 - (void)loadBusStops
 {
-    //Get context
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    
-    //Fetch bus stops
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop" inManagedObjectContext:context];
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-    
-    NSError *error = nil;
-    NSMutableArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
-    
-    if(results == nil)
-    {
-        NSLog(@"%@", error.description);
-    }
+    NSMutableArray *results = [DataController getAllBusStops];
     
     //For each bus stop
     for(int i=0; i<results.count; i++)
     {
         BusStop *busStop = [results objectAtIndex:i];
         
-        //Fetch reference points
-        entity = [NSEntityDescription entityForName:@"ReferencePoint" inManagedObjectContext:context];
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"referencePointID = %@", busStop.refPointID];
-        
-        request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-        [request setPredicate:predicate];
-        
-        NSMutableArray *refPointResults = [[context executeFetchRequest:request error:&error] mutableCopy];
-        
-        if(refPointResults == nil)
-        {
-            return;
-        }
-        
-        //Set coordinate based on reference point
-        ReferencePoint *refPoint = [refPointResults objectAtIndex:0];
+        ReferencePoint *refPoint = [DataController getReferencePointByReferencePointID:busStop.refPointID];
         
         CLLocationCoordinate2D coordinate;
         coordinate.latitude = [refPoint.latitude doubleValue];
         coordinate.longitude = [refPoint.longitude doubleValue];
         
-        //Fetch bus line(s)
-        entity = [NSEntityDescription entityForName:@"BusStop_Line" inManagedObjectContext:context];
-        
-        predicate = [NSPredicate predicateWithFormat:@"busStopID = %@", busStop.busStopID];
-        
-        request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-        [request setPredicate:predicate];
-        
-        NSMutableArray *busLinesResult = [[context executeFetchRequest:request error:&error] mutableCopy];
+        NSArray *busLinesResult = [DataController getLineIdsForBusStopID:busStop.busStopID];
         
         //This should not be hardcoded like this
         NSString *type = @"3";
@@ -302,7 +241,7 @@
 - (void)refreshBuses
 {
     //Get all buses from server
-    [WebBus geAllBuses];
+    [DataController loadAllBusesIntoCoreData];
     
     //Array of annotations
     NSMutableDictionary *annotations = [[NSMutableDictionary alloc] init];
@@ -316,7 +255,7 @@
     
     NSFetchRequest *request;
     NSError *error = nil;
-    NSMutableArray *results;
+    NSArray *results;
     
     while(true)
     {
@@ -324,7 +263,7 @@
         @try
         {
             request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-            results = [[context executeFetchRequest:request error: &error] mutableCopy];
+            results = [DataController getAllBuses];
             
             if(results == nil)
             {
@@ -353,7 +292,7 @@
                     NSString *eta;
                     @try
                     {
-                        eta = [WebEta getEtaForBusID:[bus busID]];
+                        eta = [DataController getEtaByBusID:[bus busID]];
                         eta = [NSString stringWithFormat:@"%d:%d", [eta intValue]/60, [eta intValue]%60];
                         
                     }
@@ -373,7 +312,7 @@
                     [self performSelectorOnMainThread:@selector(setAnnotationCoordinate:) withObject:dic waitUntilDone:YES];
                 }
                 
-                //Remove buses that are no longer active (NOT WORKING!)
+                //Remove buses that are no longer active
                 for (NSString* key in annotations)
                 {
                     Boolean del = YES;
@@ -403,13 +342,7 @@
 }
 
 - (void) refreshBusstopAnnotation:(BusstopAnnotation *)annotation
-{    
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Bus" inManagedObjectContext:context];
-    NSFetchRequest *request;
-    NSError *error = nil;
-    NSPredicate *predicate;
+{
     Bus *bus;
     NSArray *objects;
     NSString *subtitle = @"";
@@ -420,7 +353,7 @@
         subtitle = @"";
         @try
         {
-            etas = [WebEta getETAsForBusstopID:annotation.busstopID];
+            etas = [DataController getEtaByBusstopID:annotation.busstopID];
         }
         @catch (NSException *exception)
         {
@@ -430,26 +363,18 @@
         
         for(int i=0; i<etas.count; i++)
         {
-            request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-            predicate = [NSPredicate predicateWithFormat:@"busID = %@", [[etas objectAtIndex:i] objectForKey:@"idAutocarro"]];
-            [request setPredicate: predicate];
-            NSMutableArray *results = [[context executeFetchRequest:request error: &error] mutableCopy];
+            bus = [DataController getBusByBusID:[[etas objectAtIndex:i] objectForKey:@"idAutocarro"]];
             
-            if(results.count > 0)
+            if([bus.lineID isEqualToString:@"1"])
             {
-                bus = [results objectAtIndex:0];
-                //Should not be hardcoded like this!!
-                if([bus.lineID isEqualToString:@"1"])
-                {
-                    subtitle = [subtitle stringByAppendingFormat:@"Verde"];
-                }
-                else
-                {
-                    subtitle = [subtitle stringByAppendingFormat:@"Vermelho"];
-                }
-                
-                subtitle = [subtitle stringByAppendingFormat:@"(#%@): %d:%d, ", bus.busID, [[[etas objectAtIndex:i] objectForKey:@"eta"] intValue]/60, [[[etas objectAtIndex:i] objectForKey:@"eta"] intValue]%60];
+                subtitle = [subtitle stringByAppendingFormat:@"Verde"];
             }
+            else
+            {
+                subtitle = [subtitle stringByAppendingFormat:@"Vermelho"];
+            }
+            
+            subtitle = [subtitle stringByAppendingFormat:@"(#%@): %d:%d, ", bus.busID, [[[etas objectAtIndex:i] objectForKey:@"eta"] intValue]/60, [[[etas objectAtIndex:i] objectForKey:@"eta"] intValue]%60];
         }
         
         objects = [[NSArray alloc] initWithObjects:annotation, subtitle, nil];

@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Reachability.h"
+#import "DataController.h"
+#import "Version.h"
+
 @class Reachability;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
@@ -22,7 +26,6 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-- (void) refreshBuses;
 - (void) resetStore;
 - (void) initializeCoreData;
 - (void) reachabilityChanged: (NSNotification* )note;
