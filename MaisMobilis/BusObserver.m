@@ -32,12 +32,30 @@ static BusObserver *_instance = nil;
     return _instance;
 }
 
-- (void) addObserverWithID:(NSString *)id forLine:(NSString *)lineID andBusstop:(NSString *)busstopID withTolerance:(NSNumber *)tolerance
+- (void) addObserverWithID:(NSString *)alertID forLine:(NSString *)lineID andBusstop:(NSString *)busstopID withTolerance:(NSNumber *)tolerance
+{
+    BusStop_Line *busstopLine = [DataController getBusstopLineForLineID:lineID andBusstopID:busstopID];
+    int toleranceNumeral = [busstopLine.numeral intValue] - [tolerance intValue];
+    
+    if(toleranceNumeral < 1)
+    {
+        toleranceNumeral = 1;
+    }
+    
+    BusStop_Line *toleranceBusstopLine = [DataController getBusstopLineForLineID:lineID andNumeral:[NSString stringWithFormat:@"%d", toleranceNumeral]];
+    BusStop *busStop = [DataController getBusStopByBusStopID:toleranceBusstopLine.busStopID];
+    
+    NSDictionary *objects = [[NSDictionary alloc] initWithObjectsAndKeys:alertID, @"alertID", lineID, @"lineID", busStop, @"busStop",  nil];
+    
+    [self performSelectorInBackground:@selector(begin) withObject:objects];
+}
+
+- (void) removeObserverWithID:(NSString *)id
 {
     
 }
 
-- (void) removeObserverWithID:(NSString *)id
+- (void) beginObserving:(NSDictionary *)objects
 {
     
 }

@@ -191,12 +191,13 @@
 - (void) newAlertTableViewController: (NewAlertTableViewController*) newAlertTableViewController didAddAlert:(Alert *)alert {
     if(alert)
     {
+        //Reload table data
         [self.tableView reloadData];
         
-        //Begin observing bus position
+        //Begin observing buses positions to generate alerts
         BusObserver *observer = [BusObserver getInstance];
-        //Route *route = [DataController getRouteNameForRouteID: alert.routeID];
-        //[observer addObserverWithID:alert.alertID forLine:<#(NSString *)#> andBusstop:<#(NSString *)#> withTolerance:<#(NSNumber *)#>]
+        Route *route = [DataController getRouteForRouteID:alert.routeID];
+        [observer addObserverWithID:alert.alertID forLine:route.lineID andBusstop:route.initialBusStopID withTolerance:alert.busStopDelayNumber];
     }
 }
 

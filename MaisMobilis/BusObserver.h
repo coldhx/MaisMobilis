@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
+#import "BusStop_Line.h"
+#import "DataController.h"
 
 @interface BusObserver : NSObject
 {
@@ -19,5 +21,5 @@
 - (void) addObserverWithID:(NSString *)id forLine:(NSString *)lineID andBusstop:(NSString *)busstopID withTolerance:(NSNumber *)tolerance;
 - (void) removeObserverWithID:(NSString *)id;
 - (void) startAudioWorkaround;
-
+- (void) beginObserving:(NSDictionary *)objects;
 @end

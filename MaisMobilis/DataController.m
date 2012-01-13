@@ -287,6 +287,27 @@
     [WebBus geAllBuses];
 }
 
++ (Route *) getRouteForRouteID: (NSString *) routeID
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Route" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"routeID = %@", routeID];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSMutableArray *route = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(route == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    return [route objectAtIndex:0];
+}
+
 + (NSString *) getRouteNameForRouteID: (NSString*) routeID
 {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -368,6 +389,48 @@
     }
     
     return alerts;
+}
+
++ (BusStop_Line *) getBusstopLineForLineID:(NSString *)lineID andBusstopID:(NSString *)busStopID
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop_Line" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lineID = %@ AND busStopID = %@", lineID, busStopID];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSMutableArray *busstop_line = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(busstop_line == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    return [busstop_line objectAtIndex:0];
+}
+
++ (BusStop_Line *) getBusstopLineForLineID:(NSString *)lineID andNumeral:(NSString *)numeral;
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop_Line" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"lineID = %@ AND numeral = %@", lineID, numeral];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSMutableArray *busstop_line = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(busstop_line == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    return [busstop_line objectAtIndex:0];
 }
 
 @end
