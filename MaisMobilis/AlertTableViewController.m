@@ -196,7 +196,7 @@
         //Begin observing bus position
         BusObserver *observer = [BusObserver getInstance];
         //Route *route = [DataController getRouteNameForRouteID: alert.routeID];
-        [observer addObserverWithID:alert.alertID forLine:<#(NSString *)#> andBusstop:<#(NSString *)#> withTolerance:<#(NSNumber *)#>]
+        //[observer addObserverWithID:alert.alertID forLine:<#(NSString *)#> andBusstop:<#(NSString *)#> withTolerance:<#(NSNumber *)#>]
     }
 }
 
