@@ -15,6 +15,7 @@
 #import "Line.h"
 #import "Bus.h"
 #import "Webservice/WebEta.h"
+#import "Webservice/WebBus.h"
 #import "BusesDetailViewController.h"
 #import "BStopDetailViewController.h"
 
@@ -300,6 +301,9 @@
 
 - (void)refreshBuses
 {
+    //Get all buses from server
+    [WebBus geAllBuses];
+    
     //Array of annotations
     NSMutableDictionary *annotations = [[NSMutableDictionary alloc] init];
     
@@ -391,6 +395,7 @@
         }
         @catch (id exception)
         {
+            NSLog(@"%@", [exception description]);
         }
         
         [NSThread sleepForTimeInterval:3];

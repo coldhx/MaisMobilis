@@ -16,33 +16,41 @@ NSString *APIKEY = @"gA5etlof24DX6JnoaaZAALJC73KzemHAClTIItB0yBOkmGYvdICqlbnWK2C
 
 +(NSArray *) doGET:(NSString *)resource withQueryString:(NSString *)queryString
 {
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/%@", APIURL, resource, queryString]];
-    ASIHTTPRequest *request =  [ASIHTTPRequest requestWithURL:url];
-    
-    [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
-    [request setUsername:USERNAME];
-    [request setPassword:APIKEY];
-    
-    [request startSynchronous];
-    NSError *asiError = [request error];
-    
-    if(asiError)
+    @try
     {
-        [NSException raise:@"doGET Failed" format:@"Request to the webservice failed."];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/%@", APIURL, resource, queryString]];
+        ASIHTTPRequest *request =  [ASIHTTPRequest requestWithURL:url];
+        
+        [request setAuthenticationScheme:(NSString *)kCFHTTPAuthenticationSchemeBasic];
+        [request setUsername:USERNAME];
+        [request setPassword:APIKEY];
+        
+        [request startSynchronous];
+        NSError *asiError = [request error];
+        
+        if(asiError)
+        {
+            [NSException raise:@"doGET Failed" format:@"Request to the webservice failed."];
+        }
+        
+        NSString *response = [request responseString];
+        
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        NSError *jsonError;
+        NSArray *jsonObjects = [parser objectWithString:response error:&jsonError];
+        
+        if(jsonError)
+        {
+            [NSException raise:@"doGET Failed" format:@"Invalid jSON. Could not parse."];
+        }
+        
+        return jsonObjects;
     }
-    
-    NSString *response = [request responseString];
-    
-    SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSError *jsonError;
-    NSArray *jsonObjects = [parser objectWithString:response error:&jsonError];
-    
-    if(jsonError)
+    @catch (NSException *exception)
     {
-        [NSException raise:@"doGET Failed" format:@"Invalid jSON. Could not parse."];
+        NSLog(@"No internet!");
+        return nil;
     }
-    
-    return jsonObjects;
 }
 
 +(NSString *)getAPIUrl

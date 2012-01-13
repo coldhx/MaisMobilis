@@ -26,4 +26,6 @@
 - (void) resetStore;
 - (void) initializeCoreData;
 - (void) reachabilityChanged: (NSNotification* )note;
+- (void) checkConnectivity;
+
 @end

@@ -27,11 +27,24 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     //Check connectivity
-    NetworkStatus networkStatus = [[Reachability reachabilityWithHostName:[MaisMobilisWebService getAPIUrl]] currentReachabilityStatus];
+    [self checkConnectivity];
+    //Initiallize CoreData data
+    [self initializeCoreData];
+    
+    //Begin pulling bus info from the Webservice from time to time.
+    //[self performSelectorInBackground:@selector(refreshBuses) withObject:nil];
+    
+    return YES;
+}
+
+- (void) checkConnectivity
+{
+    //Current network status
+    NetworkStatus networkStatus = [[Reachability reachabilityWithHostName:@"www.google.com"] currentReachabilityStatus];
     
     if(networkStatus == NotReachable)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sem ligação à Internet!" message:@"Esta aplicação requer ligação à internet. Poderá utilizar as suas funções que não façam uso de conectividade à Internet." delegate:nil cancelButtonTitle:@"Continuar" otherButtonTitles:@"Definições", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sem ligação à Internet!" message:@"Esta aplicação requer ligação à internet. Poderá utilizar as funções que não façam uso de conectividade à Internet." delegate:nil cancelButtonTitle:@"Continuar" otherButtonTitles:@"Definições", nil];
         
         [alert show];
     }
@@ -40,14 +53,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     maisMobilisServerReachable = [Reachability reachabilityWithHostName:[MaisMobilisWebService getAPIUrl]];
     [maisMobilisServerReachable startNotifier];
-    
-    //Initiallize CoreData data
-    [self initializeCoreData];
-    
-    //Begin pulling bus info from the Webservice from time to time.
-    [self performSelectorInBackground:@selector(refreshBuses) withObject:nil];
-    
-    return YES;
 }
 
 - (void) reachabilityChanged: (NSNotification* )note;
@@ -78,7 +83,7 @@
     {
         Version *version = [results objectAtIndex:0];
         NSString *currentVersion = [WebVersion getDataVersion];
-        if(![version.dataVersion isEqualToString: currentVersion])
+        if(currentVersion != nil &&![version.dataVersion isEqualToString: currentVersion])
         {
             update = YES;
         }
@@ -92,6 +97,7 @@
         [WebReferencePoint getAllReferencePoints];
         [WebBusstops getAllBusstops];
         [WebBusstopLines getAllBusstopLines];
+        [WebBus geAllBuses];
         [context save:nil];
     }
 }

@@ -4,17 +4,17 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "MaisMobilis/AppDelegate.m"
-         timestampString = "348021961.811974"
+         filePath = "MaisMobilis/MapViewController.m"
+         timestampString = "348106003.277664"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "102"
-         endingLineNumber = "102"
-         landmarkName = "-resetStore"
+         startingLineNumber = "398"
+         endingLineNumber = "398"
+         landmarkName = "-refreshBuses"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
