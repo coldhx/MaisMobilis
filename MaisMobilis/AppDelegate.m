@@ -32,7 +32,7 @@
     
     if(networkStatus == NotReachable)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sem ligação à Internet!" message:@"Esta aplicação requer ligação à internet. Poderá utilizar as funções que não façam uso de conectividade à Internet." delegate:nil cancelButtonTitle:@"Continuar" otherButtonTitles:@"Definições", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sem ligação à Internet!" message:@"Esta aplicação requer ligação à Internet. Poderá utilizar as funções que não façam uso da conectividade à Internet." delegate:self cancelButtonTitle:@"Continuar" otherButtonTitles:@"Definições", nil];
         
         [alert show];
     }
@@ -41,6 +41,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
     maisMobilisServerReachable = [Reachability reachabilityWithHostName:@"www.google.com"];
     [maisMobilisServerReachable startNotifier];
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 1)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=General&path=Network"]];
+    }
 }
 
 - (void) reachabilityChanged: (NSNotification* )note;

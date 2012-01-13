@@ -30,5 +30,6 @@
 - (void) initializeCoreData;
 - (void) reachabilityChanged: (NSNotification* )note;
 - (void) checkConnectivity;
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 
 @end

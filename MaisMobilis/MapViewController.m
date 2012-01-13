@@ -290,15 +290,16 @@
                 else
                 {
                     NSString *eta;
-                    @try
-                    {
-                        eta = [DataController getEtaByBusID:[bus busID]];
-                        eta = [NSString stringWithFormat:@"%d:%d", [eta intValue]/60, [eta intValue]%60];
-                        
-                    }
-                    @catch (NSException *exception)
+
+                    eta = [DataController getEtaByBusID:[bus busID]];
+                    
+                    if(eta == nil)
                     {
                         eta = @"N/D";
+                    }
+                    else
+                    {
+                        eta = [NSString stringWithFormat:@"%d:%d", [eta intValue]/60, [eta intValue]%60];
                     }
                     
                     annotation = [annotations objectForKey:bus.busID];

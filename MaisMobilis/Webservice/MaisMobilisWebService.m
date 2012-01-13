@@ -40,7 +40,7 @@ NSString *APIKEY = @"gA5etlof24DX6JnoaaZAALJC73KzemHAClTIItB0yBOkmGYvdICqlbnWK2C
         NSArray *jsonObjects = [parser objectWithString:response error:&jsonError];
         
         if(jsonError)
-        {
+        {	
             [NSException raise:@"doGET Failed" format:@"Invalid jSON. Could not parse."];
         }
         
@@ -48,7 +48,7 @@ NSString *APIKEY = @"gA5etlof24DX6JnoaaZAALJC73KzemHAClTIItB0yBOkmGYvdICqlbnWK2C
     }
     @catch (NSException *exception)
     {
-        NSLog(@"No internet!");
+        NSLog(@"No internet! %@", exception.description);
         return nil;
     }
 }
