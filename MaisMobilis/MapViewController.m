@@ -16,8 +16,8 @@
 #import "Bus.h"
 #import "Webservice/WebEta.h"
 #import "Webservice/WebBus.h"
-#import "BusesDetailViewController.h"
-#import "BStopDetailViewController.h"
+#import "BusDetailTableViewController.h"
+#import "BuseStopDetailTableViewController.h"
 
 #define ZOOMLATITUDE 39.74434
 #define ZOOMLONGITUDE -8.80725
@@ -159,7 +159,7 @@
         BusAnnotation *busAnnotation = (BusAnnotation *)view;
         Bus *bus = [DataController getBusByBusID:busAnnotation.busID];
         
-        BusesDetailViewController *busesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"busDetails"];
+        BusDetailTableViewController *busesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"busDetails"];
         [busesViewController setBus:bus];
         
         [[self navigationController] pushViewController:busesViewController animated:YES];
@@ -169,7 +169,7 @@
         BusstopAnnotation *busstopAnnotation = (BusstopAnnotation *)view;
         BusStop *busstop = [DataController getBusStopByBusStopID:busstopAnnotation.busstopID];
         
-        BStopDetailViewController *busstopViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"busstopDetails"];
+        BuseStopDetailTableViewController *busstopViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"busstopDetails"];
         [busstopViewController setBusStop:busstop];
         
         [[self navigationController] pushViewController:busstopViewController animated:YES];

@@ -16,14 +16,20 @@
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"etas" withQueryString:[NSString stringWithFormat:@"?idAutocarro=%@", busID]];
     
-    return [[jsonObjects objectAtIndex:0] objectForKey:@"eta"];
+    if([[jsonObjects objectAtIndex:0] count] != 0)
+        return [[jsonObjects objectAtIndex:0] objectForKey:@"eta"];
+    else
+        return @"0";
 }
 
 + (NSString *) getBusStopForBusstopID:(NSString *)busID
 {
     NSArray *jsonObjects = [MaisMobilisWebService doGET:@"etas" withQueryString:[NSString stringWithFormat:@"?idAutocarro=%@", busID]];
     
-    return [[jsonObjects objectAtIndex:0] objectForKey:@"idParagem"];
+    if([[jsonObjects objectAtIndex:0] count] != 0)
+        return [[jsonObjects objectAtIndex:0] objectForKey:@"idParagem"];
+    else
+        return @"N/D";
 }
 
 + (NSArray *) getETAsForBusstopID:(NSString *)busstopID

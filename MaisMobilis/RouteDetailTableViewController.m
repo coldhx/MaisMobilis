@@ -7,7 +7,7 @@
 //
 
 #import "RouteDetailTableViewController.h"
-#import "BStopDetailViewController.h"
+#import "BuseStopDetailTableViewController.h"
 #import "DataController.h"
 #import "BusStop.h"
 
@@ -172,7 +172,7 @@
     if ([[segue identifier] isEqualToString:@"showBusStopDetail"]) 
     {
         BusStop *bs = nil;
-        BStopDetailViewController *nextView = nil;
+        BuseStopDetailTableViewController *nextView = nil;
         NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] section];
         switch (selectedIndex) 
         {

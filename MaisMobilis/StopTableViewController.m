@@ -8,10 +8,8 @@
 
 #import "StopTableViewController.h"
 #import "BusStop.h"
-#import "BStopDetailViewController.h"
+#import "BuseStopDetailTableViewController.h"
 #import "DataController.h"
-
-
 
 @implementation StopTableViewController
 
@@ -126,7 +124,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showBusStopDetails"]) 
     {
-        BStopDetailViewController *busStopDetailVC = [segue destinationViewController];
+        BuseStopDetailTableViewController *busStopDetailVC = [segue destinationViewController];
         NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
         BusStop *bs = [_busStops objectAtIndex:selectedIndex];
         [busStopDetailVC setBusStop:bs];

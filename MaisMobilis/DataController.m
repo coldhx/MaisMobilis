@@ -64,18 +64,22 @@
 {
     NSString *nextStopID = [WebEta getBusStopForBusstopID: busID];
     
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop" inManagedObjectContext:context];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"busStopID = %@",nextStopID];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-    [request setPredicate:predicate];
-    
-    NSError *error = nil;
-    NSArray *results = [context executeFetchRequest:request error: &error] ;
-    BusStop *paragem = [results objectAtIndex:0];
-    
-    return paragem.name;
+    if(![nextStopID isEqualToString:@"N/D"]){
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = delegate.managedObjectContext;
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"BusStop" inManagedObjectContext:context];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"busStopID = %@",nextStopID];
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+        [request setPredicate:predicate];
+        
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:request error: &error] ;
+        BusStop *paragem = [results objectAtIndex:0];
+        
+        return paragem.name;
+    }
+    else 
+        return nextStopID;
 }
 
 + (NSString *) getEtaByBusID : (NSString *) busID

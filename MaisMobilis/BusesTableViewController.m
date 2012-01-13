@@ -7,7 +7,7 @@
 //
 
 #import "BusesTableViewController.h"
-#import "BusesDetailViewController.h"
+#import "BusDetailTableViewController.h"
 #import "DataController.h"
 #import "Bus.h"
 
@@ -161,7 +161,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showBusDetails"]) 
     {
-        BusesDetailViewController *busDetailVC = [segue destinationViewController];
+        BusDetailTableViewController *busDetailVC = [segue destinationViewController];
         NSInteger selectedIndex = [[self.tableView indexPathForSelectedRow] row];
         Bus *b = [_buses objectAtIndex:selectedIndex];
         [busDetailVC setBus:b];
