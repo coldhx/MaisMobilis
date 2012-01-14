@@ -12,7 +12,6 @@
 #import "Alert.h"
 #import "DataController.h"
 
-
 @implementation AlertTableViewController
 
 @synthesize alerts = _alerts;
@@ -184,7 +183,7 @@
         Alert *newAlert = [NSEntityDescription insertNewObjectForEntityForName:@"Alert" inManagedObjectContext: context];
         newAlert.alertID = [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] stringValue];
         newController.alert = newAlert;
-
+        newController.delegate = self;
     }
 }
 
@@ -197,7 +196,7 @@
         //Begin observing buses positions to generate alerts
         BusObserver *observer = [BusObserver getInstance];
         Route *route = [DataController getRouteForRouteID:alert.routeID];
-        [observer addObserverWithID:alert.alertID forLine:route.lineID andBusstop:route.initialBusStopID withTolerance:alert.busStopDelayNumber];
+        [observer addObserverWithAlert:alert forLine:route.lineID andBusstop:route.initialBusStopID withTolerance:alert.busStopDelayNumber];
     }
 }
 

@@ -110,6 +110,24 @@
     return buses;
 }
 
++ (NSMutableArray *) getAllLines;
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Line" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    
+    NSError *error = nil;
+    NSMutableArray *lines = [[context executeFetchRequest:request error: &error] mutableCopy];
+    
+    if(lines == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    return lines;
+}
+
 + (Bus *) getBusByBusID:(NSString *) busID
 {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];

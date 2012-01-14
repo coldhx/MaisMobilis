@@ -21,16 +21,17 @@
 
 @interface NewAlertTableViewController : UITableViewController <UINavigationControllerDelegate>
 {
+    __unsafe_unretained id <NewAlertTableViewController> _delegate;
+    
     @private
     Alert* alert;
     UITextField *busStopsNumber;
-    id <NewAlertTableViewController> delegate;
     UIActionSheet *actionSheet;
     UIDatePicker *pickerView;
 }
 
 @property (nonatomic, retain) Alert *alert;
-@property (nonatomic, retain) id <NewAlertTableViewController> delegate;
+@property (nonatomic, assign) id<NewAlertTableViewController> delegate;
 @property (nonatomic, retain) UITextField *busStopsNumber;
 
 - (IBAction)save:(id)sender;

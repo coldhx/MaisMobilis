@@ -14,7 +14,7 @@
 
 @implementation NewAlertTableViewController
 @synthesize alert;
-@synthesize delegate;
+@synthesize delegate = _delegate;
 @synthesize busStopsNumber;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -346,7 +346,7 @@
 		return;
 	}
     
-    [self.delegate newAlertTableViewController: self didAddAlert:alert];
+    [_delegate newAlertTableViewController: self didAddAlert:alert];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -361,7 +361,7 @@
 		return;
 	}
     
-    [self.delegate newAlertTableViewController: self didAddAlert:nil];
+    [_delegate newAlertTableViewController: self didAddAlert:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 @end

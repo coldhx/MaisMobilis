@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BusObserver.h"
+#import "NewAlertTableViewController.h"
 
-@interface AlertTableViewController : UITableViewController
+@class Alert;
+@interface AlertTableViewController : UITableViewController <NewAlertTableViewController>
 {
     NSMutableArray * _alerts;
 }
