@@ -116,6 +116,26 @@
     return title;
 }
 
+-(NSString *) tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    NSString *title = nil;
+    
+    switch (section) {
+        case TIMES_SECTION:
+            title = @"Intervalo de tempo durante o qual o alerta está activo";
+            break;
+        case ROUTE_SECTION:
+            title = @"Nome do percurso associado";
+            break;
+        case NUMBUSSTOPS_SECTION:
+            title = @"Número máximo de paragens";
+            break;
+        default:
+            break;
+    }
+    return title;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";

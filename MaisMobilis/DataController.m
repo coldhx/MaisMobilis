@@ -391,6 +391,29 @@
     return alerts;
 }
 
++ (void) deleteAssociatedAlerts: (NSString *) routeID
+{
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.managedObjectContext;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Alert" inManagedObjectContext:context];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"routeID = %@", routeID];
+    request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+    [request setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSMutableArray *alerts = [[context executeFetchRequest:request error:&error] mutableCopy];
+    
+    if(alerts == nil)
+    {
+        NSLog(@"%@", error.description);
+    }
+    
+    for (Alert *a in alerts) {
+        [a.managedObjectContext deleteObject:a];
+    }
+}
+
 + (BusStop_Line *) getBusstopLineForLineID:(NSString *)lineID andBusstopID:(NSString *)busStopID
 {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -432,5 +455,7 @@
     
     return [busstop_line objectAtIndex:0];
 }
+
+
 
 @end

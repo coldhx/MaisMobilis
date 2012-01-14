@@ -119,11 +119,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MaisMobilis/RoutesTableViewController.m"
-         timestampString = "348109300.468159"
+         timestampString = "348208433.38609"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "160"
-         endingLineNumber = "160"
+         startingLineNumber = "161"
+         endingLineNumber = "161"
          landmarkName = "-prepareForSegue:sender:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -170,7 +170,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -189,11 +189,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MaisMobilis/NewAlertTableViewController.m"
-         timestampString = "348156535.977579"
+         timestampString = "348191624.790499"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "228"
-         endingLineNumber = "228"
+         startingLineNumber = "248"
+         endingLineNumber = "248"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -217,11 +217,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MaisMobilis/RoutesTableViewController.m"
-         timestampString = "348128017.779406"
+         timestampString = "348208433.38609"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "152"
-         endingLineNumber = "152"
+         startingLineNumber = "153"
+         endingLineNumber = "153"
          landmarkName = "@implementation RoutesTableViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -231,11 +231,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "MaisMobilis/NewAlertTableViewController.m"
-         timestampString = "348156535.977579"
+         timestampString = "348191624.790499"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "142"
-         endingLineNumber = "142"
+         startingLineNumber = "162"
+         endingLineNumber = "162"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -293,6 +293,48 @@
          startingLineNumber = "63"
          endingLineNumber = "63"
          landmarkName = "+getNextStopByBusID:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MaisMobilis/NewRouteTableViewController.m"
+         timestampString = "348206495.047887"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "252"
+         endingLineNumber = "252"
+         landmarkName = "-cancel:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MaisMobilis/DataController.m"
+         timestampString = "348208433.38609"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "438"
+         endingLineNumber = "438"
+         landmarkName = "+getBusstopLineForLineID:andNumeral:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "MaisMobilis/NewRouteTableViewController.m"
+         timestampString = "348206503.984333"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "202"
+         endingLineNumber = "202"
+         landmarkName = "-save:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

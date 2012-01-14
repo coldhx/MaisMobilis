@@ -127,6 +127,7 @@
         Route * r = [_routes objectAtIndex:indexPath.row];
         [_routes removeObject:r];
         
+        [DataController deleteAssociatedAlerts:r.routeID];
         NSManagedObjectContext *context = r.managedObjectContext;
         [context deleteObject:r];
         

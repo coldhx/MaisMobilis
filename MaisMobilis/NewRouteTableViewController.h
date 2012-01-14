@@ -26,6 +26,8 @@
 
 - (IBAction)save:(id)sender;
 - (IBAction)cancel:(id)sender;
+- (void) setRouteID;
+- (void) removeAssociatedAlerts;
 
 @end
 

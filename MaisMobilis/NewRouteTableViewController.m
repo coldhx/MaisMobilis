@@ -201,7 +201,7 @@
 
 - (IBAction)save:(id)sender {
     route.desination = textField.text;
-    
+    [self setRouteID];
     NSError *error = nil;
 	if (![route.managedObjectContext save:&error]) 
     {
@@ -214,6 +214,28 @@
     
     
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) setRouteID
+{
+    NSArray * lines = [DataController getLineIdsForBusStopID:[route initialBusStopID]];
+  
+    if(lines.count > 1)
+    {
+        NSArray *destLines = [DataController getLineIdsForBusStopID:[route destinBusStopID]];
+        if(destLines.count > 1) 
+        {
+            route.lineID = 0;
+        }
+        else if(destLines.count == 1)
+        {
+            route.lineID = [[destLines objectAtIndex:0] lineID];
+        }
+    }
+    else
+    {
+        route.lineID = [[lines objectAtIndex:0] lineID];
+    }
 }
 
 - (IBAction)cancel:(id)sender {

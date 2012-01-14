@@ -12,6 +12,7 @@
 #import "BusStop.h"
 #import "Line.h"
 #import "Route.h"
+#import "Alert.h"
 #import "ReferencePoint.h"
 #import "BusStop_Line.h"
 #import "Webservice/WebEta.h"
@@ -50,5 +51,6 @@
 + (NSMutableArray *) getAllAlerts;
 + (BusStop_Line *) getBusstopLineForLineID:(NSString *)lineID andBusstopID:(NSString *)busStopID;
 + (BusStop_Line *) getBusstopLineForLineID:(NSString *)lineID andNumeral:(NSString *)numeral;
++ (void) deleteAssociatedAlerts: (NSString *) routeID;
 
 @end

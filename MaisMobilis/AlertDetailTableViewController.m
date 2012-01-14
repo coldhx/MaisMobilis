@@ -7,6 +7,7 @@
 //
 
 #import "AlertDetailTableViewController.h"
+#import "RouteDetailTableViewController.h"
 #import "DataController.h"
 
 #define ROUTE_SECTION 0
@@ -126,7 +127,11 @@
             label = [DataController getRouteNameForRouteID:alert.routeID];
             break;
         case NUMSTOPS_SECTION:
-            label = [NSString stringWithFormat:@"Das %@ às %@", startime,stoptime]; 
+            label = [alert.busStopDelayNumber stringValue];
+            break;
+        case TIMES_SECTION:
+            label = [NSString stringWithFormat:@"Entre as %@ e as %@", startime,stoptime]; 
+            break;
         default:
             break;
     }
@@ -154,7 +159,9 @@
 {
     if([[segue identifier] isEqualToString:@"showRouteDetails"])
     {
-        
+        Route *r = [DataController getRouteForRouteID:alert.routeID];
+        RouteDetailTableViewController *nextView = [segue destinationViewController];
+        [nextView setRoute:r];
     }
 }
 
