@@ -151,7 +151,7 @@ static BusObserver *_instance = nil;
                 notification.alertBody = alertBody;
                 notification.alertAction = NSLocalizedString(@"Abrir aplicação", nil);
                 notification.soundName = UILocalNotificationDefaultSoundName;
-                notification.applicationIconBadgeNumber = 0;
+                //notification.applicationIconBadgeNumber = 0;
                 [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
             }
         }

@@ -130,6 +130,7 @@
         [DataController deleteAssociatedAlerts:r.routeID];
         NSManagedObjectContext *context = r.managedObjectContext;
         [context deleteObject:r];
+        [context save: nil];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         

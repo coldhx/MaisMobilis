@@ -428,6 +428,7 @@
     }
     
     for (Alert *a in alerts) {
+        [[BusObserver getInstance] removeObserverWithID:a.alertID];
         [a.managedObjectContext deleteObject:a];
     }
 }

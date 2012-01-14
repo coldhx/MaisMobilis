@@ -211,9 +211,8 @@
 	}
     
     [self.delegate newRouteTableViewController: self didAddRoute:route];
-    
-    
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void) setRouteID

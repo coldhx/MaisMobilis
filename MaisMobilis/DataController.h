@@ -13,6 +13,7 @@
 #import "Line.h"
 #import "Route.h"
 #import "Alert.h"
+#import "BusObserver.h"
 #import "ReferencePoint.h"
 #import "BusStop_Line.h"
 #import "Webservice/WebEta.h"
