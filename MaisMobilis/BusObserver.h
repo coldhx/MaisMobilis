@@ -24,4 +24,5 @@
 - (void) removeObserverWithID:(NSString *)id;
 - (void) startAudioWorkaround;
 - (void) beginObserving:(NSDictionary *)objects;
+- (void) stopAudioWorkaround;
 @end

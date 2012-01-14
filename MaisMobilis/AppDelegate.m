@@ -116,6 +116,18 @@
 
 }
 
+//Fired when an UILocalNotification is fired when application is in foreground
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    //Fire only is app is in foreground
+    if([application applicationState] == UIApplicationStateActive)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"+Mobilis" message:notification.alertBody delegate:nil cancelButtonTitle:@"Fechar" otherButtonTitles:nil];
+        
+        [alert show];
+    }
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

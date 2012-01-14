@@ -17,8 +17,6 @@ static BusObserver *_instance = nil;
     self = [super init];
     
     _observerInstances = [[NSMutableDictionary alloc] init];
-    [self performSelectorInBackground:@selector(startAudioWorkaround) withObject:nil];
-    
     return self;
 }
 
@@ -36,6 +34,12 @@ static BusObserver *_instance = nil;
 {
     NSMutableArray *busStops = [[NSMutableArray alloc] init];
 
+    //Transform 0 into nil for lineID
+    if([lineID isEqualToString:@"0"])
+    {
+        lineID = nil;
+    }
+    
     if(lineID != nil)
     {
         BusStop_Line *busstopLine = [DataController getBusstopLineForLineID:lineID andBusstopID:busstopID];
@@ -74,16 +78,27 @@ static BusObserver *_instance = nil;
         }
     }
     
-    [_observerInstances setObject:alert forKey:alert.alertID];
+    //Start workaround with first observer
+    if(_observerInstances.count == 0)
+    {
+        [self startAudioWorkaround];
+    }
     
+    [_observerInstances setObject:alert forKey:alert.alertID];    
     NSDictionary *objects = [[NSDictionary alloc] initWithObjectsAndKeys:alert, @"alert", busStops, @"busStops", nil];
     
-    [self performSelectorInBackground:@selector(begin) withObject:objects];
+    [self performSelectorInBackground:@selector(beginObserving:) withObject:objects];
 }
 
 - (void) removeObserverWithID:(NSString *)alertID
 {
     [_observerInstances removeObjectForKey:alertID];
+    
+    //Stop workaround with last observer
+    if(_observerInstances.count == 0)
+    {
+        [self stopAudioWorkaround];
+    }
 }
 
 - (void) beginObserving:(NSDictionary *)objects
@@ -93,17 +108,20 @@ static BusObserver *_instance = nil;
     
     NSTimeInterval start = [alert.startTime timeIntervalSince1970];
     NSTimeInterval stop = [alert.stopTime timeIntervalSince1970];
-    NSTimeInterval now = [[[NSDate alloc] init] timeIntervalSince1970];
+    NSTimeInterval now;
     
     NSString *alertBody = @"";
     NSString *targetBusStops = @"";
     int numberOfBuses = 0;
     
-    //TODO check timespan
+    NSLog(@"Notification engaged!");
     while([_observerInstances objectForKey:alert.alertID] != nil)
     {
+        now = [[[NSDate alloc] init] timeIntervalSince1970];
+        
         if(now >= start && now <= stop)
-        {   
+        {
+            NSLog(@"Checking notification...");
             [DataController loadAllBusesIntoCoreData];
             NSArray *buses = [DataController getAllBuses];
             numberOfBuses = 0;
@@ -118,12 +136,24 @@ static BusObserver *_instance = nil;
                     if([[bus lastStopID] isEqualToString:busStop.busStopID])
                     {
                         numberOfBuses++;
-                        targetBusStops = [targetBusStops stringByAppendingFormat:@"%@ ", busStop.name];
+                        targetBusStops = [targetBusStops stringByAppendingFormat:@"%@, ", busStop.name];
                     }
                 }
             }
             
-            alertBody = [NSString stringWithFormat:@"Existem %d autocarros a chegar à(s) paragem(s): %@.", numberOfBuses, targetBusStops];
+            if(numberOfBuses != 0)
+            {
+                NSLog(@"Generating alert!");
+                alertBody = [NSString stringWithFormat:@"Existem %d autocarro(s) a chegar à(s) paragem(s): %@", numberOfBuses, targetBusStops];
+                
+                //TODO: Gerar alerta
+                UILocalNotification *notification = [[UILocalNotification alloc] init];
+                notification.alertBody = alertBody;
+                notification.alertAction = NSLocalizedString(@"Abrir aplicação", nil);
+                notification.soundName = UILocalNotificationDefaultSoundName;
+                notification.applicationIconBadgeNumber = 0;
+                [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+            }
         }
         //Sleep
         [NSThread sleepForTimeInterval:30];
@@ -149,6 +179,14 @@ static BusObserver *_instance = nil;
     _player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
     _player.numberOfLoops = -1;
     [_player play];
+}
+
+- (void) stopAudioWorkaround
+{
+    if(_player != nil)
+    {
+        [_player stop];
+    }
 }
 
 @end

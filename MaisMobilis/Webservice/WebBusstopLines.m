@@ -24,7 +24,7 @@
 
         new_busstopLine.lineID = [[jsonObjects objectAtIndex:i] objectForKey:@"idLinha"];
         new_busstopLine.busStopID = [[jsonObjects objectAtIndex:i] objectForKey:@"idParagem"];
-        new_busstopLine.numeral = [[jsonObjects objectAtIndex:i] objectForKey:@"numeralparagem"];
+        new_busstopLine.numeral = [[jsonObjects objectAtIndex:i] objectForKey:@"numeral"];
     }
 }
 

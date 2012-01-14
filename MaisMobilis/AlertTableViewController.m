@@ -124,6 +124,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) 
     {
         Alert *a = [_alerts objectAtIndex:indexPath.row];
+        [[BusObserver getInstance] removeObserverWithID:a.alertID];
         [_alerts removeObject: a];
         
         NSManagedObjectContext *context = a.managedObjectContext;
@@ -199,6 +200,5 @@
         [observer addObserverWithAlert:alert forLine:route.lineID andBusstop:route.initialBusStopID withTolerance:alert.busStopDelayNumber];
     }
 }
-
 
 @end
