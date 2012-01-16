@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "BusStop.h"
+#import "NewAlertTableViewController.h"
+#import "Route.h"
 
-@interface BuseStopDetailTableViewController : UITableViewController
+@class Alert;
+@interface BuseStopDetailTableViewController: UITableViewController <NewAlertTableViewController>
 {
     BusStop *busStop;
 }
 @property (nonatomic, retain) BusStop *busStop;
+
+- (NSString *) setRouteLineID: (Route*) route;
 
 @end

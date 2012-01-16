@@ -245,7 +245,7 @@
                             <outlet property="delegate" destination="Bzo-AA-y86" id="X2y-VA-D9Q"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ecQ-HU-WiJ"/>
+                    <navigationItem key="navigationItem" title="Detalhes" id="ecQ-HU-WiJ"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-868" y="1867"/>
@@ -294,7 +294,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rny-VI-d9l" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="x7L-0a-oCj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Percursos" image="courseTab.png" id="Bxk-ON-jWt"/>
+                    <tabBarItem key="tabBarItem" title="Meus Percursos" image="courseTab.png" id="Bxk-ON-jWt"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="SbH-Tb-UoV">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -332,7 +332,7 @@
                             <outlet property="delegate" destination="lQC-WH-Ey0" id="vHv-jJ-Ucu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Percursos" id="qID-xZ-W1Y">
+                    <navigationItem key="navigationItem" title="Meus Percursos" id="qID-xZ-W1Y">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Bdy-Ah-E4B">
                             <connections>
                                 <segue destination="bVp-qf-W8u" kind="push" identifier="addRoute" id="n7X-R4-ZDJ"/>
@@ -370,7 +370,7 @@
                             <outlet property="delegate" destination="JVp-R1-Doh" id="Y2E-xx-aEn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Detalhe Percurso" id="UGE-To-1jJ"/>
+                    <navigationItem key="navigationItem" title="Detalhes" id="UGE-To-1jJ"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-868" y="1295"/>
@@ -424,11 +424,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JT0-Q4-F3u">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="JT0-Q4-F3u">
                                 <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -439,7 +439,13 @@
                             <outlet property="delegate" destination="yFP-Ff-5nb" id="3JC-Q6-IPf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Detalhe Paragem" id="PyN-mf-W3Y"/>
+                    <navigationItem key="navigationItem" title="Detalhes" id="PyN-mf-W3Y">
+                        <barButtonItem key="rightBarButtonItem" title="Criar alerta" id="VwG-kS-7D8">
+                            <connections>
+                                <segue destination="ONg-fS-bQr" kind="push" identifier="addAlertForBusStop" id="cVQ-gv-Cs1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-868" y="721"/>
@@ -468,7 +474,7 @@
                             <outlet property="delegate" destination="AZF-We-g1y" id="Uce-A2-Nz1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Detalhe Autocarro" id="zed-ok-Fg9"/>
+                    <navigationItem key="navigationItem" title="Detalhes" id="zed-ok-Fg9"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="-868" y="145"/>
@@ -528,5 +534,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="Rmp-Gy-N1W"/>
         <segue reference="vLA-B8-1Y6"/>
+        <segue reference="cVQ-gv-Cs1"/>
     </inferredMetricsTieBreakers>
 </document>

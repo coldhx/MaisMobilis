@@ -57,7 +57,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _alerts = [DataController getAllAlerts];
+    _alerts = [DataController getAllAlerts: _alerts];
     [[self tableView] reloadData];
 }
 

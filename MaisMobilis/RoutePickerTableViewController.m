@@ -84,6 +84,15 @@
     return 1;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    NSString *footer = @"";
+    if([routes count] == 0) {
+        footer = @"Não existem percursos criados. Deverá criar um percurso para poder inserir um alerta.";
+    }
+    return footer;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [routes count];

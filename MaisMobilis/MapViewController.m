@@ -303,7 +303,7 @@
                     }
                     else
                     {
-                        eta = [NSString stringWithFormat:@"%d:%d", [eta intValue]/60, [eta intValue]%60];
+                        eta = [NSString stringWithFormat:@"Até prox. paragem: %dm %ds", [eta intValue]/60, [eta intValue]%60];
                     }
                     
                     annotation = [annotations objectForKey:bus.busID];
@@ -379,7 +379,7 @@
                 subtitle = [subtitle stringByAppendingFormat:@"Vermelho"];
             }
             
-            subtitle = [subtitle stringByAppendingFormat:@"(#%@): %d:%d, ", bus.busID, [[[etas objectAtIndex:i] objectForKey:@"eta"] intValue]/60, [[[etas objectAtIndex:i] objectForKey:@"eta"] intValue]%60];
+            subtitle = [subtitle stringByAppendingFormat:@"(#%@) chega em: %dm %ds, ", bus.busID, [[[etas objectAtIndex:i] objectForKey:@"eta"] intValue]/60, [[[etas objectAtIndex:i] objectForKey:@"eta"] intValue]%60];
         }
         
         objects = [[NSArray alloc] initWithObjects:annotation, subtitle, nil];
@@ -409,7 +409,7 @@
 - (void) setAnnotationCoordinate:(NSDictionary *) annotationAndCoordinate
 {
     BusAnnotation *annotation = [annotationAndCoordinate objectForKey:@"annotation"];
-    [annotation setSubtitle:[[annotationAndCoordinate objectForKey:@"meanVelocity"] stringByAppendingFormat:@" (%@)", [annotationAndCoordinate objectForKey:@"eta"]]];
+    [annotation setSubtitle:[annotationAndCoordinate objectForKey:@"eta"]];
     
     CLLocationCoordinate2D coordinate;
     coordinate.latitude = [[annotationAndCoordinate objectForKey:@"latitude"] doubleValue];

@@ -392,21 +392,33 @@
     return r;
 }
 
-+ (NSMutableArray *) getAllAlerts
++ (NSMutableArray *) getAllAlerts: (NSMutableArray *) alertList
 {
-    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = delegate.managedObjectContext;
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Alert" inManagedObjectContext:context];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
-    
-    NSError *error = nil;
-    NSMutableArray *alerts = [[context executeFetchRequest:request error:&error] mutableCopy];
-    if(alerts == nil)
+    @try
     {
-        NSLog(@"%@", error.description);
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = delegate.managedObjectContext;
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Alert" inManagedObjectContext:context];
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entity.name];
+        
+        NSError *error = nil;
+        NSMutableArray *alerts = [[context executeFetchRequest:request error:&error] mutableCopy];
+        if(alerts == nil)
+        {
+            NSLog(@"%@", error.description);
+        }
+        
+        for (Alert *a in alerts) {
+            if(a.stopTime == nil || a.startTime == nil || a.busStopDelayNumber == nil)
+                [alerts removeObject:a];
+        }
+        return alerts;
+    }
+    @catch (NSException *ex) {
+        return alertList;
     }
     
-    return alerts;
+    
 }
 
 + (void) deleteAssociatedAlerts: (NSString *) routeID

@@ -50,7 +50,7 @@
 + (NSString *) getRouteNameForRouteID: (NSString*) routeID;
 + (NSString *) getLineIdsStringForBusStop: (BusStop*) busStop;
 + (NSString *) getLineNameForBusID: (NSString *) busID;
-+ (NSMutableArray *) getAllAlerts;
++ (NSMutableArray *) getAllAlerts: (NSMutableArray *) alertList;
 + (BusStop_Line *) getBusstopLineForLineID:(NSString *)lineID andBusstopID:(NSString *)busStopID;
 + (BusStop_Line *) getBusstopLineForLineID:(NSString *)lineID andNumeral:(NSString *)numeral;
 + (void) deleteAssociatedAlerts: (NSString *) routeID;

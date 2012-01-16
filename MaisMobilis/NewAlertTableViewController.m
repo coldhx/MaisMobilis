@@ -335,19 +335,29 @@
 
 - (IBAction)save:(id)sender
 {
-    alert.busStopDelayNumber = [NSNumber numberWithInt:[busStopsNumber.text intValue]];
-    
-    NSError *error = nil;
-    
-	if (![alert.managedObjectContext save:&error]) 
+    if(alert.routeID == nil || alert.busStopDelayNumber == nil || alert.stopTime == nil || alert.startTime == nil)
     {
-		
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		return;
-	}
+        [alert.managedObjectContext deleteObject:alert];
+        [_delegate newAlertTableViewController: self didAddAlert:nil];
+    }
+    else
+    {
+        alert.busStopDelayNumber = [NSNumber numberWithInt:[busStopsNumber.text intValue]];
+        
+        NSError *error = nil;
+        
+        if (![alert.managedObjectContext save:&error]) 
+        {
+            
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            return;
+        }
+        
+        [_delegate newAlertTableViewController: self didAddAlert:alert];
+    }
     
-    [_delegate newAlertTableViewController: self didAddAlert:alert];
     [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (IBAction)cancel:(id)sender {

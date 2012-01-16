@@ -12,6 +12,7 @@
 #define STOPNAME_SECTION 0
 #define LINES_SECTION 1
 #define NEXTBUSES_SECTION 2
+#define SETALERT_SECTION 3
 
 
 @implementation BuseStopDetailTableViewController
@@ -97,7 +98,7 @@
             break;
         case NEXTBUSES_SECTION:
             ret = [nextBuses count];
-            break;
+            break;   
         default:
             break;
     }
@@ -152,16 +153,79 @@
             }
             else
             {
-            lineName = [DataController getLineNameForBusID: [[nextBuses objectAtIndex:indexPath.row] objectForKey:@"idAutocarro"]];
+                lineName = [DataController getLineNameForBusID: [[nextBuses objectAtIndex:indexPath.row] objectForKey:@"idAutocarro"]];
                 eta = [NSString stringWithFormat:@"%dm %ds", [eta intValue]/60, [eta intValue]%60 ];
-            text = [lineName stringByAppendingFormat:@" (%@)", eta];
+                text = [lineName stringByAppendingFormat:@" (%@)", eta];
             }
+            break;
         default:
             break;
     }
     cell.textLabel.text = text;
     
     return cell;
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"addAlertForBusStop"]) 
+    {
+        NewAlertTableViewController *newAlertTVC = [segue destinationViewController];
+        AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        NSManagedObjectContext *context = delegate.managedObjectContext; 
+        Route *newRoute   =[NSEntityDescription insertNewObjectForEntityForName:@"Route" inManagedObjectContext: context];
+        newRoute.routeID = [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] stringValue];
+        newRoute.desination = busStop.name;
+        newRoute.initialBusStopID = busStop.busStopID;
+        newRoute.destinBusStopID = @"47";
+        newRoute.lineID = [self setRouteLineID: newRoute];
+        [context save:nil];
+        
+        Alert *newAlert = [NSEntityDescription insertNewObjectForEntityForName:@"Alert" inManagedObjectContext: context];
+        newAlert.alertID = [[NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]] stringValue];
+        newAlert.routeID = newRoute.routeID;
+        newAlertTVC.alert = newAlert;
+        newAlertTVC.delegate = self;
+    }
+}
+    
+
+- (void) newAlertTableViewController: (NewAlertTableViewController *) newAlertTableViewController didAddAlert: (Alert *) alert {
+    if(alert)
+    {
+        //Reload table data
+        [self.tableView reloadData];
+        
+        //Begin observing buses positions to generate alerts
+        BusObserver *observer = [BusObserver getInstance];
+        Route *route = [DataController getRouteForRouteID:alert.routeID];
+        [observer addObserverWithAlert:alert forLine:route.lineID andBusstop:route.initialBusStopID withTolerance:alert.busStopDelayNumber];
+    }
+}
+
+- (NSString *) setRouteLineID: (Route*) route
+{
+    NSArray * lines = [DataController getLineIdsForBusStopID:[route initialBusStopID]];
+    NSString * lineID = @"";
+    
+    if(lines.count > 1)
+    {
+        NSArray *destLines = [DataController getLineIdsForBusStopID:[route destinBusStopID]];
+        if(destLines.count > 1) 
+        {
+            lineID = 0;
+        }
+        else if(destLines.count == 1)
+        {
+            lineID = [[destLines objectAtIndex:0] lineID];
+        }
+    }
+    else
+    {
+        lineID = [[lines objectAtIndex:0] lineID];
+    }
+    
+    return lineID;
 }
 
 @end
